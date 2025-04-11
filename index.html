@@ -54,14 +54,17 @@
       background-color: var(--accent-hover);
       padding: 12px;
       text-align: center;
+      flex-wrap: wrap;
     }
 
     nav a {
-      margin: 0 15px;
+      margin: 0 12px;
       text-decoration: none;
       color: #fff;
       font-weight: 600;
       transition: 0.3s;
+      display: inline-block;
+      margin-bottom: 8px;
     }
 
     nav a:hover {
@@ -169,32 +172,36 @@
   </header>
 
   <nav>
-    <a href="#what">What is Linux</a>
-    <a href="#why">Why Linux?</a>
-    <a href="#features">Features</a>
-    <a href="#start">Get Started</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="linux-isos.html">Linux ISOs</a>
+    <a href="software-alternatives.html">App Alternatives</a>
+    <a href="creators.html">Linux for Creators</a>
+    <a href="faq.html">FAQ / Myths</a>
+    <a href="how-to-flash.html">Flash Guide</a>
   </nav>
 
   <main>
     <section class="section hero">
       <h1>Welcome to LinuxWorld</h1>
-      <p>Discover a world of freedom, creativity, and control. Linux isn’t just an OS—it’s a movement.</p>
+      <p>Explore the open-source world. Try Linux, discover its freedom, flexibility, and the joy of full control over your machine.</p>
       <button onclick="location.href='linux-isos.html'">Browse ISOs</button>
     </section>
 
     <section id="what" class="section">
       <h2>What is Linux?</h2>
-      <p>Linux is an open-source operating system that powers everything from smartphones and servers to supercomputers. It’s free, secure, and backed by a global community of developers.</p>
+      <p>Linux is a free and open-source operating system that powers everything from phones to supercomputers. Whether you're a beginner, a developer, or a creator — there's a Linux for you.</p>
     </section>
 
     <section id="why" class="section">
       <h2>Why Use Linux?</h2>
       <ul>
-        <li>✨ It's free and open-source forever.</li>
-        <li>🛡️ Known for stability and security.</li>
-        <li>🧠 Learn real computing under the hood.</li>
-        <li>🎨 Customize it your way.</li>
-        <li>🌎 Used by developers, creatives, gamers, and enterprises globally.</li>
+        <li>💸 100% Free and open-source.</li>
+        <li>🔐 Secure and private by design.</li>
+        <li>🎨 Endless customization and desktop environments.</li>
+        <li>🌱 Lightweight options for older hardware.</li>
+        <li>💻 Used by NASA, Google, and millions globally.</li>
       </ul>
     </section>
 
@@ -203,26 +210,26 @@
       <div class="features">
         <div class="feature">
           <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Tux Logo">
-          <h3>Beginner-Friendly</h3>
-          <p>Distro like Ubuntu and Linux Mint are perfect for new users.</p>
+          <h3>Beginner Friendly</h3>
+          <p>Distros like Ubuntu, Mint & Zorin OS are built for ease of use.</p>
         </div>
         <div class="feature">
           <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Icon_security.png" alt="Security">
-          <h3>Security Built-In</h3>
-          <p>Linux is designed to be more secure than most OSs out of the box.</p>
+          <h3>Private & Secure</h3>
+          <p>No ads, no telemetry. You’re in full control of your data.</p>
         </div>
         <div class="feature">
           <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Icon-Tools.svg" alt="Tools Icon">
-          <h3>Powerful Tools</h3>
-          <p>Dev tools, media production, and system customization—all in your control.</p>
+          <h3>Built for Creators</h3>
+          <p>From music to code, Linux has powerful open-source tools.</p>
         </div>
       </div>
     </section>
 
     <section id="start" class="section">
-      <h2>Get Started Today</h2>
-      <p>Want to try Linux? Download an ISO, flash it to a USB, and boot it up. Need help? Check out our guides and FAQs.</p>
-      <button onclick="location.href='how-to-flash.html'">How to Flash Linux</button>
+      <h2>Ready to Try?</h2>
+      <p>Pick a Linux distro from our ISO section, follow the flashing guide, and you're set. It's easier than you think — and way more fun than Windows 😉</p>
+      <button onclick="location.href='how-to-flash.html'">Get Started</button>
     </section>
   </main>
 
