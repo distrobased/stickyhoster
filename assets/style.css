@@ -1,168 +1,100 @@
-/* Import Inter Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
 :root {
-  --bg: #111;
-  --text: #f0f0f0;
-  --accent: #00d1b2;
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --hover-glow: 0 0 10px rgba(0, 209, 178, 0.6);
+  --bg-color: #0f1115;
+  --text-color: #f0f0f0;
+  --accent: #00ffff;
+  --card-bg: #1a1d23;
+  --hover-bg: #21242b;
 }
 
-* {
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #111;
+  --accent: #007acc;
+  --card-bg: #f2f2f2;
+  --hover-bg: #e6e6e6;
+}
+
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
   font-family: 'Inter', sans-serif;
-  background: url('https://preview.redd.it/new-windows-server-2025-wallpapers-v0-1h2d6i9dt6kc1.jpg?width=640&crop=smart&auto=webp&s=a8fedf9623af305bfc572ae2d7e1e40e6c3e48c0') no-repeat center center fixed;
-  background-size: cover;
-  color: var(--text);
-  min-height: 100vh;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
 }
 
-/* Loader */
-#loader {
-  position: fixed;
-  inset: 0;
-  background: black;
+.navbar {
+  background: var(--card-bg);
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-.loader-inner img {
-  height: 120px;
-  animation: spinFade 5s linear forwards;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--accent);
 }
 
-@keyframes spinFade {
-  0% { transform: rotate(0deg); opacity: 1; }
-  100% { transform: rotate(1440deg); opacity: 0; }
+.navbar .logo {
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--accent);
 }
 
-/* Header */
-.header {
-  background: rgba(0, 0, 0, 0.7);
-  padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(10px);
+.navbar nav a {
+  color: var(--text-color);
+  margin: 0 0.8rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.navbar nav a.active,
+.navbar nav a:hover {
+  color: var(--accent);
+}
+
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.theme-toggle:hover {
+  background: var(--accent);
+  color: var(--bg-color);
 }
 
 .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.logo-title {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.logo-icon {
-  height: 40px;
-}
-.site-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
-.nav a {
-  color: var(--text);
-  margin: 0 1rem;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-.nav a:hover {
-  color: var(--accent);
-}
-
-/* Hero */
-.hero {
-  padding: 4rem 2rem;
-  text-align: center;
-}
-.hero h2 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-.hero p {
-  font-size: 1.2rem;
-  opacity: 0.9;
-}
-
-/* Distros Section */
-.distros {
   padding: 2rem;
-  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto;
 }
-.distros h3 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-.distro-grid {
+
+.card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 2rem;
-  padding: 1rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
-.distro-card {
+
+.card {
   background: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: 1rem;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.distro-card:hover {
-  transform: scale(1.05);
-  box-shadow: var(--hover-glow);
-}
-.distro-card img {
-  width: 60px;
-  margin-bottom: 1rem;
-}
-.distro-card h4 {
-  margin-bottom: 0.5rem;
-}
-.distro-card a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: bold;
+  padding: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, background 0.3s;
 }
 
-/* Scroll to top */
-#scrollTop {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--accent);
-  color: #000;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  display: none;
-  cursor: pointer;
-  z-index: 999;
-  box-shadow: var(--hover-glow);
-}
-#scrollTop:hover {
-  background: #00bfa5;
+.card:hover {
+  transform: scale(1.02);
+  background: var(--hover-bg);
 }
 
-/* Footer */
 .footer {
   text-align: center;
-  padding: 2rem;
-  font-size: 1rem;
-  background: rgba(0,0,0,0.7);
-  margin-top: 4rem;
+  padding: 1.2rem;
+  margin-top: 3rem;
+  border-top: 1px solid var(--accent);
+  font-size: 0.9rem;
+  color: var(--text-color);
 }
