@@ -3,32 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Page Title</title>
-
-  <link rel="stylesheet" href="assets/style/style.css">
-  <script src="assets/js/main.js" defer></script>
-</head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About - Linux World</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="icon" href="assets/images/Tux.png" />
+  <link rel="stylesheet" href="assets/style/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <script src="assets/js/main.js" defer></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: url('https://preview.redd.it/new-windows-server-2025-wallpapers-v0-1h2d6i9dt6kc1.jpg?width=640&crop=smart&auto=webp&s=a8fedf9623af305bfc572ae2d7e1e40e6c3e48c0') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      max-width: 720px;
+      margin: auto;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.65);
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-top: 1rem;
+    }
+
+    nav {
+      margin-top: 2rem;
+    }
+
+    nav a {
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      margin-right: 1.5rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s;
+    }
+
+    nav a:hover {
+      border-color: #fff;
+    }
+
+    .made-in {
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      background: rgba(255, 255, 255, 0.85);
+      color: #000;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+  </style>
 </head>
 <body>
-  <div class="overlay"></div>
   <main>
-    <h1>About This Site</h1>
-    <p>Welcome to a site dedicated to Linux lovers, open source enthusiasts, and free software believers. 🐧</p>
-    <p>We showcase popular Linux distributions and tools that power the world. Built with care in Denmark 🇩🇰.</p>
+    <h1>About Linux World</h1>
+    <p>
+      Linux World is a passion project dedicated to celebrating the flexibility, power, and community of open-source operating systems.
+      From Ubuntu and Debian to Arch and Raspberry Pi, we’re here to promote learning and exploration.
+    </p>
+    <p>
+      Whether you’re a beginner or a pro, Linux offers something for everyone — freedom, security, and customization.
+      We aim to spread awareness, share resources, and help you find the distro that suits you best.
+    </p>
 
-    <ul class="logo-list">
-      <li><img src="assets/images/Ubuntu.png" alt="Ubuntu" /></li>
-      <li><img src="assets/images/debian.svg.png" alt="Debian" /></li>
-      <li><img src="assets/images/Firefox.svg.png" alt="Firefox" /></li>
-      <li><img src="assets/images/amd.svg.png" alt="AMD" /></li>
-      <li><img src="assets/images/raspberry-pi.png" alt="Raspberry Pi" /></li>
-    </ul>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </main>
-  <script src="assets/js/main.js"></script>
+
+  <div class="made-in">📍 Made in Denmark ❤️</div>
 </body>
 </html>
