@@ -7,15 +7,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #111;
-      --fg: #f5f5f5;
-      --accent: #00ffd5;
+      --bg: #0d0d0d;
+      --fg: #f5faff;
+      --accent: #87ceeb;
+      --accent-hover: #ffc1cc;
+      --section-bg: rgba(255, 255, 255, 0.05);
     }
 
     [data-theme="light"] {
-      --bg: #f5f5f5;
-      --fg: #111;
-      --accent: #0077ff;
+      --bg: #ffffff;
+      --fg: #1a1a1a;
+      --accent: #ffb6c1;
+      --accent-hover: #87ceeb;
+      --section-bg: rgba(0, 0, 0, 0.05);
     }
 
     * {
@@ -36,13 +40,14 @@
       text-align: center;
       font-size: 2rem;
       font-weight: 700;
+      color: var(--accent);
     }
 
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(0, 0, 0, 0.7);
       padding: 14px 20px;
       font-size: 1rem;
     }
@@ -70,6 +75,7 @@
       border-radius: 10px;
       font-weight: bold;
       cursor: pointer;
+      color: #000;
     }
 
     main {
@@ -79,10 +85,11 @@
     }
 
     .section {
-      background: rgba(0, 0, 0, 0.7);
+      background: var(--section-bg);
       border-radius: 16px;
       padding: 30px;
       margin-bottom: 40px;
+      backdrop-filter: blur(3px);
     }
 
     h2 {
@@ -90,13 +97,14 @@
       margin-bottom: 20px;
       border-bottom: 2px solid var(--accent);
       padding-bottom: 10px;
+      color: var(--accent);
     }
 
     .compare, .flashing-guide, .ratings, .qa-widget {
       animation: fadeIn 1s ease;
     }
 
-    .compare button, .download, .theme-toggle {
+    .compare button, .download, .theme-toggle, .qa-widget button {
       background: var(--accent);
       color: #000;
       font-weight: bold;
@@ -107,14 +115,14 @@
       transition: 0.3s ease;
     }
 
-    .compare button:hover, .download:hover {
-      background: #00bfa6;
+    .compare button:hover, .download:hover, .qa-widget button:hover, .theme-toggle:hover {
+      background: var(--accent-hover);
     }
 
     .ratings .card {
       padding: 12px;
       margin-bottom: 16px;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--section-bg);
       border-left: 4px solid var(--accent);
       border-radius: 10px;
     }
@@ -123,7 +131,7 @@
       width: 100%;
       padding: 12px;
       font-size: 1rem;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--section-bg);
       color: var(--fg);
       border: none;
       border-radius: 10px;
@@ -133,8 +141,9 @@
     footer {
       text-align: center;
       padding: 16px;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.8);
       font-weight: bold;
+      color: var(--accent);
     }
 
     @keyframes fadeIn {
