@@ -138,3 +138,22 @@ button.ripple:hover::after {
     width: 100%;
   }
 }
+.hamburger {
+  display: none;
+  font-size: 2rem;
+}
+#menu-toggle {
+  display: none;
+}
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+  }
+  #menu-toggle:checked + .hamburger + .menu {
+    display: flex;
+  }
+  .hamburger {
+    display: block;
+  }
+}
