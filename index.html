@@ -4,7 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
   loader.id = "loader";
   loader.innerHTML = `<div class="loader-inner"><img src="assets/images/Tux.png" alt="Loading Tux" /></div>`;
   document.body.appendChild(loader);
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Page Title</title>
 
+  <link rel="stylesheet" href="assets/style/style.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
   // After 5s remove loader
   setTimeout(() => {
     loader.remove();
