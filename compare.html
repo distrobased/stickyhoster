@@ -2,7 +2,8 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <title>Compare Distros - LinuxWorld</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compare Linux Distros | LinuxWorld</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -14,36 +15,80 @@
       <a href="linuxiso.html">Linux ISOs</a>
       <a href="compare.html" class="active">Compare</a>
       <a href="customization.html">Customization</a>
-      <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+      <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
     </nav>
   </header>
 
   <main class="container">
-    <h1>Compare Linux Distributions</h1>
-    <p>Explore the strengths of each distro:</p>
+    <h1>Compare Popular Linux Distributions</h1>
+    <p>Choose your next distro based on your needs. Here’s a side-by-side comparison of key distributions.</p>
 
     <div class="card-grid">
-      <div class="card"><h2>Ubuntu</h2><p>Stable, user-friendly, perfect for newcomers and devs.</p></div>
-      <div class="card"><h2>Debian</h2><p>Ultra-stable, preferred for servers and minimal setups.</p></div>
-      <div class="card"><h2>Arch</h2><p>DIY system, rolling release. For advanced users.</p></div>
-      <div class="card"><h2>Fedora</h2><p>Bleeding edge, GNOME-first. Great for devs.</p></div>
-      <div class="card"><h2>Pop!_OS</h2><p>Gaming-ready, sleek UI, Ubuntu-based.</p></div>
+      <div class="card">
+        <h2>🟠 Ubuntu</h2>
+        <p>User-friendly, backed by Canonical. Great for beginners and developers alike.</p>
+        <ul>
+          <li>Debian-based</li>
+          <li>Stable LTS releases</li>
+          <li>Snap support</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🧱 Debian</h2>
+        <p>Foundation for many distros. Known for rock-solid stability and conservative updates.</p>
+        <ul>
+          <li>Community-maintained</li>
+          <li>APT package manager</li>
+          <li>Minimal by default</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>📦 Arch Linux</h2>
+        <p>Rolling release model with cutting-edge packages. DIY and power-user focused.</p>
+        <ul>
+          <li>Pacman package manager</li>
+          <li>Manual install</li>
+          <li>Massive community wiki</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🎩 Fedora</h2>
+        <p>Backed by Red Hat. A developer favorite, focused on open-source and GNOME integration.</p>
+        <ul>
+          <li>RPM-based</li>
+          <li>Short release cycle</li>
+          <li>DNF package manager</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🚀 Pop!_OS</h2>
+        <p>Developed by System76. Ubuntu-based with a focus on productivity and GPU support.</p>
+        <ul>
+          <li>Hybrid graphics support</li>
+          <li>Auto-tiling window manager</li>
+          <li>Out-of-the-box dev tools</li>
+        </ul>
+      </div>
     </div>
   </main>
 
   <footer class="footer">
-    <p>📍 Made with ❤️ in Denmark — <a href="index.html" style="color: var(--accent)">Back to Home</a></p>
+    📍 Made with ❤️ in Denmark — <a href="index.html" style="color: var(--accent); text-decoration: none;">Back to Home</a>
   </footer>
 
   <script>
-    // Insert theme toggle script here
     const toggleTheme = () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
-      localStorage.setItem('theme', currentTheme === 'dark' ? 'light' : 'dark');
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const newTheme = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
     };
 
-    window.addEventListener("DOMContentLoaded", () => {
+    window.addEventListener('DOMContentLoaded', () => {
       const saved = localStorage.getItem('theme') || 'dark';
       document.documentElement.setAttribute('data-theme', saved);
     });
