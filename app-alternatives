@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Linux App Alternatives</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sky-blue: #00bfff;
+      --blush-pink: #ff6f91;
+      --dark-bg: #0d0d0d;
+      --light-text: #f0f0f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--light-text);
+    }
+
+    header {
+      background-color: var(--dark-bg);
+      padding: 1.5rem 2rem;
+      border-bottom: 2px solid var(--sky-blue);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: var(--sky-blue);
+      margin: 0;
+    }
+
+    nav a {
+      color: var(--blush-pink);
+      text-decoration: none;
+      margin-left: 1rem;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    h2 {
+      color: var(--sky-blue);
+      border-bottom: 2px solid var(--blush-pink);
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 5px solid var(--blush-pink);
+      padding: 1rem;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: var(--sky-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--light-text);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: var(--dark-bg);
+      border-top: 1px solid var(--sky-blue);
+      font-size: 0.9rem;
+      color: var(--blush-pink);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Linux App Alternatives</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="compare.html">Compare</a>
+      <a href="linux-isos.html">ISOs</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Popular App Replacements</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Photoshop → GIMP</h3>
+        <p>GIMP is a powerful open-source alternative for photo editing and manipulation.</p>
+      </div>
+      <div class="card">
+        <h3>Microsoft Office → LibreOffice</h3>
+        <p>LibreOffice offers a full suite of office tools: Writer, Calc, Impress, and more.</p>
+      </div>
+      <div class="card">
+        <h3>Notepad++ → Geany / Kate</h3>
+        <p>Lightweight code editors perfect for scripting and development on Linux.</p>
+      </div>
+      <div class="card">
+        <h3>FileZilla → gFTP / FileZilla (Linux)</h3>
+        <p>File transfer clients supporting FTP/SFTP with familiar interfaces.</p>
+      </div>
+      <div class="card">
+        <h3>Outlook → Thunderbird</h3>
+        <p>A reliable, customizable email client from Mozilla, with calendar and plugin support.</p>
+      </div>
+      <div class="card">
+        <h3>Spotify → Lollypop / Cider / ncspot</h3>
+        <p>Listen to music through slick open-source players with Spotify support or local files.</p>
+      </div>
+    </div>
+
+    <h2>Other Essentials</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Zoom → Jitsi Meet</h3>
+        <p>Secure, open-source video conferencing with no sign-up required.</p>
+      </div>
+      <div class="card">
+        <h3>Premiere Pro → Kdenlive / Shotcut</h3>
+        <p>Video editing with timeline-based UIs and export options for all major formats.</p>
+      </div>
+      <div class="card">
+        <h3>WinRAR → PeaZip / Ark</h3>
+        <p>Compression utilities for extracting and creating all major archive formats.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    📍 Made with 💗 in Denmak
+  </footer>
+
+</body>
+</html>
