@@ -1,21 +1,45 @@
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+});
 
-// Typing effect
-const text = 'Welcome to LinuxWall, your ultimate Linux hub!';
-let i = 0;
-function typeWriter() {
-  if (i < text.length) {
-    document.getElementById("typed-text").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typeWriter, 50);
+// Optional: highlight active nav link
+const navLinks = document.querySelectorAll("nav a");
+navLinks.forEach(link => {
+  if (link.href === window.location.href) {
+    link.classList.add("active");
   }
-}
-typeWriter();
+});
 
-// Theme toggle
-function toggleTheme() {
-  document.body.classList.toggle('light-mode');
-  localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+// Contact form toast/alert
+const form = document.querySelector("form");
+if (form) {
+  form.addEventListener("submit", () => {
+    alert("✅ Your message was sent (or at least... the form worked 😄)");
+  });
 }
-if (localStorage.getItem('theme') === 'light') {
-  document.body.classList.add('light-mode');
+
+// Optional: Typing effect (e.g., on homepage title)
+const typeText = (element, text, speed = 100) => {
+  let i = 0;
+  const type = () => {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    }
+  };
+  type();
+};
+
+const title = document.querySelector(".typewriter");
+if (title) {
+  title.textContent = ""; // clear if pre-filled
+  typeText(title, "Welcome to Sticky's LinuxWall");
 }
