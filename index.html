@@ -2,24 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Linux World</title>
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="icon" href="assets/images/Tux.png" />
 </head>
 <body>
   <div class="overlay"></div>
+
+  <header>
+    <img class="tux" src="assets/images/Tux.png" alt="Tux" />
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
   <main>
-    <h1>Welcome to Linux World 🐧</h1>
-    <img class="tux" src="assets/images/Tux.png" alt="Tux Penguin" />
-    <ul class="logo-list">
-      <li><img src="assets/images/Ubuntu.png" alt="Ubuntu" /></li>
-      <li><img src="assets/images/debian.svg.png" alt="Debian" /></li>
-      <li><img src="assets/images/Firefox.svg.png" alt="Firefox" /></li>
-      <li><img src="assets/images/amd.svg.png" alt="AMD" /></li>
-      <li><img src="assets/images/raspberry-pi.png" alt="Raspberry Pi" /></li>
-    </ul>
+    <section class="hero">
+      <h1>Welcome to Linux World</h1>
+      <p>Freedom, speed, and open-source brilliance.</p>
+    </section>
+
+    <section class="distro-gallery">
+      <h2>Popular Tools & Distributions</h2>
+      <ul class="logo-list">
+        <li><img src="assets/images/Ubuntu.png" alt="Ubuntu" /></li>
+        <li><img src="assets/images/debian.svg.png" alt="Debian" /></li>
+        <li><img src="assets/images/Firefox.svg.png" alt="Firefox" /></li>
+        <li><img src="assets/images/amd.svg.png" alt="AMD" /></li>
+        <li><img src="assets/images/raspberry-pi.png" alt="Raspberry Pi" /></li>
+      </ul>
+    </section>
+
+    <section class="info">
+      <h2>Why Linux?</h2>
+      <p>Linux offers unmatched performance, customization, and security. Whether you're building a server, personal desktop, or IoT device, Linux adapts to your needs.</p>
+    </section>
   </main>
+
+  <footer>
+    <p>📍 Made with ❤️ in Denmark | © 2025 Linux World</p>
+  </footer>
+
   <script src="assets/js/main.js"></script>
 </body>
 </html>
