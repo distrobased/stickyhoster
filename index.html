@@ -3,75 +3,96 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LinuxWorld</title>
+  <title>LinuxWorld | Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <script defer src="assets/js/main.js"></script>
+  <link rel="icon" href="assets/images/Tux.png" type="image/png" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: url('https://preview.redd.it/new-windows-server-2025-wallpapers-v0-1h2d6i9dt6kc1.jpg?width=640&crop=smart&auto=webp&s=a8fedf9623af305bfc572ae2d7e1e40e6c3e48c0') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+    }
+    .logo-title {
+      display: flex;
+      align-items: center;
+    }
+    .logo-icon {
+      width: 40px;
+      margin-right: 10px;
+    }
+    .site-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+    nav a {
+      margin-left: 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .main-content {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+    .main-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    .main-content p {
+      font-size: 1.2rem;
+    }
+    .footer {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      color: black;
+    }
+  </style>
 </head>
 <body>
-  <!-- Loader -->
-  <div id="loader">
-    <div class="loader-inner">
-      <img src="assets/images/Tux.png" alt="Loading..." />
+  <header>
+    <div class="logo-title">
+      <img class="logo-icon" src="assets/images/Tux.png" alt="Tux">
+      <span class="site-title">LinuxWorld</span>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="main-content">
+    <h1>Welcome to LinuxWorld 🌍</h1>
+    <p>Explore the power of open-source systems, tools, and distros.</p>
+    <div class="distro-icons">
+      <img src="assets/images/Ubuntu.png" alt="Ubuntu" width="80">
+      <img src="assets/images/Debian.svg.png" alt="Debian" width="80">
+      <img src="assets/images/raspberry-pi.png" alt="Raspberry Pi" width="80">
+      <img src="assets/images/Firefox.svg.png" alt="Firefox" width="80">
     </div>
   </div>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <div class="logo-title">
-        <img src="assets/images/Tux.png" alt="Tux" class="logo-icon" />
-        <h1 class="site-title">LinuxWorld</h1>
-      </div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-content">
-      <h2>Welcome to the world of Linux!</h2>
-      <p>Explore, download, and enjoy the power of open source.</p>
-    </div>
-  </section>
-
-  <!-- Distros -->
-  <section class="distros">
-    <h3>Popular Linux Distros</h3>
-    <div class="distro-grid">
-      <div class="distro-card">
-        <img src="assets/images/Ubuntu.png" alt="Ubuntu" class="distro-logo" />
-        <h4>Ubuntu</h4>
-        <a href="#">Download</a>
-      </div>
-      <div class="distro-card">
-        <img src="assets/images/Debian.svg.png" alt="Debian" class="distro-logo" />
-        <h4>Debian</h4>
-        <a href="#">Download</a>
-      </div>
-      <div class="distro-card">
-        <img src="assets/images/raspberry-pi.png" alt="Raspberry Pi OS" class="distro-logo" />
-        <h4>Raspberry Pi OS</h4>
-        <a href="#">Download</a>
-      </div>
-      <div class="distro-card">
-        <img src="assets/images/Firefox.svg.png" alt="Firefox" class="distro-logo" />
-        <h4>Firefox Browser</h4>
-        <a href="#">Download</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Scroll to top -->
-  <button id="scrollTop" title="Go to top">↑</button>
-
-  <!-- Footer -->
-  <footer class="footer">
+  <div class="footer">
     📍 Made in Denmark ❤️
-  </footer>
+  </div>
 </body>
 </html>
