@@ -62,3 +62,16 @@ style.textContent = `
 }
 `;
 document.head.appendChild(style);
+<script>
+  const toggleTheme = () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+    localStorage.setItem('theme', currentTheme === 'dark' ? 'light' : 'dark');
+  };
+
+  // On load, apply saved theme
+  window.addEventListener("DOMContentLoaded", () => {
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+  });
+</script>
