@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LinuxWorld | Memes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fefcff;
+      --fg: #1a1a1a;
+      --accent: #87ceeb; /* Sky Blue */
+      --accent-hover: #ffb6c1; /* Blush Pink */
+      --section-bg: #ffffffee;
+      --card-bg: #f9f9fb;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+    }
+
+    header {
+      background-color: var(--accent);
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      position: relative;
+    }
+
+    .penguin {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 2rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background-color: var(--accent-hover);
+      padding: 12px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px;
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: 2rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .filter-tag {
+      background: var(--accent-hover);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .filter-tag:hover {
+      background: var(--accent);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .meme-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .meme-card:hover {
+      transform: scale(1.03);
+    }
+
+    .meme-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .meme-info {
+      padding: 10px 14px;
+    }
+
+    footer {
+      text-align: center;
+      background: var(--accent-hover);
+      color: #fff;
+      padding: 20px;
+      font-weight: bold;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="penguin">🐧</div>
+    LinuxWorld Memes
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="linux-isos.html">Linux ISOs</a>
+    <a href="customization.html">Customization</a>
+    <a href="faq.html">FAQ</a>
+    <a href="memes.html">Memes</a>
+  </nav>
+
+  <main>
+    <h2>🔥 Fresh Linux Memes</h2>
+
+    <div class="filters">
+      <div class="filter-tag">#Ubuntu</div>
+      <div class="filter-tag">#Arch</div>
+      <div class="filter-tag">#Terminal</div>
+      <div class="filter-tag">#Sysadmin</div>
+      <div class="filter-tag">#JustLinuxThings</div>
+    </div>
+
+    <div class="gallery">
+      <div class="meme-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux_Meme_Classic.png" alt="Tux Meme 1">
+        <div class="meme-info">"I use Arch, btw." — every Arch user ever.</div>
+      </div>
+
+      <div class="meme-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Tux_Bash_Terminal.png" alt="Tux Terminal">
+        <div class="meme-info">When you break your system at 2am… again 😵‍💫</div>
+      </div>
+
+      <div class="meme-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Tux_in_a_box.png" alt="Tux Box">
+        <div class="meme-info">You said you wanted to "sandbox" it…</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>📍 Made with ❤️ and open source in Denmark</footer>
+
+</body>
+</html>
