@@ -1,47 +1,96 @@
-/* Load Inter font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-
 body {
   margin: 0;
-  padding: 0;
-  font-family: 'Inter', sans-serif;
-  background-image: url('https://preview.redd.it/new-windows-server-2025-wallpapers-v0-1h2d6i9dt6kc1.jpg?width=640&crop=smart&auto=webp&s=a8fedf9623af305bfc572ae2d7e1e40e6c3e48c0');
+  font-family: 'Fira Code', monospace;
+  background: url("https://preview.redd.it/new-windows-server-2025-wallpapers-v0-1h2d6i9dt6kc1.jpg?width=640&crop=smart&auto=webp&s=a8fedf9623af305bfc572ae2d7e1e40e6c3e48c0") no-repeat center center fixed;
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   color: #fff;
-  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* Layout for all pages */
-main {
-  padding: 2rem;
-  max-width: 800px;
-  margin: auto;
-  background: rgba(0,0,0,0.6);
-  border-radius: 1rem;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+.hero {
+  text-align: center;
+  padding: 100px 20px 60px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-h1, h2 {
-  font-weight: 800;
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
 }
 
-a {
-  color: #ffcc00;
-  text-decoration: none;
+.hero p {
+  font-size: 1.2rem;
 }
 
-a:hover {
-  text-decoration: underline;
+.distro-showcase {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* For logos */
-.distro-logo {
-  max-width: 80px;
-  margin: 10px;
+.distro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.distro-card {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  border-radius: 12px;
   transition: transform 0.3s ease;
+  backdrop-filter: blur(6px);
 }
-.distro-logo:hover {
-  transform: scale(1.2) rotate(6deg);
+
+.distro-card:hover {
+  transform: scale(1.1);
+}
+
+.distro-card img {
+  width: 60px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.tux-mascot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+  animation: float 3s ease-in-out infinite;
+  z-index: 999;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 14px;
+  font-size: 18px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  cursor: pointer;
+  display: none;
+  z-index: 999;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease;
 }
