@@ -1,7 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
-:root {
-  --bg-color: rgba(255, 255, 255, 0.75);
-  --text-color: #111;
-  --link-color: #2b7cff;
+body {
+  margin: 0;
+  font-family: 'Fira Code', monospace;
+  color: #f0f0f0;
+  background: url('../images/server-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  overflow: hidden;
 }
-/* Rest of the CSS omitted for brevity — will include full CSS below */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 1000;
+  animation: fadeOut 5s forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+main {
+  padding: 60px 20px;
+  text-align: center;
+  z-index: 10;
+  position: relative;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 40px;
+}
+
+.tux {
+  width: 150px;
+  animation: spin 5s linear;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(1440deg); }
+}
+
+.logo-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 40px;
+  padding: 0;
+}
+
+.logo-list img {
+  height: 80px;
+  transition: transform 0.4s ease;
+}
+
+.logo-list img:hover {
+  transform: scale(1.2) rotate(6deg);
+}
