@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About - Linux World</title>
-  <link rel="stylesheet" href="assets/style/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style/style.css" />
   <script src="assets/js/main.js" defer></script>
   <style>
     body {
@@ -19,28 +19,33 @@
       min-height: 100vh;
     }
 
-    main {
-      max-width: 720px;
-      margin: auto;
-      padding: 2rem;
-      background: rgba(0, 0, 0, 0.65);
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    header {
+      text-align: center;
+      padding: 3rem 1rem 1.5rem;
     }
 
     h1 {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       font-weight: 800;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
     p {
       font-size: 1.1rem;
       line-height: 1.6;
-      margin-top: 1rem;
+      max-width: 700px;
+      margin: 1rem auto;
+      text-align: center;
+      padding: 0 1rem;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      padding: 1.5rem;
     }
 
     nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
       margin-top: 2rem;
     }
 
@@ -48,9 +53,9 @@
       color: #fff;
       font-weight: 600;
       text-decoration: none;
-      margin-right: 1.5rem;
+      padding-bottom: 3px;
       border-bottom: 2px solid transparent;
-      transition: border-color 0.3s;
+      transition: border-color 0.3s ease;
     }
 
     nav a:hover {
@@ -72,22 +77,24 @@
   </style>
 </head>
 <body>
-  <main>
+  <header>
     <h1>About Linux World</h1>
-    <p>
-      Linux World is a passion project dedicated to celebrating the flexibility, power, and community of open-source operating systems.
-      From Ubuntu and Debian to Arch and Raspberry Pi, we’re here to promote learning and exploration.
-    </p>
-    <p>
-      Whether you’re a beginner or a pro, Linux offers something for everyone — freedom, security, and customization.
-      We aim to spread awareness, share resources, and help you find the distro that suits you best.
-    </p>
+  </header>
 
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </main>
+  <p>
+    Welcome to Linux World — your space to explore, learn, and share the beauty of Linux distributions.
+    Whether you're rocking Ubuntu, Debian, Arch, or Raspberry Pi, we’re all about celebrating the freedom of open source.
+  </p>
+
+  <p>
+    This site is crafted with love for those who value control, security, and the art of customizing their digital world.
+    No matter if you're a beginner or sysadmin guru, there's a distro waiting for you.
+  </p>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
   <div class="made-in">📍 Made in Denmark ❤️</div>
 </body>
