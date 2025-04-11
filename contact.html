@@ -8,12 +8,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="assets/js/main.js" defer></script>
   <style>
+    :root {
+      --sky-blue: #87ceeb;
+      --sky-blue-dark: #5ba6c9;
+      --blush-pink: #ffc1cc;
+      --blush-pink-dark: #f3a6b5;
+      --bg-overlay: rgba(255, 255, 255, 0.15);
+      --text-color: #1b1b1b;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: url('https://preview.redd.it/new-windows-server-2025-wallpapers-v0-1h2d6i9dt6kc1.jpg?width=640&crop=smart&auto=webp&s=a8fedf9623af305bfc572ae2d7e1e40e6c3e48c0') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
+      background: linear-gradient(to bottom right, var(--sky-blue), var(--blush-pink));
+      color: var(--text-color);
       display: flex;
       flex-direction: column;
       min-height: 100vh;
@@ -23,15 +31,21 @@
       max-width: 640px;
       margin: auto;
       padding: 2rem;
-      background: rgba(0, 0, 0, 0.65);
+      background: var(--bg-overlay);
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(10px);
     }
 
     h1 {
       font-size: 2rem;
       font-weight: 800;
       margin-bottom: 1rem;
+      color: var(--sky-blue-dark);
+    }
+
+    p {
+      font-weight: 400;
     }
 
     form {
@@ -42,15 +56,18 @@
     label {
       margin-top: 1rem;
       font-weight: 600;
+      color: var(--blush-pink-dark);
     }
 
     input,
     textarea {
       padding: 10px;
       margin-top: 5px;
-      border: none;
+      border: 2px solid var(--sky-blue-dark);
       border-radius: 8px;
       font-size: 1rem;
+      background-color: #ffffffee;
+      color: var(--text-color);
     }
 
     textarea {
@@ -60,8 +77,8 @@
 
     button {
       margin-top: 1.5rem;
-      background-color: #ffffff;
-      color: #000;
+      background-color: var(--blush-pink);
+      color: var(--text-color);
       border: none;
       border-radius: 8px;
       padding: 12px;
@@ -72,7 +89,7 @@
     }
 
     button:hover {
-      background-color: #dddddd;
+      background-color: var(--blush-pink-dark);
     }
 
     nav {
@@ -80,7 +97,7 @@
     }
 
     nav a {
-      color: #fff;
+      color: var(--sky-blue-dark);
       font-weight: 600;
       text-decoration: none;
       margin-right: 1.5rem;
@@ -89,15 +106,15 @@
     }
 
     nav a:hover {
-      border-color: #fff;
+      border-color: var(--sky-blue-dark);
     }
 
     .made-in {
       position: fixed;
       bottom: 16px;
       left: 16px;
-      background: rgba(255, 255, 255, 0.85);
-      color: #000;
+      background: var(--blush-pink);
+      color: var(--text-color);
       padding: 8px 14px;
       border-radius: 20px;
       font-weight: 600;
