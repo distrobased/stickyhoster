@@ -2,190 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Contact - LinuxWall</title>
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: url('images/server-bg.jpg') no-repeat center center fixed;
-      background-size: cover;
-      margin: 0;
-      color: #111;
-    }
-    .content {
-      max-width: 900px;
-      margin: 50px auto;
-      background-color: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(10px);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      animation: fadeIn 1.5s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    h1, p {
-      text-align: center;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 20px;
-      border: 2px solid transparent;
-      border-radius: 6px;
-      background-color: rgba(255,255,255,0.95);
-      transition: border 0.3s, box-shadow 0.3s;
-      font-size: 1rem;
-    }
-    input:focus, textarea:focus {
-      border-color: #2b7cff;
-      box-shadow: 0 0 10px #2b7cff;
-      outline: none;
-    }
-    button {
-      background-color: #2b7cff;
-      color: white;
-      padding: 12px 24px;
-      font-size: 1rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 0 8px #2b7cff;
-      transition: 0.3s;
-    }
-    button:hover {
-      box-shadow: 0 0 16px #2b7cff;
-      background-color: #0047ab;
-    }
-    nav {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .info, .social {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 1.1rem;
-    }
-    .social a {
-      color: #111;
-      font-weight: bold;
-      text-decoration: none;
-      border-bottom: 1px dashed transparent;
-      transition: all 0.3s ease;
-    }
-    .social a:hover {
-      border-color: #2b7cff;
-    }
-    .made-in {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 1rem;
-      color: #333;
-      position: relative;
-    }
-    .pin {
-      display: inline-block;
-      animation: bounce 1.5s infinite;
-      font-size: 1.2rem;
-      margin-right: 6px;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-    .map-container {
-      text-align: center;
-      margin-top: 40px;
-    }
-    iframe {
-      border: 0;
-      border-radius: 12px;
-      width: 100%;
-      height: 300px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #555;
-      position: relative;
-    }
-    .tux-footer {
-      position: absolute;
-      bottom: 10px;
-      right: 20px;
-      width: 48px;
-      animation: float 3s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-  </style>
+  <title>LinuxWall - Contact</title>
+  <link href="images/tux.png" rel="icon" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-</nav>
+  <div class="content">
+    <h2>Contact Me</h2>
+    <form onsubmit="event.preventDefault(); alert('Message sent!');">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send</button>
+    </form>
 
-<div class="content">
-  <h1>📬 Contact Me</h1>
-  <p>Have questions or ideas? Let's chat!</p>
-
-  <form onsubmit="event.preventDefault(); alert('Message sent!');">
-    <input type="text" placeholder="Your Name" required />
-    <input type="email" placeholder="Your Email" required />
-    <textarea placeholder="Your Message" rows="5" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-
-  <div class="info">
-    <p>📧 <a href="mailto:ethanbudds2012@gmail.com">ethanbudds2012@gmail.com</a></p>
-    <p>📱 <a href="tel:+447749772021">+44 7749 772021</a></p>
+    <div class="contact-info">
+      <p>📧 Email: <a href="mailto:ethanbudds2012@gmail.com">ethanbudds2012@gmail.com</a></p>
+      <p>📞 Phone: <a href="tel:+447749772021">+44 7749 772021</a></p>
+      <p>💻 GitHub: <a href="https://github.com/distrobased" target="_blank">distrobased</a></p>
+    </div>
   </div>
 
-  <div class="social">
-    <p>🌐 GitHub: <a href="https://github.com/distrobased" target="_blank">github.com/distrobased</a></p>
-  </div>
+  <footer>
+    <p>📍 Made with ❤️ in Denmark.</p>
+  </footer>
 
-  <div class="map-container">
-    <h3>📍 Location</h3>
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d84959.20735097086!2d12.42122965458894!3d55.67609605000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46525356db3c3fb7%3A0x400fef341989480!2sCopenhagen%2C%20Denmark!5e0!3m2!1sen!2sdk!4v1681243218437!5m2!1sen!2sdk"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
-
-  <div class="made-in">
-    <span class="pin">📍</span>Made with ❤️ in Denmark.
-  </div>
-</div>
-
-<footer>
-  <p>© 2025 Sticky's LinuxWall. All rights reserved.</p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png" alt="Tux" class="tux-footer" />
-</footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
 
 </body>
 </html>
