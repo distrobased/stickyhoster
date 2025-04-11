@@ -1,48 +1,25 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LinuxWall - Home</title>
-  <link rel="stylesheet" href="assets/style.css" />
-  <link rel="icon" href="assets/images/tux.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Linux World</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/images/Tux.png" />
 </head>
 <body>
-  <div id="loader">
-    <img src="assets/images/tux.png" alt="Tux Loader" class="loader-icon" />
-  </div>
-  <nav class="navbar">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <main class="main-content">
-    <h1>Welcome to <span>LinuxWall</span></h1>
-    <p>Explore tools, games, and distros built for every Linux enthusiast.</p>
-    <section class="games">
-      <h2>Linux-Themed Games</h2>
-      <ul>
-        <li><button onclick="startFlappyTux()">Flappy Tux</button></li>
-        <li><button onclick="startCodeBomb()">Code Bomb</button></li>
-        <li><button onclick="startPenguinEscape()">Penguin Escape</button></li>
-      </ul>
-    </section>
-    <section class="poll">
-      <h2>Your Favorite Distro?</h2>
-      <form onsubmit="event.preventDefault(); alert('Thanks for voting!')">
-        <label><input type="radio" name="distro" /> Ubuntu</label>
-        <label><input type="radio" name="distro" /> Fedora</label>
-        <label><input type="radio" name="distro" /> Arch</label>
-        <label><input type="radio" name="distro" /> Debian</label>
-        <button type="submit">Vote</button>
-      </form>
-    </section>
+  <div class="overlay"></div>
+  <main>
+    <h1>Welcome to Linux World 🐧</h1>
+    <img class="tux" src="assets/images/Tux.png" alt="Tux Penguin" />
+    <ul class="logo-list">
+      <li><img src="assets/images/Ubuntu.png" alt="Ubuntu" /></li>
+      <li><img src="assets/images/debian.svg.png" alt="Debian" /></li>
+      <li><img src="assets/images/Firefox.svg.png" alt="Firefox" /></li>
+      <li><img src="assets/images/amd.svg.png" alt="AMD" /></li>
+      <li><img src="assets/images/raspberry-pi.png" alt="Raspberry Pi" /></li>
+    </ul>
   </main>
-  <footer>
-    <p>© 2025 LinuxWall. Powered by Open Source. Hosted from Denmark 🇩🇰</p>
-  </footer>
-  <script src="js/main.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
