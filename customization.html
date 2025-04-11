@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Linux Customization - LinuxWorld</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Linux Customization | LinuxWorld</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -15,41 +15,83 @@
       <a href="linuxiso.html">Linux ISOs</a>
       <a href="compare.html">Compare</a>
       <a href="customization.html" class="active">Customization</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
     </nav>
   </header>
 
   <main class="container">
     <h1>Customize Your Linux Experience</h1>
-    <p>Make Linux look and work exactly how you want. Here are some ways to customize:</p>
+    <p>Explore desktop environments, icon themes, extensions, and tweak tools to make Linux truly yours.</p>
 
     <section class="card-grid">
       <div class="card">
-        <h2>Desktop Environments</h2>
-        <p>Choose from GNOME, KDE Plasma, XFCE, Cinnamon, and more for unique looks & features.</p>
+        <h2>🎨 GNOME Tweaks</h2>
+        <p>Tool to adjust GNOME desktop appearance and behavior. Perfect for enabling themes, icons, and fonts.</p>
       </div>
+
       <div class="card">
-        <h2>Window Managers</h2>
-        <p>Lightweight and flexible alternatives like i3, bspwm, and Openbox for advanced users.</p>
+        <h2>🔧 KDE Plasma</h2>
+        <p>A feature-rich and ultra-customizable desktop environment. Supports widgets, animations, and global themes.</p>
       </div>
+
       <div class="card">
-        <h2>Themes & Icons</h2>
-        <p>Use tools like GNOME Tweaks or KDE Settings to apply GTK themes, icon sets, and cursors.</p>
+        <h2>🖌️ Icon Packs</h2>
+        <p>Popular choices: Papirus, Tela, Qogir, BeautyLine. Easily install via your package manager or GitHub.</p>
       </div>
+
       <div class="card">
-        <h2>Terminal Customization</h2>
-        <p>Customize bash/zsh prompts with tools like Oh My Zsh, Powerlevel10k, and Nerd Fonts.</p>
+        <h2>💻 Desktop Environments</h2>
+        <ul>
+          <li><strong>GNOME</strong> – Modern and clean, default on Ubuntu</li>
+          <li><strong>KDE</strong> – Highly configurable and polished</li>
+          <li><strong>XFCE</strong> – Lightweight with decent visual control</li>
+          <li><strong>Cinnamon</strong> – Familiar layout for Windows users</li>
+        </ul>
       </div>
+
       <div class="card">
-        <h2>Boot & Login Screens</h2>
-        <p>Modify GRUB themes and login managers for a seamless visual identity.</p>
+        <h2>🧩 Extensions & Themes</h2>
+        <p>Use <code>gnome-extensions</code> or <a href="https://extensions.gnome.org" target="_blank">extensions.gnome.org</a> to enhance your DE.</p>
+      </div>
+
+      <div class="card">
+        <h2>🎯 Cursor Themes</h2>
+        <p>Give your pointer personality. Try Bibata, Capitaine, or Nordzy cursors for a slick look.</p>
+      </div>
+
+      <div class="card">
+        <h2>🌗 Light & Dark Modes</h2>
+        <p>Many DEs support dynamic switching. Some even allow scheduled theme changes at sunset/sunrise.</p>
+      </div>
+
+      <div class="card">
+        <h2>🧠 Window Managers</h2>
+        <p>Feeling advanced? Try i3, bspwm, or AwesomeWM for total keyboard control and minimalism.</p>
+      </div>
+
+      <div class="card">
+        <h2>🖼️ Wallpapers & Compositors</h2>
+        <p>Use <code>feh</code>, <code>nitrogen</code>, or <code>variety</code> to manage wallpapers. Pair with <code>picom</code> for transparency & blur effects.</p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>📍 Made with ❤️ in Denmark — LinuxWorld</p>
+    📍 Made with ❤️ in Denmark — <a href="index.html" style="color: var(--accent); text-decoration: none;">Back to Home</a>
   </footer>
+
+  <script>
+    const toggleTheme = () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const newTheme = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', saved);
+    });
+  </script>
 </body>
 </html>
