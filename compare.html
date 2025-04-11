@@ -1,97 +1,151 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Compare Linux Distros | LinuxWorld</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compare Linux Distros</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0e0e0e;
+      color: #00ffff;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      background: #111;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #00ffff;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #00ffff;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      padding: 2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+    }
+
+    th, td {
+      border: 1px solid #00ffff;
+      padding: 0.8rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: #121212;
+    }
+
+    .toggle {
+      background: none;
+      border: 2px solid #00ffff;
+      color: #00ffff;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+
+    .dark-mode {
+      background-color: #ffffff;
+      color: #111111;
+    }
+
+    .dark-mode th, .dark-mode td {
+      border-color: #111;
+    }
+
+    .dark-mode header {
+      background: #ddd;
+      border-color: #111;
+    }
+
+    .dark-mode nav a {
+      color: #111;
+    }
+
+    .dark-mode .toggle {
+      color: #111;
+      border-color: #111;
+    }
+  </style>
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">🐧 LinuxWorld</div>
+  <header>
+    <div><strong>LinuxWorld</strong></div>
     <nav>
       <a href="index.html">Home</a>
-      <a href="linuxiso.html">Linux ISOs</a>
-      <a href="compare.html" class="active">Compare</a>
+      <a href="linuxiso.html">ISOs</a>
       <a href="customization.html">Customization</a>
-      <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+      <a href="compare.html">Compare</a>
     </nav>
+    <button class="toggle" onclick="toggleTheme()">Toggle Theme</button>
   </header>
 
-  <main class="container">
-    <h1>Compare Popular Linux Distributions</h1>
-    <p>Choose your next distro based on your needs. Here’s a side-by-side comparison of key distributions.</p>
+  <div class="container">
+    <h1>Compare Linux Distributions</h1>
+    <p>Here's a side-by-side comparison of popular Linux distributions:</p>
 
-    <div class="card-grid">
-      <div class="card">
-        <h2>🟠 Ubuntu</h2>
-        <p>User-friendly, backed by Canonical. Great for beginners and developers alike.</p>
-        <ul>
-          <li>Debian-based</li>
-          <li>Stable LTS releases</li>
-          <li>Snap support</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>🧱 Debian</h2>
-        <p>Foundation for many distros. Known for rock-solid stability and conservative updates.</p>
-        <ul>
-          <li>Community-maintained</li>
-          <li>APT package manager</li>
-          <li>Minimal by default</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>📦 Arch Linux</h2>
-        <p>Rolling release model with cutting-edge packages. DIY and power-user focused.</p>
-        <ul>
-          <li>Pacman package manager</li>
-          <li>Manual install</li>
-          <li>Massive community wiki</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>🎩 Fedora</h2>
-        <p>Backed by Red Hat. A developer favorite, focused on open-source and GNOME integration.</p>
-        <ul>
-          <li>RPM-based</li>
-          <li>Short release cycle</li>
-          <li>DNF package manager</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>🚀 Pop!_OS</h2>
-        <p>Developed by System76. Ubuntu-based with a focus on productivity and GPU support.</p>
-        <ul>
-          <li>Hybrid graphics support</li>
-          <li>Auto-tiling window manager</li>
-          <li>Out-of-the-box dev tools</li>
-        </ul>
-      </div>
-    </div>
-  </main>
-
-  <footer class="footer">
-    📍 Made with ❤️ in Denmark — <a href="index.html" style="color: var(--accent); text-decoration: none;">Back to Home</a>
-  </footer>
+    <table>
+      <thead>
+        <tr>
+          <th>Distro</th>
+          <th>Desktop Environment</th>
+          <th>Package Manager</th>
+          <th>Target Audience</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ubuntu</td>
+          <td>GNOME</td>
+          <td>APT</td>
+          <td>Beginners</td>
+        </tr>
+        <tr>
+          <td>Fedora</td>
+          <td>GNOME</td>
+          <td>DNF</td>
+          <td>Developers</td>
+        </tr>
+        <tr>
+          <td>Arch Linux</td>
+          <td>None (DIY)</td>
+          <td>pacman</td>
+          <td>Advanced Users</td>
+        </tr>
+        <tr>
+          <td>Linux Mint</td>
+          <td>Cinnamon</td>
+          <td>APT</td>
+          <td>Windows Users</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <script>
-    const toggleTheme = () => {
-      const current = document.documentElement.getAttribute('data-theme') || 'dark';
-      const newTheme = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-    };
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const saved = localStorage.getItem('theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', saved);
-    });
+    function toggleTheme() {
+      document.body.classList.toggle("dark-mode");
+    }
   </script>
 </body>
 </html>
