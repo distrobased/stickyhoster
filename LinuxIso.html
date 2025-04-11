@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LinuxWorld | Linux ISOs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #111;
+      --fg: #f5f5f5;
+      --accent: #00ffd5;
+    }
+
+    [data-theme="light"] {
+      --bg: #f5f5f5;
+      --fg: #111;
+      --accent: #0077ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.75);
+      padding: 14px 20px;
+      font-size: 1rem;
+    }
+
+    nav .links {
+      display: flex;
+      gap: 24px;
+    }
+
+    nav a {
+      color: var(--fg);
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      background: var(--accent);
+      border: none;
+      padding: 6px 14px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px;
+    }
+
+    .section {
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 10px;
+    }
+
+    .compare, .flashing-guide, .ratings, .qa-widget {
+      animation: fadeIn 1s ease;
+    }
+
+    .compare button, .download, .theme-toggle {
+      background: var(--accent);
+      color: #000;
+      font-weight: bold;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .compare button:hover, .download:hover {
+      background: #00bfa6;
+    }
+
+    .ratings .card {
+      padding: 12px;
+      margin-bottom: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 4px solid var(--accent);
+      border-radius: 10px;
+    }
+
+    .qa-widget textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--fg);
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.85);
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>🐧 LinuxWorld</header>
+  <nav>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="linux-isos.html">Linux ISOs</a>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  </nav>
+
+  <main>
+    <section class="section compare">
+      <h2>Distro Comparison</h2>
+      <p>Compare popular distros side-by-side.</p>
+      <button onclick="alert('Comparison coming soon in detail view!')">Launch Comparison Modal</button>
+    </section>
+
+    <section class="section flashing-guide">
+      <h2>How to Flash Linux ISO</h2>
+      <p><strong>Using Ventoy:</strong></p>
+      <ul>
+        <li>Download Ventoy and install to USB</li>
+        <li>Copy ISO files to USB drive</li>
+        <li>Boot from USB and select your distro</li>
+      </ul>
+      <p><strong>Using Rufus:</strong></p>
+      <ul>
+        <li>Insert USB, open Rufus</li>
+        <li>Select ISO, choose file system (FAT32/NTFS)</li>
+        <li>Click "Start", then reboot and boot from USB</li>
+      </ul>
+    </section>
+
+    <section class="section ratings">
+      <h2>Community Ratings</h2>
+      <div class="card">
+        <strong>Ubuntu:</strong> ★★★★★ (5.0/5)
+      </div>
+      <div class="card">
+        <strong>Arch Linux:</strong> ★★★★☆ (4.4/5)
+      </div>
+      <div class="card">
+        <strong>Kali Linux:</strong> ★★★★☆ (4.3/5)
+      </div>
+    </section>
+
+    <section class="section qa-widget">
+      <h2>Got a Question?</h2>
+      <textarea rows="4" placeholder="Ask your Linux question here... (not live yet)"></textarea>
+      <button>Submit</button>
+    </section>
+  </main>
+
+  <footer>📍 Made in Denmark ❤️</footer>
+
+  <script>
+    // Theme toggle
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) document.documentElement.setAttribute("data-theme", currentTheme);
+
+    function toggleTheme() {
+      let theme = document.documentElement.getAttribute("data-theme");
+      theme = (theme === "light") ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+    }
+  </script>
+</body>
+</html>
