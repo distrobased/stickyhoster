@@ -8,17 +8,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --sky-blue: #87ceeb;
+      --sky-blue-dark: #4fb6dd;
+      --blush-pink: #ffc1cc;
+      --blush-pink-dark: #f3a6b5;
+      --light-bg: #fffafc;
+      --text-dark: #222;
+      --text-light: #f9f9f9;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
-      background-color: #0d0d0d;
-      color: #00ffff;
-      transition: background 0.3s, color 0.3s;
+      background: linear-gradient(to bottom right, var(--sky-blue), var(--blush-pink));
+      color: var(--text-dark);
+      transition: background 0.4s ease, color 0.4s ease;
     }
 
     header {
-      background: #000;
-      border-bottom: 2px solid #00ffff;
+      background: var(--sky-blue-dark);
+      border-bottom: 2px solid var(--blush-pink-dark);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -26,13 +36,15 @@
     }
 
     nav a {
-      color: #00ffff;
+      color: var(--light-bg);
       text-decoration: none;
       margin: 0 1rem;
       font-weight: bold;
+      transition: color 0.3s;
     }
 
     nav a:hover {
+      color: var(--blush-pink);
       text-decoration: underline;
     }
 
@@ -42,14 +54,20 @@
 
     section {
       margin-top: 2rem;
-      background-color: #111;
+      background-color: rgba(255, 255, 255, 0.7);
       padding: 1.5rem;
-      border-radius: 8px;
-      border: 1px solid #00ffff;
+      border-radius: 10px;
+      border: 1px solid var(--sky-blue-dark);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: var(--sky-blue-dark);
     }
 
     h2 {
-      color: #00ffff;
+      color: var(--blush-pink-dark);
     }
 
     ul {
@@ -60,40 +78,58 @@
       margin-bottom: 0.5rem;
     }
 
+    a {
+      color: var(--sky-blue-dark);
+    }
+
     .toggle-btn {
-      background: transparent;
-      border: 2px solid #00ffff;
+      background: var(--blush-pink);
+      border: 2px solid var(--blush-pink-dark);
       padding: 0.5rem 1rem;
-      color: #00ffff;
+      color: var(--text-dark);
       font-weight: bold;
       border-radius: 8px;
       cursor: pointer;
+      transition: background 0.3s, border 0.3s;
     }
 
+    .toggle-btn:hover {
+      background: var(--blush-pink-dark);
+    }
+
+    /* Dark Mode Toggle Styles */
     .dark-mode {
-      background-color: #fff;
-      color: #000;
+      background: linear-gradient(to bottom right, #1b1b1b, #2d2d2d);
+      color: var(--text-light);
     }
 
     .dark-mode header {
-      background-color: #e0e0e0;
-      border-bottom: 2px solid #111;
+      background: #333;
+      border-bottom: 2px solid var(--sky-blue-dark);
     }
 
     .dark-mode nav a,
     .dark-mode .toggle-btn {
-      color: #000;
-      border-color: #000;
+      color: var(--sky-blue);
+      border-color: var(--sky-blue);
     }
 
     .dark-mode section {
-      background-color: #f4f4f4;
-      color: #000;
-      border-color: #000;
+      background-color: rgba(34, 34, 34, 0.9);
+      color: var(--text-light);
+      border-color: var(--sky-blue-dark);
+    }
+
+    .dark-mode h1 {
+      color: var(--sky-blue);
     }
 
     .dark-mode h2 {
-      color: #000;
+      color: var(--blush-pink);
+    }
+
+    .dark-mode a {
+      color: var(--blush-pink-dark);
     }
   </style>
 </head>
