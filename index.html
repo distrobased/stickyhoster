@@ -12,12 +12,9 @@
       --accent: #87ceeb; /* Sky Blue */
       --accent-hover: #ffb6c1; /* Blush Pink */
       --section-bg: #ffffffee;
-      --card-bg: #f9f9fb;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -70,9 +67,7 @@
       transition: 0.3s;
     }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+    nav a:hover { text-decoration: underline; }
 
     main {
       max-width: 1000px;
@@ -128,16 +123,6 @@
       font-weight: 600;
     }
 
-    .music-player {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .music-player audio {
-      width: 300px;
-      margin-top: 10px;
-    }
-
     footer {
       text-align: center;
       padding: 16px;
@@ -171,44 +156,18 @@
     </section>
 
     <section class="section">
-      <h2>Featured Pages</h2>
-      <ul class="links">
-        <li><a href="linux-isos.html">💽 Linux ISOs</a> <span class="tags"><span class="tag">Downloads</span> <span class="tag">Beginner</span></span></li>
-        <li><a href="software-alternatives.html">🧩 App Alternatives</a> <span class="tags"><span class="tag">Productivity</span> <span class="tag">Open Source</span></span></li>
-        <li><a href="customization.html">🎨 Customization</a> <span class="tags"><span class="tag">Themes</span> <span class="tag">Tweaks</span></span></li>
-        <li><a href="faq.html">❓ FAQ / Myths</a> <span class="tags"><span class="tag">Help</span> <span class="tag">Newbies</span></span></li>
-        <li><a href="memes.html">🤣 Memes</a> <span class="tags"><span class="tag">Fun</span> <span class="tag">Community</span></span></li>
-        <li><a href="404.html">🚫 404 Easter Egg</a> <span class="tags"><span class="tag">Error</span> <span class="tag">Humor</span></span></li>
-      </ul>
-    </section>
-
-    <section class="section music-player">
-      <h2>🎵 Music Disk Player</h2>
-      <audio controls>
-        <source src="assets/music/background-music.mp3.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
+      <h2>🎵 Background Music</h2>
+      <p>Sit back and enjoy some vibes while you browse.</p>
     </section>
   </main>
 
   <footer>📍 Made in Love in Denmark ❤️</footer>
 
-  <!-- Startup sound -->
-  <audio id="startup-sound" autoplay>
-    <source src="assets/music/musicsoft-startup-sound-269291.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
+  <!-- Audio elements (hidden) -->
+  <audio id="startup-sound" preload="auto" src="assets/music/musicsoft-startup-sound-269291.mp3"></audio>
+  <audio id="bg-music" preload="auto" src="assets/music/background-music.mp3.mp3" loop></audio>
 
-  <script>
-    // Play startup sound on first user interaction if blocked
-    window.addEventListener('click', () => {
-      const startupAudio = document.getElementById('startup-sound');
-      if (startupAudio.paused) {
-        startupAudio.play().catch(err => {
-          console.warn("Startup sound failed to autoplay:", err);
-        });
-      }
-    });
-  </script>
+  <!-- External JS -->
+  <script src="scripts/audio.js"></script>
 </body>
 </html>
