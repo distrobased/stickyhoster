@@ -40,6 +40,53 @@ document.addEventListener("DOMContentLoaded", () => {
     animation: pinFadeIn 1.5s ease-out;
   `;
   document.body.appendChild(pin);
+
+  // Easter egg: Konami code = dark mode toggle & confetti
+  const konamiCode = [
+    "ArrowUp","ArrowUp","ArrowDown","ArrowDown",
+    "ArrowLeft","ArrowRight","ArrowLeft","ArrowRight",
+    "b","a"
+  ];
+  let input = [];
+
+  document.addEventListener("keydown", (e) => {
+    input.push(e.key);
+    input.splice(-konamiCode.length - 1, input.length - konamiCode.length);
+    if (JSON.stringify(input) === JSON.stringify(konamiCode)) {
+      document.body.classList.toggle("light-mode");
+      launchConfetti();
+    }
+  });
+
+  // Scroll progress bar
+  const progressBar = document.createElement("div");
+  progressBar.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 5px;
+    background: #2b7cff;
+    width: 0%;
+    z-index: 9999;
+    transition: width 0.2s ease;
+  `;
+  document.body.appendChild(progressBar);
+
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const scrolled = (scrollTop / docHeight) * 100;
+    progressBar.style.width = `${scrolled}%`;
+  });
+
+  // Floating background particles
+  for (let i = 0; i < 15; i++) {
+    const star = document.createElement("div");
+    star.className = "bg-star";
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.animationDuration = (5 + Math.random() * 10) + "s";
+    document.body.appendChild(star);
+  }
 });
 
 // Add animations via JS-injected CSS
@@ -59,5 +106,52 @@ style.textContent = `
 .distro-logo:hover {
   transform: scale(1.2) rotate(6deg);
 }
+.bg-star {
+  position: fixed;
+  top: -20px;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
 `;
 document.head.appendChild(style);
+
+// Confetti launcher (simplified)
+function launchConfetti() {
+  for (let i = 0; i < 100; i++) {
+    const confetto = document.createElement("div");
+    confetto.style.cssText = `
+      position: fixed;
+      top: ${Math.random() * 100}vh;
+      left: ${Math.random() * 100}vw;
+      width: 10px;
+      height: 10px;
+      background: hsl(${Math.random() * 360}, 70%, 60%);
+      transform: rotate(${Math.random() * 360}deg);
+      animation: confetti-fall 2s ease-out forwards;
+      z-index: 10000;
+    `;
+    document.body.appendChild(confetto);
+    setTimeout(() => confetto.remove(), 2000);
+  }
+}
+
+// Add confetti animation
+const confettiStyle = document.createElement("style");
+confettiStyle.textContent = `
+@keyframes confetti-fall {
+  to {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}`;
+document.head.appendChild(confettiStyle);
