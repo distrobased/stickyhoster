@@ -1,9 +1,233 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-  <title>LinuxWall</title>
+  <meta charset="utf-8"/>
+  <title>LinuxWall - Ultimate Linux Hub</title>
+  <link href="images/tux.png" rel="icon" type="image/png"/>
+  <style>
+    :root {
+      --bg-color: rgba(255, 255, 255, 0.75);
+      --text-color: #111;
+      --link-color: #2b7cff;
+    }
+    body.light-mode {
+      --bg-color: rgba(255, 255, 255, 0.85);
+      --text-color: #111;
+      --link-color: #2b7cff;
+      background-color: #fff;
+      background-image: none;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      background-image: url('images/server-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: default;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      background-color: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .content {
+      background: var(--bg-color);
+      backdrop-filter: blur(12px);
+      padding: 40px;
+      margin: 30px auto;
+      max-width: 1000px;
+      border-radius: 24px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    h1, h2, h3, p { text-align: center; margin: 20px auto; }
+    h2 { border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 5px; }
+    ul {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+    }
+    ul li { margin: 15px 0; }
+    ul li img {
+      width: 64px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+      border-bottom: 1px dashed transparent;
+      transition: all 0.3s ease;
+    }
+    a:hover {
+      text-decoration: underline;
+      border-color: var(--link-color);
+    }
+    .toggle-container, .status, .download-button, .poll, .blog, .form, .command-reference, .resources, .games {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .download-button {
+      background-color: var(--link-color);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-weight: bold;
+      display: inline-block;
+      box-shadow: 0 0 10px var(--link-color);
+    }
+    .download-button:hover {
+      background-color: #0047ab;
+      box-shadow: 0 0 25px var(--link-color);
+    }
+    .tux {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 64px;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    input, textarea {
+      width: 90%;
+      padding: 12px;
+      margin: 8px auto;
+      display: block;
+      border: none;
+      border-radius: 6px;
+      background-color: rgba(255,255,255,0.9);
+    }
+    button[type="submit"], .toggle-container button {
+      cursor: pointer;
+      padding: 10px 20px;
+      background-color: var(--link-color);
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 0 8px var(--link-color);
+      transition: 0.3s;
+      margin: 10px;
+    }
+    button[type="submit"]:hover, .toggle-container button:hover {
+      box-shadow: 0 0 18px var(--link-color);
+    }
+    .resource-link {
+      margin: 10px;
+      padding: 12px;
+      background-color: #f7f7f7;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .resource-link a {
+      color: #2b7cff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .resource-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to LinuxWall</h1>
+<nav>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#blog">Blog</a>
+  <a href="#distro-comparison">Distro Comparison</a>
+  <a href="#tools">Tools</a>
+  <a href="#games">Games</a>
+  <a href="#contact">Contact</a>
+  <a href="#tips">Linux Tips</a>
+</nav>
+<div class="content">
+  <!-- All your site sections stay unchanged... -->
+  <h2 id="contact">Contact Me</h2>
+  <div class="form">
+    <form onsubmit="event.preventDefault(); alert('Message sent!');">
+      <input type="text" placeholder="Your Name" required/>
+      <input type="email" placeholder="Your Email" required/>
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <footer>
+    <hr/>
+    <p>© 2025 Sticky's LinuxWall Server. Powered by Fedora. All rights reserved.</p>
+    <p>Background image © Microsoft, from Windows Server 2025 preview.</p>
+  </footer>
+</div>
+
+<img class="tux" src="https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png" alt="Tux Penguin"/>
+
+<audio id="backgroundMusic" loop>
+  <source src="assets/music/background-music.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Typing effect
+    const text = 'Welcome to LinuxWall, your ultimate Linux hub!';
+    const target = document.getElementById("typed-text");
+    let i = 0;
+
+    function typeWriter() {
+      if (i < text.length) {
+        target.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+      }
+    }
+    typeWriter();
+
+    // Theme toggle
+    const themeBtn = document.getElementById("themeToggle");
+    themeBtn.addEventListener("click", function () {
+      document.body.classList.toggle("light-mode");
+    });
+
+    // Music toggle
+    const music = document.getElementById("backgroundMusic");
+    let musicPlaying = false;
+    const musicBtn = document.getElementById("musicToggle");
+
+    musicBtn.addEventListener("click", function () {
+      if (musicPlaying) {
+        music.pause();
+      } else {
+        music.play();
+      }
+      musicPlaying = !musicPlaying;
+    });
+  });
+</script>
+
+<script src="js/main.js"></script>
 </body>
 </html>
