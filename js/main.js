@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
+
+  // Fade-in page after loading screen
+  setTimeout(() => {
+    document.getElementById("loading-screen").style.display = "none";
+    body.classList.add("page-loaded");
+  }, 5000);
+
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener("click", function (e) {
@@ -10,21 +18,47 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Tux animation on load (spin for 5s)
-  const tux = document.querySelector(".tux");
-  if (tux) {
-    tux.style.animation = "spin 5s linear";
-    setTimeout(() => {
-      tux.style.animation = "float 3s ease-in-out infinite"; // restore floating
-    }, 5000);
-  }
-
-  // Animate distro logos on hover
-  document.querySelectorAll("ul li img").forEach(img => {
-    img.classList.add("distro-logo");
+  // Theme toggle (light/dark mode)
+  const themeToggle = document.getElementById("themeToggle");
+  themeToggle?.addEventListener("click", () => {
+    body.classList.toggle("light-mode");
   });
 
-  // Made in Denmark pin
+  // Background music toggle
+  const music = document.getElementById("backgroundMusic");
+  let musicPlaying = false;
+  const musicBtn = document.getElementById("musicToggle");
+  musicBtn?.addEventListener("click", () => {
+    if (musicPlaying) {
+      music.pause();
+    } else {
+      music.play();
+    }
+    musicPlaying = !musicPlaying;
+  });
+
+  // Tux initial animation
+  const tux = document.querySelector(".tux");
+  if (tux) {
+    tux.classList.add("spin-once");
+    setTimeout(() => {
+      tux.classList.remove("spin-once");
+      tux.classList.add("float");
+    }, 5000);
+
+    // Tux hover wobble
+    tux.addEventListener("mouseenter", () => tux.classList.add("wobble"));
+    tux.addEventListener("animationend", () => tux.classList.remove("wobble"));
+  }
+
+  // Add animation classes to images on load
+  const distroLogos = document.querySelectorAll("img");
+  distroLogos.forEach(img => {
+    img.setAttribute("loading", "lazy");
+    img.classList.add("fade-in");
+  });
+
+  // Denmark pin
   const pin = document.createElement("div");
   pin.textContent = "📍 Made with ❤️ in Denmark.";
   pin.style.cssText = `
@@ -40,118 +74,45 @@ document.addEventListener("DOMContentLoaded", () => {
     animation: pinFadeIn 1.5s ease-out;
   `;
   document.body.appendChild(pin);
-
-  // Easter egg: Konami code = dark mode toggle & confetti
-  const konamiCode = [
-    "ArrowUp","ArrowUp","ArrowDown","ArrowDown",
-    "ArrowLeft","ArrowRight","ArrowLeft","ArrowRight",
-    "b","a"
-  ];
-  let input = [];
-
-  document.addEventListener("keydown", (e) => {
-    input.push(e.key);
-    input.splice(-konamiCode.length - 1, input.length - konamiCode.length);
-    if (JSON.stringify(input) === JSON.stringify(konamiCode)) {
-      document.body.classList.toggle("light-mode");
-      launchConfetti();
-    }
-  });
-
-  // Scroll progress bar
-  const progressBar = document.createElement("div");
-  progressBar.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 5px;
-    background: #2b7cff;
-    width: 0%;
-    z-index: 9999;
-    transition: width 0.2s ease;
-  `;
-  document.body.appendChild(progressBar);
-
-  window.addEventListener("scroll", () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.body.scrollHeight - window.innerHeight;
-    const scrolled = (scrollTop / docHeight) * 100;
-    progressBar.style.width = `${scrolled}%`;
-  });
-
-  // Floating background particles
-  for (let i = 0; i < 15; i++) {
-    const star = document.createElement("div");
-    star.className = "bg-star";
-    star.style.left = Math.random() * 100 + "vw";
-    star.style.animationDuration = (5 + Math.random() * 10) + "s";
-    document.body.appendChild(star);
-  }
 });
 
-// Add animations via JS-injected CSS
+// Injected styles for animations and effects
 const style = document.createElement("style");
 style.textContent = `
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(1440deg); }
+@keyframes spinOnce {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(1440deg); }
 }
 @keyframes pinFadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.distro-logo {
-  transition: transform 0.4s ease;
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
-.distro-logo:hover {
-  transform: scale(1.2) rotate(6deg);
+@keyframes wobble {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+  75% { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
 }
-.bg-star {
-  position: fixed;
-  top: -20px;
-  width: 8px;
-  height: 8px;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.8;
-  animation: fall linear infinite;
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
 }
-@keyframes fall {
-  to {
-    transform: translateY(110vh);
-    opacity: 0;
-  }
+.spin-once {
+  animation: spinOnce 5s linear forwards;
+}
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+.wobble {
+  animation: wobble 0.6s ease;
+}
+.page-loaded {
+  animation: fadeIn 1.2s ease forwards;
 }
 `;
 document.head.appendChild(style);
-
-// Confetti launcher (simplified)
-function launchConfetti() {
-  for (let i = 0; i < 100; i++) {
-    const confetto = document.createElement("div");
-    confetto.style.cssText = `
-      position: fixed;
-      top: ${Math.random() * 100}vh;
-      left: ${Math.random() * 100}vw;
-      width: 10px;
-      height: 10px;
-      background: hsl(${Math.random() * 360}, 70%, 60%);
-      transform: rotate(${Math.random() * 360}deg);
-      animation: confetti-fall 2s ease-out forwards;
-      z-index: 10000;
-    `;
-    document.body.appendChild(confetto);
-    setTimeout(() => confetto.remove(), 2000);
-  }
-}
-
-// Add confetti animation
-const confettiStyle = document.createElement("style");
-confettiStyle.textContent = `
-@keyframes confetti-fall {
-  to {
-    transform: translateY(100vh) rotate(720deg);
-    opacity: 0;
-  }
-}`;
-document.head.appendChild(confettiStyle);
