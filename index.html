@@ -2,68 +2,97 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LinuxWorld | Home</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🐧 LinuxWorld | Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style/style.css" />
   <link rel="icon" href="assets/images/Tux.png" type="image/png" />
   <style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: url('https://preview.redd.it/new-windows-server-2025-wallpapers-v0-1h2d6i9dt6kc1.jpg?width=640&crop=smart&auto=webp&s=a8fedf9623af305bfc572ae2d7e1e40e6c3e48c0') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
+      background: linear-gradient(to right, #a7c5eb, #fcd5ce);
+      color: #333;
     }
+
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.7);
+      padding: 20px 30px;
+      background: #e0f2f1;
+      border-bottom: 2px solid #b2ebf2;
     }
+
     .logo-title {
       display: flex;
       align-items: center;
     }
+
     .logo-icon {
       width: 40px;
       margin-right: 10px;
     }
+
     .site-title {
       font-size: 1.8rem;
       font-weight: 800;
+      color: #0077b6;
     }
+
     nav a {
       margin-left: 20px;
-      color: white;
+      color: #333;
       text-decoration: none;
       font-weight: 600;
     }
+
+    nav a:hover {
+      color: #e91e63;
+    }
+
     .main-content {
       padding: 60px 20px;
       max-width: 1000px;
       margin: auto;
       text-align: center;
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
     }
+
     .main-content h1 {
       font-size: 3rem;
       margin-bottom: 20px;
+      color: #0077b6;
     }
+
     .main-content p {
       font-size: 1.2rem;
+      color: #555;
     }
+
+    .distro-icons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .distro-icons img {
+      width: 70px;
+      transition: transform 0.3s ease;
+    }
+
+    .distro-icons img:hover {
+      transform: scale(1.2);
+    }
+
     .footer {
-      position: fixed;
-      bottom: 10px;
-      left: 10px;
-      background: rgba(255, 255, 255, 0.8);
-      padding: 10px 16px;
-      border-radius: 20px;
-      font-weight: bold;
-      color: black;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #555;
     }
   </style>
 </head>
@@ -78,7 +107,7 @@
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a href="LinuxIso.html">Linux ISOs</a>
-       <a href="customization.html">Linux Customization</a>
+      <a href="customization.html">Linux Customization</a>
       <a href="compare.html">Compare Linux Distro's</a>
       <a href="gaming.html">Gaming on Linux</a>
       <a href="themes.html">Themes on Linux</a>
@@ -89,10 +118,10 @@
     <h1>Welcome to LinuxWorld 🌍</h1>
     <p>Explore the power of open-source systems, tools, and distros.</p>
     <div class="distro-icons">
-      <img src="assets/images/Ubuntu.png" alt="Ubuntu" width="80">
-      <img src="assets/images/Debian.svg.png" alt="Debian" width="80">
-      <img src="assets/images/raspberry-pi.png" alt="Raspberry Pi" width="80">
-      <img src="assets/images/Firefox.svg.png" alt="Firefox" width="80">
+      <img src="assets/images/Ubuntu.png" alt="Ubuntu">
+      <img src="assets/images/Debian.svg.png" alt="Debian">
+      <img src="assets/images/raspberry-pi.png" alt="Raspberry Pi">
+      <img src="assets/images/Firefox.svg.png" alt="Firefox">
     </div>
   </div>
 
