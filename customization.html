@@ -1,97 +1,126 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Linux Customization | LinuxWorld</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Linux Customization</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0e0e0e;
+      color: #00ffff;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      background: #111;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #00ffff;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #00ffff;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      padding: 2rem;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      color: #00e0ff;
+    }
+
+    .toggle {
+      background: none;
+      border: 2px solid #00ffff;
+      color: #00ffff;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+
+    .dark-mode {
+      background-color: #ffffff;
+      color: #111111;
+    }
+
+    .dark-mode header {
+      background: #ddd;
+      border-color: #111;
+    }
+
+    .dark-mode nav a {
+      color: #111;
+    }
+
+    .dark-mode .toggle {
+      color: #111;
+      border-color: #111;
+    }
+  </style>
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">🐧 LinuxWorld</div>
+  <header>
+    <div><strong>LinuxWorld</strong></div>
     <nav>
       <a href="index.html">Home</a>
-      <a href="linuxiso.html">Linux ISOs</a>
+      <a href="linuxiso.html">ISOs</a>
+      <a href="customization.html">Customization</a>
       <a href="compare.html">Compare</a>
-      <a href="customization.html" class="active">Customization</a>
-      <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
     </nav>
+    <button class="toggle" onclick="toggleTheme()">Toggle Theme</button>
   </header>
 
-  <main class="container">
-    <h1>Customize Your Linux Experience</h1>
-    <p>Explore desktop environments, icon themes, extensions, and tweak tools to make Linux truly yours.</p>
+  <div class="container">
+    <h1>Linux Customization Guide</h1>
 
-    <section class="card-grid">
-      <div class="card">
-        <h2>🎨 GNOME Tweaks</h2>
-        <p>Tool to adjust GNOME desktop appearance and behavior. Perfect for enabling themes, icons, and fonts.</p>
-      </div>
-
-      <div class="card">
-        <h2>🔧 KDE Plasma</h2>
-        <p>A feature-rich and ultra-customizable desktop environment. Supports widgets, animations, and global themes.</p>
-      </div>
-
-      <div class="card">
-        <h2>🖌️ Icon Packs</h2>
-        <p>Popular choices: Papirus, Tela, Qogir, BeautyLine. Easily install via your package manager or GitHub.</p>
-      </div>
-
-      <div class="card">
-        <h2>💻 Desktop Environments</h2>
-        <ul>
-          <li><strong>GNOME</strong> – Modern and clean, default on Ubuntu</li>
-          <li><strong>KDE</strong> – Highly configurable and polished</li>
-          <li><strong>XFCE</strong> – Lightweight with decent visual control</li>
-          <li><strong>Cinnamon</strong> – Familiar layout for Windows users</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>🧩 Extensions & Themes</h2>
-        <p>Use <code>gnome-extensions</code> or <a href="https://extensions.gnome.org" target="_blank">extensions.gnome.org</a> to enhance your DE.</p>
-      </div>
-
-      <div class="card">
-        <h2>🎯 Cursor Themes</h2>
-        <p>Give your pointer personality. Try Bibata, Capitaine, or Nordzy cursors for a slick look.</p>
-      </div>
-
-      <div class="card">
-        <h2>🌗 Light & Dark Modes</h2>
-        <p>Many DEs support dynamic switching. Some even allow scheduled theme changes at sunset/sunrise.</p>
-      </div>
-
-      <div class="card">
-        <h2>🧠 Window Managers</h2>
-        <p>Feeling advanced? Try i3, bspwm, or AwesomeWM for total keyboard control and minimalism.</p>
-      </div>
-
-      <div class="card">
-        <h2>🖼️ Wallpapers & Compositors</h2>
-        <p>Use <code>feh</code>, <code>nitrogen</code>, or <code>variety</code> to manage wallpapers. Pair with <code>picom</code> for transparency & blur effects.</p>
-      </div>
+    <section>
+      <h2>1. Desktop Environments</h2>
+      <p>Choose from GNOME, KDE Plasma, XFCE, Cinnamon, and more to suit your style and performance needs.</p>
     </section>
-  </main>
 
-  <footer class="footer">
-    📍 Made with ❤️ in Denmark — <a href="index.html" style="color: var(--accent); text-decoration: none;">Back to Home</a>
-  </footer>
+    <section>
+      <h2>2. Themes</h2>
+      <p>Apply icon themes and GTK/QT styles from sites like gnome-look.org or KDE Store.</p>
+    </section>
+
+    <section>
+      <h2>3. Terminal Customization</h2>
+      <p>Use tools like Starship prompt, Oh-My-Zsh, Powerlevel10k and set custom aliases.</p>
+    </section>
+
+    <section>
+      <h2>4. Window Managers</h2>
+      <p>Advanced users can try i3, bspwm, or awesomeWM for minimalist setups.</p>
+    </section>
+
+    <section>
+      <h2>5. Wallpapers & Widgets</h2>
+      <p>Use tools like Conky for desktop widgets and nitrogen or feh for managing wallpapers.</p>
+    </section>
+  </div>
 
   <script>
-    const toggleTheme = () => {
-      const current = document.documentElement.getAttribute('data-theme') || 'dark';
-      const newTheme = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-    };
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const saved = localStorage.getItem('theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', saved);
-    });
+    function toggleTheme() {
+      document.body.classList.toggle("dark-mode");
+    }
   </script>
 </body>
 </html>
