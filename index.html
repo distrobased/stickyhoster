@@ -4,112 +4,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Linux World</title>
-  <link rel="stylesheet" href="assets/style/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <script src="assets/js/main.js" defer></script>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: url('https://preview.redd.it/new-windows-server-2025-wallpapers-v0-1h2d6i9dt6kc1.jpg?width=640&crop=smart&auto=webp&s=a8fedf9623af305bfc572ae2d7e1e40e6c3e48c0') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    main {
-      max-width: 960px;
-      margin: auto;
-      padding: 2rem;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
-    .distro-logos {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .distro-logos img {
-      height: 64px;
-      width: auto;
-      transition: transform 0.3s ease;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 8px;
-      border-radius: 10px;
-    }
-
-    .distro-logos img:hover {
-      transform: scale(1.1);
-    }
-
-    nav {
-      margin-top: 2rem;
-    }
-
-    nav a {
-      color: #fff;
-      font-weight: 600;
-      text-decoration: none;
-      margin: 0 1rem;
-      border-bottom: 2px solid transparent;
-      transition: border-color 0.3s;
-    }
-
-    nav a:hover {
-      border-color: #fff;
-    }
-
-    .made-in {
-      position: fixed;
-      bottom: 16px;
-      left: 16px;
-      background: rgba(255, 255, 255, 0.85);
-      color: #000;
-      padding: 8px 14px;
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main>
-    <h1>Welcome to Linux World 🐧</h1>
-    <p>Explore the beauty and freedom of open-source technology. Dive into the world of Linux and discover powerful tools, vibrant communities, and the future of computing.</p>
+  <!-- Custom Cursor -->
+  <div class="custom-cursor"></div>
 
-    <div class="distro-logos">
-      <img src="assets/images/Tux.png" alt="Tux" />
-      <img src="assets/images/Ubuntu.png" alt="Ubuntu" />
-      <img src="assets/images/debian.svg.png" alt="Debian" />
-      <img src="assets/images/raspberry-pi.png" alt="Raspberry Pi" />
-      <img src="assets/images/Firefox.svg.png" alt="Firefox" />
-      <img src="assets/images/amd.svg.png" alt="AMD" />
+  <!-- Tux Mascot -->
+  <img src="assets/images/Tux.png" alt="Tux" class="tux-mascot" />
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <h1>Welcome to Linux World</h1>
+    <p>Explore freedom, security, and open-source magic.</p>
+  </header>
+
+  <!-- Distro Showcase -->
+  <section class="distro-showcase">
+    <h2>Popular Distros</h2>
+    <div class="distro-grid">
+      <div class="distro-card">
+        <img src="assets/images/Ubuntu.png" alt="Ubuntu" />
+        <p>Ubuntu</p>
+      </div>
+      <div class="distro-card">
+        <img src="assets/images/debian.svg.png" alt="Debian" />
+        <p>Debian</p>
+      </div>
+      <div class="distro-card">
+        <img src="assets/images/raspberry-pi.png" alt="Raspberry Pi" />
+        <p>Raspberry Pi OS</p>
+      </div>
+      <div class="distro-card">
+        <img src="assets/images/amd.svg.png" alt="AMD" />
+        <p>AMD Open Source</p>
+      </div>
+      <div class="distro-card">
+        <img src="assets/images/Firefox.svg.png" alt="Firefox" />
+        <p>Firefox on Linux</p>
+      </div>
     </div>
+  </section>
 
-    <nav>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </main>
+  <!-- Scroll to Top -->
+  <button class="scroll-top" title="Back to Top">⬆️</button>
 
-  <div class="made-in">📍 Made in Denmark ❤️</div>
+  <!-- Footer -->
+  <footer>
+    <p>📍 Made with ❤️ in Denmark.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
