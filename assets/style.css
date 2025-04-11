@@ -1,76 +1,47 @@
+/* Load Inter font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: url("https://preview.redd.it/new-windows-server-2025-wallpapers-v0-1h2d6i9dt6kc1.jpg?width=640&crop=smart&auto=webp&s=a8fedf9623af305bfc572ae2d7e1e40e6c3e48c0") no-repeat center center fixed;
-  background-size: cover;
-  color: white;
-  overflow-x: hidden;
-}
-
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 50px;
-  background: rgba(0, 0, 0, 0.6);
-}
-
-nav a {
-  color: #ffffff;
-  margin: 0 15px;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.tux {
-  height: 60px;
-  transition: transform 0.5s ease;
-}
-
-main {
-  padding: 50px;
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.hero {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.4rem;
-  color: #ccc;
-}
-
-.logo-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  list-style: none;
-  gap: 30px;
   padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-image: url('https://preview.redd.it/new-windows-server-2025-wallpapers-v0-1h2d6i9dt6kc1.jpg?width=640&crop=smart&auto=webp&s=a8fedf9623af305bfc572ae2d7e1e40e6c3e48c0');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  min-height: 100vh;
 }
 
-.logo-list img {
-  width: 80px;
+/* Layout for all pages */
+main {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  background: rgba(0,0,0,0.6);
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+h1, h2 {
+  font-weight: 800;
+}
+
+a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* For logos */
+.distro-logo {
+  max-width: 80px;
+  margin: 10px;
   transition: transform 0.3s ease;
 }
-
-.logo-list img:hover {
+.distro-logo:hover {
   transform: scale(1.2) rotate(6deg);
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.7);
-  color: #aaa;
-  font-size: 0.9rem;
 }
