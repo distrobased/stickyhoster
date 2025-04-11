@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LinuxWorld | Troubleshooting Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fefcff;
+      --fg: #1a1a1a;
+      --accent: #87ceeb;
+      --accent-hover: #ffb6c1;
+      --section-bg: #ffffffee;
+      --card-bg: #f9f9fb;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+    }
+    header, footer {
+      background-color: var(--accent);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+    nav {
+      background-color: var(--accent-hover);
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 14px;
+    }
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+    }
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    section {
+      background: var(--section-bg);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+    h2 {
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .tags span {
+      background: var(--accent-hover);
+      color: white;
+      padding: 4px 10px;
+      margin: 4px;
+      display: inline-block;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>🐧 Linux Troubleshooting Hub</header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="linux-isos.html">Linux ISOs</a>
+    <a href="customization.html">Customization</a>
+    <a href="faq.html">FAQ</a>
+    <a href="software-alternatives.html">App Alternatives</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <section>
+      <h2>Common Categories</h2>
+      <ul>
+        <li><strong>System Issues:</strong> Boot errors, freezes, kernel panics</li>
+        <li><strong>Networking:</strong> Wi-Fi problems, DNS, slow speed</li>
+        <li><strong>Hardware:</strong> Unrecognized devices, display issues</li>
+        <li><strong>Software:</strong> Application crashes, install failures</li>
+      </ul>
+      <div class="tags">
+        <span>#boot</span>
+        <span>#network</span>
+        <span>#drivers</span>
+        <span>#kernel</span>
+        <span>#wifi</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Fix Network Issues</h2>
+      <p>Try these steps when you have no internet on Linux:</p>
+      <ul>
+        <li>Check cables or Wi-Fi toggle</li>
+        <li>Run <code>ip a</code> to verify interface IP</li>
+        <li>Test with <code>ping 8.8.8.8</code></li>
+        <li>Edit <code>/etc/resolv.conf</code> if DNS fails</li>
+        <li>Restart networking: <code>sudo systemctl restart NetworkManager</code></li>
+      </ul>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/TuxFlat.svg" alt="Tux Penguin Troubleshooting">
+    </section>
+  </main>
+
+  <footer>🐧 Made with ♥ in Denmark</footer>
+</body>
+</html>
