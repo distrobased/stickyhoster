@@ -3,105 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Linux World - The Ultimate Hub</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <title>LinuxWorld</title>
   <link rel="stylesheet" href="assets/style/style.css" />
-  <link rel="icon" href="assets/images/Tux.png" type="image/png">
-  <script defer src="assets/js/script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script defer src="assets/js/main.js"></script>
 </head>
 <body>
-  <!-- Preloader -->
-  <div id="preloader">
-    <img src="assets/images/Tux.png" alt="Loading Tux" class="spin-logo">
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-inner">
+      <img src="assets/images/Tux.png" alt="Loading..." />
+    </div>
   </div>
 
   <!-- Header -->
-  <header class="navbar">
-    <div class="logo">🐧 Linux World</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+  <header class="header">
+    <div class="container">
+      <div class="logo-title">
+        <img src="assets/images/Tux.png" alt="Tux" class="logo-icon" />
+        <h1 class="site-title">LinuxWorld</h1>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
-    <h1>Welcome to Linux World 🌍</h1>
-    <p>Explore the power of open-source with a modern experience.</p>
-    <a href="#distros" class="cta-btn">Discover Distros</a>
+    <div class="hero-content">
+      <h2>Welcome to the world of Linux!</h2>
+      <p>Explore, download, and enjoy the power of open source.</p>
+    </div>
   </section>
 
-  <!-- Linux Distros Showcase -->
-  <section id="distros" class="cards-section">
-    <h2>Popular Linux Distributions</h2>
-    <div class="card-grid">
-      <div class="card">
-        <img src="assets/images/Ubuntu.png" alt="Ubuntu">
-        <h3>Ubuntu</h3>
-        <p>User-friendly, great for beginners.</p>
+  <!-- Distros -->
+  <section class="distros">
+    <h3>Popular Linux Distros</h3>
+    <div class="distro-grid">
+      <div class="distro-card">
+        <img src="assets/images/Ubuntu.png" alt="Ubuntu" class="distro-logo" />
+        <h4>Ubuntu</h4>
+        <a href="#">Download</a>
       </div>
-      <div class="card">
-        <img src="assets/images/debian.svg.png" alt="Debian">
-        <h3>Debian</h3>
-        <p>Stable, community-supported base system.</p>
+      <div class="distro-card">
+        <img src="assets/images/Debian.svg.png" alt="Debian" class="distro-logo" />
+        <h4>Debian</h4>
+        <a href="#">Download</a>
       </div>
-      <div class="card">
-        <img src="assets/images/raspberry-pi.png" alt="Raspberry Pi OS">
-        <h3>Raspberry Pi OS</h3>
-        <p>Optimized for Pi devices.</p>
+      <div class="distro-card">
+        <img src="assets/images/raspberry-pi.png" alt="Raspberry Pi OS" class="distro-logo" />
+        <h4>Raspberry Pi OS</h4>
+        <a href="#">Download</a>
       </div>
-      <div class="card">
-        <img src="assets/images/amd.svg.png" alt="AMD Linux">
-        <h3>Custom Builds</h3>
-        <p>Tailored experiences for power users.</p>
+      <div class="distro-card">
+        <img src="assets/images/Firefox.svg.png" alt="Firefox" class="distro-logo" />
+        <h4>Firefox Browser</h4>
+        <a href="#">Download</a>
       </div>
     </div>
   </section>
 
-  <!-- Interactive Timeline -->
-  <section class="timeline-section">
-    <h2>History of Linux</h2>
-    <div class="timeline">
-      <div class="event">
-        <span class="year">1991</span>
-        <p>Linus Torvalds releases the first Linux kernel.</p>
-      </div>
-      <div class="event">
-        <span class="year">2004</span>
-        <p>Ubuntu makes Linux more accessible to everyone.</p>
-      </div>
-      <div class="event">
-        <span class="year">2020s</span>
-        <p>Linux dominates servers, mobile (Android), and supercomputers.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Video Section -->
-  <section class="video-section">
-    <h2>Why Linux?</h2>
-    <div class="video-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/2Ge1nMlGg0A" title="Why Linux" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </section>
-
-  <!-- Download Section -->
-  <section class="download-section">
-    <h2>Get Started</h2>
-    <div class="download-buttons">
-      <a href="https://ubuntu.com/download" target="_blank">Download Ubuntu</a>
-      <a href="https://www.debian.org/distrib/" target="_blank">Download Debian</a>
-      <a href="https://www.raspberrypi.org/software/" target="_blank">Download Raspberry Pi OS</a>
-    </div>
-  </section>
+  <!-- Scroll to top -->
+  <button id="scrollTop" title="Go to top">↑</button>
 
   <!-- Footer -->
-  <footer>
-    <p>📍 Made with ❤️ in Denmark.</p>
-    <button id="scrollToTop">🔝 Top</button>
+  <footer class="footer">
+    📍 Made in Denmark ❤️
   </footer>
 </body>
 </html>
