@@ -1,74 +1,48 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LinuxWall - Home</title>
-  <link href="images/tux.png" rel="icon" type="image/png" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="icon" href="assets/images/tux.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
+  <div id="loader">
+    <img src="assets/images/tux.png" alt="Tux Loader" class="loader-icon" />
+  </div>
+  <nav class="navbar">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
-
-  <!-- Hero Section -->
-  <header class="hero">
-    <img src="images/tux.png" alt="Tux Logo" class="tux" />
-    <h1>Welcome to LinuxWall</h1>
-    <p>Your ultimate Linux hub – discover, learn, and build.</p>
-    <a class="cta-button" href="about.html">Learn More</a>
-  </header>
-
-  <!-- Features Section -->
-  <section class="features">
-    <h2>What You'll Find Here</h2>
-    <div class="features-grid">
-      <div class="feature-box">
-        <h3>🧰 Tools</h3>
-        <p>Curated tools for every Linux power user and newcomer.</p>
-      </div>
-      <div class="feature-box">
-        <h3>🎮 Games</h3>
-        <p>Top FOSS games and how to install them on your distro.</p>
-      </div>
-      <div class="feature-box">
-        <h3>📚 Tutorials</h3>
-        <p>Simple guides from setting up Arch to customizing GNOME.</p>
-      </div>
-      <div class="feature-box">
-        <h3>📦 Distro Picks</h3>
-        <p>Explore top Linux distros ranked by speed and stability.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Updates / Blog -->
-  <section class="updates">
-    <h2>Latest Tips & Updates</h2>
-    <ul>
-      <li><strong>[April 2025]</strong> How to dual-boot Ubuntu & Windows 11 safely</li>
-      <li><strong>[March 2025]</strong> Fedora 40 Review: Clean, Modern, Fast</li>
-      <li><strong>[Feb 2025]</strong> New terminal tricks every Linux user should know</li>
-    </ul>
-    <a href="about.html" class="inline-link">See more posts →</a>
-  </section>
-
-  <!-- Call to Action -->
-  <section class="cta">
-    <h2>Have questions or ideas?</h2>
-    <p>Drop me a message and let’s chat about Linux, tools, or anything open source!</p>
-    <a href="contact.html" class="cta-button">Contact Me</a>
-  </section>
-
-  <!-- Footer -->
+  <main class="main-content">
+    <h1>Welcome to <span>LinuxWall</span></h1>
+    <p>Explore tools, games, and distros built for every Linux enthusiast.</p>
+    <section class="games">
+      <h2>Linux-Themed Games</h2>
+      <ul>
+        <li><button onclick="startFlappyTux()">Flappy Tux</button></li>
+        <li><button onclick="startCodeBomb()">Code Bomb</button></li>
+        <li><button onclick="startPenguinEscape()">Penguin Escape</button></li>
+      </ul>
+    </section>
+    <section class="poll">
+      <h2>Your Favorite Distro?</h2>
+      <form onsubmit="event.preventDefault(); alert('Thanks for voting!')">
+        <label><input type="radio" name="distro" /> Ubuntu</label>
+        <label><input type="radio" name="distro" /> Fedora</label>
+        <label><input type="radio" name="distro" /> Arch</label>
+        <label><input type="radio" name="distro" /> Debian</label>
+        <button type="submit">Vote</button>
+      </form>
+    </section>
+  </main>
   <footer>
-    <p>© 2025 Sticky's LinuxWall Server • 📍 Made with ❤️ in Denmark.</p>
+    <p>© 2025 LinuxWall. Powered by Open Source. Hosted from Denmark 🇩🇰</p>
   </footer>
-
-  <!-- Scripts -->
   <script src="js/main.js"></script>
 </body>
 </html>
