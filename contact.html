@@ -2,151 +2,142 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact - Linux World</title>
-  <link rel="stylesheet" href="assets/style/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <script src="assets/js/main.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | LinuxWorld</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --sky-blue: #87ceeb;
-      --sky-blue-dark: #5ba6c9;
-      --blush-pink: #ffc1cc;
-      --blush-pink-dark: #f3a6b5;
-      --bg-overlay: rgba(255, 255, 255, 0.15);
-      --text-color: #1b1b1b;
+      --bg: #fefcff;
+      --fg: #1a1a1a;
+      --accent: #87ceeb;
+      --accent-hover: #ffb6c1;
+      --section-bg: #ffffffee;
     }
 
     body {
-      margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, var(--sky-blue), var(--blush-pink));
-      color: var(--text-color);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      background: var(--bg);
+      color: var(--fg);
+      margin: 0;
     }
 
-    main {
-      max-width: 640px;
-      margin: auto;
-      padding: 2rem;
-      background: var(--bg-overlay);
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
-      backdrop-filter: blur(10px);
-    }
-
-    h1 {
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      color: var(--sky-blue-dark);
-    }
-
-    p {
-      font-weight: 400;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    label {
-      margin-top: 1rem;
-      font-weight: 600;
-      color: var(--blush-pink-dark);
-    }
-
-    input,
-    textarea {
-      padding: 10px;
-      margin-top: 5px;
-      border: 2px solid var(--sky-blue-dark);
-      border-radius: 8px;
-      font-size: 1rem;
-      background-color: #ffffffee;
-      color: var(--text-color);
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    button {
-      margin-top: 1.5rem;
-      background-color: var(--blush-pink);
-      color: var(--text-color);
-      border: none;
-      border-radius: 8px;
-      padding: 12px;
+    header {
+      background-color: var(--accent);
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 2.5rem;
       font-weight: bold;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: var(--blush-pink-dark);
     }
 
     nav {
-      margin-top: 2rem;
+      background-color: var(--accent-hover);
+      text-align: center;
+      padding: 12px;
     }
 
     nav a {
-      color: var(--sky-blue-dark);
-      font-weight: 600;
+      color: #fff;
       text-decoration: none;
-      margin-right: 1.5rem;
-      border-bottom: 2px solid transparent;
-      transition: border-color 0.3s;
+      margin: 0 12px;
+      font-weight: 600;
     }
 
     nav a:hover {
-      border-color: var(--sky-blue-dark);
+      text-decoration: underline;
     }
 
-    .made-in {
-      position: fixed;
-      bottom: 16px;
-      left: 16px;
-      background: var(--blush-pink);
-      color: var(--text-color);
-      padding: 8px 14px;
-      border-radius: 20px;
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .section {
+      background: var(--section-bg);
+      padding: 40px;
+      margin-bottom: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: 2rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
       font-weight: 600;
-      font-size: 0.9rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: var(--accent-hover);
+    }
+
+    footer {
+      background: var(--accent-hover);
+      color: #fff;
+      text-align: center;
+      padding: 16px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
+  <header>Contact Us</header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="linux-isos.html">Linux ISOs</a>
+    <a href="software-alternatives.html">App Alternatives</a>
+    <a href="creators.html">Linux for Creators</a>
+    <a href="faq.html">FAQ / Myths</a>
+    <a href="how-to-flash.html">Flash Guide</a>
+  </nav>
+
   <main>
-    <h1>Contact Us</h1>
-    <p>Got a question or want to reach out? Drop a message below.</p>
+    <section class="section">
+      <h2>Send us a message</h2>
+      <form>
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your Name" required />
 
-    <form action="#" method="POST">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" placeholder="Your name" required />
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Your Email" required />
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="your@email.com" required />
+        <label for="message">Message</label>
+        <textarea id="message" rows="6" placeholder="What's on your mind?"></textarea>
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
-
-      <button type="submit">Send Message</button>
-    </form>
-
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-    </nav>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
   </main>
 
-  <div class="made-in">📍 Made in Denmark ❤️</div>
+  <footer>📫 We'll try our best to reply — thanks for reaching out!</footer>
 </body>
 </html>
