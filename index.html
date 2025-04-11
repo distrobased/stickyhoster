@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LinuxWorld</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet" />
+  <title>LinuxWorld | Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #fefcff;
@@ -12,37 +12,41 @@
       --accent: #87ceeb; /* Sky Blue */
       --accent-hover: #ffb6c1; /* Blush Pink */
       --section-bg: #ffffffee;
+      --card-bg: #f9f9fb;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     body {
+      margin: 0;
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--fg);
-      line-height: 1.6;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     header {
       background-color: var(--accent);
-      color: #fff;
       padding: 20px;
       text-align: center;
-      font-size: 2.5rem;
-      font-weight: bold;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
       position: relative;
     }
 
     .penguin {
-      position: absolute;
-      top: 15px;
-      left: 15px;
       font-size: 2.5rem;
-      animation: bounce 2s infinite;
+      position: absolute;
+      right: 20px;
+      animation: bounce 1s infinite;
     }
 
     @keyframes bounce {
@@ -51,20 +55,19 @@
     }
 
     nav {
-      background-color: var(--accent-hover);
-      padding: 12px;
-      text-align: center;
+      display: flex;
       flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      background-color: var(--accent-hover);
+      padding: 12px 20px;
     }
 
     nav a {
-      margin: 0 12px;
-      text-decoration: none;
       color: #fff;
+      text-decoration: none;
       font-weight: 600;
       transition: 0.3s;
-      display: inline-block;
-      margin-bottom: 8px;
     }
 
     nav a:hover {
@@ -74,164 +77,138 @@
     main {
       max-width: 1000px;
       margin: 40px auto;
-      padding: 0 20px;
+      padding: 30px;
     }
 
     .section {
       background: var(--section-bg);
       border-radius: 16px;
-      padding: 40px;
+      padding: 30px;
       margin-bottom: 40px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     }
 
     h2 {
-      color: var(--accent);
+      font-size: 1.8rem;
       margin-bottom: 20px;
-      font-size: 2rem;
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 10px;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
       color: var(--accent);
-      margin-bottom: 20px;
     }
 
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
+    ul.links {
+      list-style: none;
+      padding-left: 0;
     }
 
-    .hero button {
-      background-color: var(--accent);
-      color: #fff;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s ease;
+    ul.links li {
+      margin: 10px 0;
     }
 
-    .hero button:hover {
-      background-color: var(--accent-hover);
+    ul.links li a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
     }
 
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: space-between;
+    ul.links li a:hover {
+      color: var(--accent-hover);
     }
 
-    .feature {
-      flex: 1 1 calc(33% - 20px);
-      background: #f9f9fb;
-      padding: 20px;
+    .tags {
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--accent-hover);
+      color: white;
+      padding: 4px 10px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      text-align: center;
+      margin: 4px;
+      font-weight: 600;
     }
 
-    .feature img {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 12px;
+    .music-player {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .music-player audio {
+      width: 300px;
+      margin-top: 10px;
     }
 
     footer {
       text-align: center;
+      padding: 16px;
       background: var(--accent-hover);
-      color: #fff;
-      padding: 20px;
       font-weight: bold;
-    }
-
-    @media (max-width: 768px) {
-      .features {
-        flex-direction: column;
-      }
-
-      .feature {
-        flex: 1 1 100%;
-      }
+      color: #fff;
     }
   </style>
 </head>
 <body>
   <header>
+    LinuxWorld 🐧
     <div class="penguin">🐧</div>
-    LinuxWorld
   </header>
 
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-    <a href="LinuxIso.html">Linux ISOs</a>
-    <a href="app-alternatives.html">App Alternatives</a>
-    <a href="Linux-For-Creators.html">Linux for Creators</a>
-    <a href="faq.html">FAQ / Myths</a>
+    <a href="linux-isos.html">Linux ISOs</a>
+    <a href="software-alternatives.html">App Alternatives</a>
+    <a href="customization.html">Customization</a>
+    <a href="faq.html">FAQ & Myths</a>
+    <a href="memes.html">Memes</a>
   </nav>
 
   <main>
-    <section class="section hero">
-      <h1>Welcome to LinuxWorld</h1>
-      <p>Explore the open-source world. Try Linux, discover its freedom, flexibility, and the joy of full control over your machine.</p>
-      <button onclick="location.href='linux-isos.html'">Browse ISOs</button>
+    <section class="section">
+      <h2>Welcome to LinuxWorld</h2>
+      <p>Explore a beautiful, open world of Linux with curated guides, distros, memes, tips, and customization help for creators and casual users alike.</p>
     </section>
 
-    <section id="what" class="section">
-      <h2>What is Linux?</h2>
-      <p>Linux is a free and open-source operating system that powers everything from phones to supercomputers. Whether you're a beginner, a developer, or a creator — there's a Linux for you.</p>
-    </section>
-
-    <section id="why" class="section">
-      <h2>Why Use Linux?</h2>
-      <ul>
-        <li>💸 100% Free and open-source.</li>
-        <li>🔐 Secure and private by design.</li>
-        <li>🎨 Endless customization and desktop environments.</li>
-        <li>🌱 Lightweight options for older hardware.</li>
-        <li>💻 Used by NASA, Google, and millions globally.</li>
+    <section class="section">
+      <h2>Featured Pages</h2>
+      <ul class="links">
+        <li><a href="linux-isos.html">💽 Linux ISOs</a> <span class="tags"><span class="tag">Downloads</span> <span class="tag">Beginner</span></span></li>
+        <li><a href="software-alternatives.html">🧩 App Alternatives</a> <span class="tags"><span class="tag">Productivity</span> <span class="tag">Open Source</span></span></li>
+        <li><a href="customization.html">🎨 Customization</a> <span class="tags"><span class="tag">Themes</span> <span class="tag">Tweaks</span></span></li>
+        <li><a href="faq.html">❓ FAQ / Myths</a> <span class="tags"><span class="tag">Help</span> <span class="tag">Newbies</span></span></li>
+        <li><a href="memes.html">🤣 Memes</a> <span class="tags"><span class="tag">Fun</span> <span class="tag">Community</span></span></li>
+        <li><a href="404.html">🚫 404 Easter Egg</a> <span class="tags"><span class="tag">Error</span> <span class="tag">Humor</span></span></li>
       </ul>
     </section>
 
-    <section id="features" class="section">
-      <h2>Explore Linux Features</h2>
-      <div class="features">
-        <div class="feature">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Tux Logo">
-          <h3>Beginner Friendly</h3>
-          <p>Distros like Ubuntu, Mint & Zorin OS are built for ease of use.</p>
-        </div>
-        <div class="feature">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Icon_security.png" alt="Security">
-          <h3>Private & Secure</h3>
-          <p>No ads, no telemetry. You’re in full control of your data.</p>
-        </div>
-        <div class="feature">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Icon-Tools.svg" alt="Tools Icon">
-          <h3>Built for Creators</h3>
-          <p>From music to code, Linux has powerful open-source tools.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="start" class="section">
-      <h2>Ready to Try?</h2>
-      <p>Pick a Linux distro from our ISO section, follow the flashing guide, and you're set. It's easier than you think — and way more fun than Windows 😉</p>
-      <button onclick="location.href='how-to-flash.html'">Get Started</button>
+    <section class="section music-player">
+      <h2>🎵 Music Disk Player</h2>
+      <audio controls>
+        <source src="assets/music/background-music.mp3.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
     </section>
   </main>
 
-  <footer>❤️ Made with love in Denmark</footer>
+  <footer>📍 Made in Love in Denmark ❤️</footer>
+
+  <!-- Startup sound -->
+  <audio id="startup-sound" autoplay>
+    <source src="assets/music/musicsoft-startup-sound-269291.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Play startup sound on first user interaction if blocked
+    window.addEventListener('click', () => {
+      const startupAudio = document.getElementById('startup-sound');
+      if (startupAudio.paused) {
+        startupAudio.play().catch(err => {
+          console.warn("Startup sound failed to autoplay:", err);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
