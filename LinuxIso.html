@@ -76,42 +76,76 @@
       color: var(--accent);
     }
 
-    .compare button, .qa-widget button {
-      background: var(--accent);
-      color: #fff;
-      font-weight: bold;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
+    .filter-bar {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
-    .compare button:hover, .qa-widget button:hover {
-      background: var(--accent-hover);
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    .ratings .card {
-      background: var(--card-bg);
-      padding: 12px;
-      margin-bottom: 16px;
-      border-left: 4px solid var(--accent);
+    .filter-bar input,
+    .filter-bar select {
+      padding: 10px;
       border-radius: 10px;
-    }
-
-    .qa-widget textarea {
-      width: 100%;
-      padding: 12px;
-      font-size: 1rem;
-      background: #f4f4f8;
-      color: var(--fg);
       border: 1px solid #ddd;
-      border-radius: 10px;
-      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+
+    .distro-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .distro-card {
+      background: var(--card-bg);
+      border-left: 4px solid var(--accent);
+      padding: 16px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .distro-card img {
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
+    }
+
+    .distro-info {
+      flex: 1;
+    }
+
+    .distro-info strong {
+      font-size: 1.2rem;
+      color: var(--accent-hover);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .distro-info a {
+      color: var(--accent);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .distro-info a:hover {
+      text-decoration: underline;
+    }
+
+    .tags {
+      margin-top: 8px;
+    }
+
+    .tag {
+      background: var(--accent-hover);
+      color: #fff;
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 0.8rem;
+      margin-right: 6px;
+      display: inline-block;
     }
 
     footer {
@@ -133,48 +167,113 @@
   </nav>
 
   <main>
-    <section class="section compare">
-      <h2>Distro Comparison</h2>
-      <p>Compare popular distros side-by-side.</p>
-      <button onclick="alert('Comparison coming soon in detail view!')">Launch Comparison Modal</button>
-    </section>
+    <section class="section">
+      <h2>🧭 Linux Distros</h2>
 
-    <section class="section flashing-guide">
-      <h2>How to Flash Linux ISO</h2>
-      <p><strong>Using Ventoy:</strong></p>
-      <ul>
-        <li>Download Ventoy and install to USB</li>
-        <li>Copy ISO files to USB drive</li>
-        <li>Boot from USB and select your distro</li>
-      </ul>
-      <p><strong>Using Rufus:</strong></p>
-      <ul>
-        <li>Insert USB, open Rufus</li>
-        <li>Select ISO, choose file system (FAT32/NTFS)</li>
-        <li>Click "Start", then reboot and boot from USB</li>
-      </ul>
-    </section>
+      <div class="filter-bar">
+        <input type="text" id="searchInput" placeholder="🔍 Search distros..." onkeyup="filterDistros()" />
+        <select id="tagFilter" onchange="filterDistros()">
+          <option value="">Filter by tag</option>
+          <option value="Beginner">Beginner</option>
+          <option value="Advanced">Advanced</option>
+          <option value="Dev-friendly">Dev-friendly</option>
+          <option value="Security">Security</option>
+        </select>
+      </div>
 
-    <section class="section ratings">
-      <h2>Community Ratings</h2>
-      <div class="card">
-        <strong>Ubuntu:</strong> ★★★★★ (5.0/5)
-      </div>
-      <div class="card">
-        <strong>Arch Linux:</strong> ★★★★☆ (4.4/5)
-      </div>
-      <div class="card">
-        <strong>Kali Linux:</strong> ★★★★☆ (4.3/5)
-      </div>
-    </section>
+      <div class="distro-grid" id="distroList">
+        <!-- Distros -->
+        <div class="distro-card" data-tags="Beginner">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Linux_Mint_logo_without_wordmark.svg" alt="Linux Mint" />
+          <div class="distro-info">
+            <strong>Linux Mint</strong>
+            Beginner-friendly, Cinnamon desktop.
+            <br><a href="https://linuxmint.com/download.php" target="_blank">Download</a>
+            <div class="tags"><span class="tag">Beginner</span></div>
+          </div>
+        </div>
 
-    <section class="section qa-widget">
-      <h2>Got a Question?</h2>
-      <textarea rows="4" placeholder="Ask your Linux question here... (not live yet)"></textarea>
-      <button>Submit</button>
+        <div class="distro-card" data-tags="Beginner Dev-friendly">
+          <img src="https://assets.ubuntu.com/v1/29985a98-ubuntu-logo32.png" alt="Ubuntu" />
+          <div class="distro-info">
+            <strong>Ubuntu</strong>
+            Stable & widely supported.
+            <br><a href="https://ubuntu.com/download/desktop" target="_blank">Download</a>
+            <div class="tags"><span class="tag">Beginner</span><span class="tag">Dev-friendly</span></div>
+          </div>
+        </div>
+
+        <div class="distro-card" data-tags="Dev-friendly">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Fedora_logo.svg" alt="Fedora" />
+          <div class="distro-info">
+            <strong>Fedora</strong>
+            Latest tech, GNOME default.
+            <br><a href="https://getfedora.org/en/workstation/" target="_blank">Download</a>
+            <div class="tags"><span class="tag">Dev-friendly</span></div>
+          </div>
+        </div>
+
+        <div class="distro-card" data-tags="Beginner">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Zorin_OS_logo.png" alt="Zorin OS" />
+          <div class="distro-info">
+            <strong>Zorin OS</strong>
+            Looks like Windows/macOS.
+            <br><a href="https://zorin.com/os/download/" target="_blank">Download</a>
+            <div class="tags"><span class="tag">Beginner</span></div>
+          </div>
+        </div>
+
+        <div class="distro-card" data-tags="Advanced Dev-friendly">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Manjaro_logo.svg" alt="Manjaro" />
+          <div class="distro-info">
+            <strong>Manjaro</strong>
+            Arch-based but friendly.
+            <br><a href="https://manjaro.org/download/" target="_blank">Download</a>
+            <div class="tags"><span class="tag">Advanced</span><span class="tag">Dev-friendly</span></div>
+          </div>
+        </div>
+
+        <div class="distro-card" data-tags="Security Advanced">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Kali-dragon-icon.svg" alt="Kali Linux" />
+          <div class="distro-info">
+            <strong>Kali Linux</strong>
+            Pen-testing and security tools.
+            <br><a href="https://www.kali.org/get-kali/" target="_blank">Download</a>
+            <div class="tags"><span class="tag">Security</span><span class="tag">Advanced</span></div>
+          </div>
+        </div>
+
+        <div class="distro-card" data-tags="Advanced">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Archlinux-icon-crystal-64.svg" alt="Arch Linux" />
+          <div class="distro-info">
+            <strong>Arch Linux</strong>
+            Minimal, for power users.
+            <br><a href="https://archlinux.org/download/" target="_blank">Download</a>
+            <div class="tags"><span class="tag">Advanced</span></div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>📍 Made in Denmark ❤️</footer>
+  <footer>📍 Made with love in Denmark ❤️</footer>
+
+  <script>
+    function filterDistros() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const tag = document.getElementById("tagFilter").value;
+      const cards = document.querySelectorAll(".distro-card");
+
+      cards.forEach(card => {
+        const name = card.querySelector("strong").textContent.toLowerCase();
+        const tags = card.dataset.tags;
+
+        const matchesText = name.includes(input);
+        const matchesTag = !tag || tags.includes(tag);
+
+        card.style.display = matchesText && matchesTag ? "flex" : "none";
+      });
+    }
+  </script>
 </body>
 </html>
