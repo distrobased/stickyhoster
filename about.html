@@ -5,9 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About - Linux World</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style/style.css" />
-  <script src="assets/js/main.js" defer></script>
   <style>
+    :root {
+      --sky-blue: #87ceeb;
+      --sky-blue-dark: #4fb6dd;
+      --blush-pink: #ffc1cc;
+      --blush-pink-dark: #f3a6b5;
+      --bg-overlay: rgba(255, 255, 255, 0.1);
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -17,17 +23,21 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      backdrop-filter: blur(4px);
     }
 
     header {
       text-align: center;
       padding: 3rem 1rem 1.5rem;
+      background-color: rgba(135, 206, 235, 0.2);
+      border-bottom: 2px solid var(--blush-pink-dark);
     }
 
     h1 {
       font-size: 2.5rem;
       font-weight: 800;
       margin-bottom: 0.5rem;
+      color: var(--blush-pink);
     }
 
     p {
@@ -36,10 +46,11 @@
       max-width: 700px;
       margin: 1rem auto;
       text-align: center;
-      padding: 0 1rem;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(255, 255, 255, 0.12);
+      border-left: 6px solid var(--sky-blue-dark);
       border-radius: 12px;
       padding: 1.5rem;
+      color: #f9f9f9;
     }
 
     nav {
@@ -47,10 +58,13 @@
       justify-content: center;
       gap: 2rem;
       margin-top: 2rem;
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     nav a {
-      color: #fff;
+      color: var(--sky-blue);
       font-weight: 600;
       text-decoration: none;
       padding-bottom: 3px;
@@ -59,7 +73,7 @@
     }
 
     nav a:hover {
-      border-color: #fff;
+      border-color: var(--blush-pink);
     }
 
     .made-in {
@@ -73,6 +87,11 @@
       font-weight: 600;
       font-size: 0.9rem;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .made-in:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
