@@ -1,0 +1,55 @@
+<!-- compare.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compare Linux Distros - LinuxWorld</title>
+  <link rel="stylesheet" href="assets/style/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">🐧 LinuxWorld</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="linuxiso.html">Distros</a></li>
+        <li><a href="compare.html" class="active">Compare</a></li>
+        <li><a href="customization.html">Customization</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">🧮 Compare Linux Distros</h1>
+    <p>Select two distros to compare features side-by-side.</p>
+
+    <div class="compare-box">
+      <select id="distro1">
+        <option value="ubuntu">Ubuntu</option>
+        <option value="debian">Debian</option>
+        <option value="fedora">Fedora</option>
+        <option value="arch">Arch Linux</option>
+        <option value="mint">Linux Mint</option>
+      </select>
+      <select id="distro2">
+        <option value="ubuntu">Ubuntu</option>
+        <option value="debian">Debian</option>
+        <option value="fedora">Fedora</option>
+        <option value="arch">Arch Linux</option>
+        <option value="mint">Linux Mint</option>
+      </select>
+    </div>
+
+    <div id="comparison-result"></div>
+  </main>
+
+  <footer>
+    <p>📍 Made with ❤️ in Denmark.</p>
+  </footer>
+
+  <script src="assets/js/compare.js"></script>
+</body>
+</html>
