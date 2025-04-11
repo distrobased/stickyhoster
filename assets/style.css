@@ -1,65 +1,76 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
 body {
   margin: 0;
-  font-family: 'Fira Code', monospace;
-  color: #f0f0f0;
-  background: url('../images/server-bg.jpg') no-repeat center center fixed;
+  font-family: 'Inter', sans-serif;
+  background: url("https://preview.redd.it/new-windows-server-2025-wallpapers-v0-1h2d6i9dt6kc1.jpg?width=640&crop=smart&auto=webp&s=a8fedf9623af305bfc572ae2d7e1e40e6c3e48c0") no-repeat center center fixed;
   background-size: cover;
-  min-height: 100vh;
-  overflow: hidden;
+  color: white;
+  overflow-x: hidden;
 }
 
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: black;
-  z-index: 1000;
-  animation: fadeOut 5s forwards;
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 50px;
+  background: rgba(0, 0, 0, 0.6);
 }
 
-@keyframes fadeOut {
-  0% { opacity: 1; }
-  100% { opacity: 0; visibility: hidden; }
-}
-
-main {
-  padding: 60px 20px;
-  text-align: center;
-  z-index: 10;
-  position: relative;
-}
-
-h1 {
-  font-size: 3em;
-  margin-bottom: 40px;
+nav a {
+  color: #ffffff;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .tux {
-  width: 150px;
-  animation: spin 5s linear;
+  height: 60px;
+  transition: transform 0.5s ease;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(1440deg); }
+main {
+  padding: 50px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.4rem;
+  color: #ccc;
 }
 
 .logo-list {
-  list-style: none;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 25px;
-  margin-top: 40px;
+  list-style: none;
+  gap: 30px;
   padding: 0;
 }
 
 .logo-list img {
-  height: 80px;
-  transition: transform 0.4s ease;
+  width: 80px;
+  transition: transform 0.3s ease;
 }
 
 .logo-list img:hover {
   transform: scale(1.2) rotate(6deg);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #aaa;
+  font-size: 0.9rem;
 }
