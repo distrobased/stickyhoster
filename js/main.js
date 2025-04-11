@@ -1,67 +1,64 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Scroll to top
-  const scrollTop = document.querySelector(".scroll-top");
-  window.addEventListener("scroll", () => {
-    scrollTop.style.display = window.scrollY > 200 ? "block" : "none";
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", e => {
+      const target = document.querySelector(link.getAttribute("href"));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
   });
-  scrollTop.addEventListener("click", () => {
+
+  // Loader
+  const loader = document.getElementById("loader");
+  if (loader) {
+    setTimeout(() => loader.style.display = "none", 5000);
+  }
+
+  // Scroll to top
+  const scrollTopBtn = document.getElementById("scrollTop");
+  window.addEventListener("scroll", () => {
+    scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+  scrollTopBtn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  // Custom Cursor
-  const cursor = document.querySelector(".custom-cursor");
-  document.addEventListener("mousemove", e => {
-    cursor.style.top = e.clientY + "px";
-    cursor.style.left = e.clientX + "px";
+  // Distro hover animation
+  document.querySelectorAll(".distro-logo").forEach(logo => {
+    logo.classList.add("distro-logo");
   });
-
-  // Tux spin on load
-  const tux = document.querySelector(".tux-mascot");
-  tux.style.animation = "spin 5s linear";
-  setTimeout(() => {
-    tux.style.animation = "float 3s ease-in-out infinite";
-  }, 5000);
 });
 
-// Spin animation
+// Inject global styles
 const style = document.createElement("style");
 style.textContent = `
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(1440deg); }
-}`;
-document.head.appendChild(style);
-// Scroll reveal animations
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("reveal-visible");
-    }
-  });
-}, {
-  threshold: 0.1
-});
-
-document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-
-// Typing effect for subtitle
-const typedText = document.querySelector(".subtitle-type");
-if (typedText) {
-  const text = "Open-source. Free. Powerful.";
-  let index = 0;
-  function type() {
-    if (index < text.length) {
-      typedText.textContent += text.charAt(index);
-      index++;
-      setTimeout(type, 90);
-    }
-  }
-  type();
+@keyframes pinFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
-// Scroll to top button
-const scrollBtn = document.getElementById("scrollToTop");
-scrollBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-window.addEventListener("scroll", () => {
-  scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
-});
+@keyframes spinFade {
+  0% { opacity: 1; transform: rotate(0deg); }
+  100% { opacity: 0; transform: rotate(1440deg); }
+}
+#loader {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: black;
+  display: flex; justify-content: center; align-items: center;
+  z-index: 9999;
+}
+.loader-inner img {
+  height: 120px;
+  animation: spinFade 5s linear forwards;
+}
+.distro-logo {
+  transition: transform 0.4s ease;
+}
+.distro-logo:hover {
+  transform: scale(1.2) rotate(6deg);
+}
+`;
+document.head.appendChild(style);
