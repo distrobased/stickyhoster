@@ -20,6 +20,11 @@
       padding: 40px;
       border-radius: 20px;
       box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     h1, p {
       text-align: center;
@@ -71,6 +76,37 @@
     nav a:hover {
       text-decoration: underline;
     }
+    .social {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .social a {
+      color: #111;
+      font-weight: bold;
+      text-decoration: none;
+      border-bottom: 1px dashed transparent;
+      transition: all 0.3s ease;
+    }
+    .social a:hover {
+      border-color: #2b7cff;
+    }
+    .made-in {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1rem;
+      color: #333;
+      position: relative;
+    }
+    .pin {
+      display: inline-block;
+      animation: bounce 1.5s infinite;
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
   </style>
 </head>
 <body>
@@ -101,6 +137,14 @@
   <div class="info">
     <p>📧 Email: <a href="mailto:ethanbudds2012@gmail.com">ethanbudds2012@gmail.com</a></p>
     <p>📱 Phone: <a href="tel:+447749772021">+44 7749 772021</a></p>
+  </div>
+
+  <div class="social">
+    <p>🌐 GitHub: <a href="https://github.com/distrobased" target="_blank">github.com/distrobased</a></p>
+  </div>
+
+  <div class="made-in">
+    <span class="pin">📍</span>Made with ❤️ in Denmark.
   </div>
 </div>
 
