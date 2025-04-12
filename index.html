@@ -9,8 +9,8 @@
     :root {
       --bg: #fefcff;
       --fg: #1a1a1a;
-      --accent: #87ceeb; /* Sky Blue */
-      --accent-hover: #ffb6c1; /* Blush Pink */
+      --accent: #87ceeb;
+      --accent-hover: #ffb6c1;
       --section-bg: #ffffffee;
       --card-bg: #f9f9fb;
     }
@@ -24,12 +24,12 @@
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--fg);
-      animation: fadeIn 2s ease-in-out;
+      opacity: 0;
+      transition: opacity 1.2s ease-in;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    body.fade-in {
+      opacity: 1;
     }
 
     header {
@@ -128,16 +128,6 @@
       font-weight: 600;
     }
 
-    .music-player {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .music-player audio {
-      width: 300px;
-      margin-top: 10px;
-    }
-
     footer {
       text-align: center;
       padding: 16px;
@@ -148,6 +138,9 @@
   </style>
 </head>
 <body>
+  <!-- 🔊 Startup Sound -->
+  <audio id="startup-sound" src="assets/music/musicsoft-startup-sound-269291.mp3" preload="auto"></audio>
+
   <header>
     LinuxWorld 🐧
     <div class="penguin">🐧</div>
@@ -181,20 +174,32 @@
         <li><a href="404.html">🚫 404 Easter Egg</a> <span class="tags"><span class="tag">Error</span> <span class="tag">Humor</span></span></li>
       </ul>
     </section>
-
-    <section class="section music-player">
-      <h2>🎵 Music Disk Player</h2>
-      <audio controls>
-        <source src="assets/music/background-music.mp3.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-    </section>
   </main>
 
-  <footer>📍 Made in Love in Denmark ❤️</footer>
+  <footer>📍 Made with Love in Denmark ❤️</footer>
 
-  <!-- Startup sound -->
-  <audio id="startup-sound" src="assets/music/musicsoft-startup-sound-269291.mp3" autoplay muted></audio>
+  <script>
+    window.addEventListener('load', () => {
+      document.body.classList.add('fade-in');
+
+      const startup = document.getElementById('startup-sound');
+      startup.volume = 0.5;
+
+      // Attempt to play after brief delay
+      setTimeout(() => {
+        startup.play().catch((e) => {
+          console.warn('Startup sound blocked. Waiting for interaction...');
+          // Fallback in case autoplay is blocked
+          const resumeAudio = () => {
+            startup.play();
+            document.removeEventListener('click', resumeAudio);
+            document.removeEventListener('keydown', resumeAudio);
+          };
+          document.addEventListener('click', resumeAudio);
+          document.addEventListener('keydown', resumeAudio);
+        });
+      }, 500);
+    });
   </script>
 </body>
 </html>
