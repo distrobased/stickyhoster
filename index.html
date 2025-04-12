@@ -194,21 +194,7 @@
   <footer>📍 Made in Love in Denmark ❤️</footer>
 
   <!-- Startup sound -->
-  <audio id="startup-sound" autoplay>
-    <source src="assets/music/musicsoft-startup-sound-269291.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
-
-  <script>
-    // Play startup sound on first user interaction if blocked
-    window.addEventListener('click', () => {
-      const startupAudio = document.getElementById('startup-sound');
-      if (startupAudio.paused) {
-        startupAudio.play().catch(err => {
-          console.warn("Startup sound failed to autoplay:", err);
-        });
-      }
-    });
+  <audio id="startup-sound" src="assets/music/musicsoft-startup-sound-269291.mp3" autoplay muted></audio>
   </script>
 </body>
 </html>
