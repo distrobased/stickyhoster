@@ -25,7 +25,7 @@
       background: var(--bg);
       color: var(--fg);
       opacity: 0;
-      transition: opacity 1.5s ease-in;
+      transition: opacity 1.5s ease-in-out;
     }
 
     body.loaded {
@@ -175,20 +175,21 @@
 
   <footer>📍 Made in Love in Denmark ❤️</footer>
 
-  <!-- Startup sound (won't autoplay until user interacts) -->
-  <audio id="startup-sound" src="assets/music/musicsoft-startup-sound-269291.mp3"></audio>
+  <!-- ✅ Startup Sound -->
+  <audio id="startup-sound" src="assets/music/startup/startup"></audio>
 
-  <!-- Script for fade-in + audio -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.add('loaded');
 
       const startupSound = document.getElementById('startup-sound');
+
       const playStartup = () => {
         startupSound.volume = 0.6;
         startupSound.play().catch(err => {
-          console.warn('Autoplay blocked:', err);
+          console.warn('Autoplay blocked by browser:', err);
         });
+
         document.removeEventListener('click', playStartup);
         document.removeEventListener('keydown', playStartup);
       };
