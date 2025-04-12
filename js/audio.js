@@ -1,12 +1,27 @@
-window.addEventListener('DOMContentLoaded', () => {
-  const startup = document.getElementById('startup-sound');
+// js/audio.js
 
-  // Unmute and play after a short delay (attempt to bypass autoplay block)
-  setTimeout(() => {
-    startup.muted = false;
-    startup.volume = 0.5;
-    startup.play().catch(() => {
-      console.log('Startup sound autoplay was blocked. Will try again on interaction.');
+window.addEventListener('DOMContentLoaded', () => {
+  const bgMusic = document.getElementById('bg-music');
+  const audioToggle = document.getElementById('audio-toggle');
+
+  if (!bgMusic || !audioToggle) return;
+
+  // Background music only plays after interaction
+  const startMusic = () => {
+    bgMusic.volume = 0.4;
+    bgMusic.play().catch(err => {
+      console.warn('Background music autoplay blocked:', err);
     });
-  }, 500); // adjust delay if needed
+    document.removeEventListener('click', startMusic);
+    document.removeEventListener('keydown', startMusic);
+  };
+
+  document.addEventListener('click', startMusic);
+  document.addEventListener('keydown', startMusic);
+
+  // Toggle mute
+  audioToggle.addEventListener('click', () => {
+    const muted = bgMusic.muted = !bgMusic.muted;
+    audioToggle.textContent = muted ? '🔇 Audio Off' : '🔊 Audio On';
+  });
 });
