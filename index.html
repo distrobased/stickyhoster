@@ -25,13 +25,11 @@
       background: var(--bg);
       color: var(--fg);
       opacity: 0;
-      animation: fadeIn 2s forwards;
+      transition: opacity 1.5s ease-in;
     }
 
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+    body.loaded {
+      opacity: 1;
     }
 
     header {
@@ -177,14 +175,26 @@
 
   <footer>📍 Made in Love in Denmark ❤️</footer>
 
-  <!-- 🔊 Startup sound script -->
+  <!-- Startup sound (won't autoplay until user interacts) -->
+  <audio id="startup-sound" src="assets/music/musicsoft-startup-sound-269291.mp3"></audio>
+
+  <!-- Script for fade-in + audio -->
   <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const startup = new Audio('https://raw.githubusercontent.com/distrobased/stickyhoster/main/assets/music/musicsoft-startup-sound-269291.mp3');
-      startup.volume = 0.6;
-      startup.play().catch(() => {
-        console.log('Startup sound blocked by browser autoplay policy.');
-      });
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loaded');
+
+      const startupSound = document.getElementById('startup-sound');
+      const playStartup = () => {
+        startupSound.volume = 0.6;
+        startupSound.play().catch(err => {
+          console.warn('Autoplay blocked:', err);
+        });
+        document.removeEventListener('click', playStartup);
+        document.removeEventListener('keydown', playStartup);
+      };
+
+      document.addEventListener('click', playStartup);
+      document.addEventListener('keydown', playStartup);
     });
   </script>
 </body>
