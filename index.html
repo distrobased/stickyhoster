@@ -9,8 +9,8 @@
     :root {
       --bg: #fefcff;
       --fg: #1a1a1a;
-      --accent: #87ceeb;
-      --accent-hover: #ffb6c1;
+      --accent: #87ceeb; /* Sky Blue */
+      --accent-hover: #ffb6c1; /* Blush Pink */
       --section-bg: #ffffffee;
       --card-bg: #f9f9fb;
     }
@@ -25,11 +25,13 @@
       background: var(--bg);
       color: var(--fg);
       opacity: 0;
-      transition: opacity 1.2s ease-in;
+      animation: fadeIn 2s forwards;
     }
 
-    body.fade-in {
-      opacity: 1;
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
 
     header {
@@ -138,10 +140,6 @@
   </style>
 </head>
 <body>
-<audio id="bg-music" src="assets/music/background-music.mp3.mp3" loop preload="auto"></audio>
-<button id="audio-toggle" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">🔊 Audio On</button>
-<script src="js/audio.js"></script>
-
   <header>
     LinuxWorld 🐧
     <div class="penguin">🐧</div>
@@ -177,29 +175,16 @@
     </section>
   </main>
 
-  <footer>📍 Made with Love in Denmark ❤️</footer>
+  <footer>📍 Made in Love in Denmark ❤️</footer>
 
+  <!-- 🔊 Startup sound script -->
   <script>
-    window.addEventListener('load', () => {
-      document.body.classList.add('fade-in');
-
-      const startup = document.getElementById('startup-sound');
-      startup.volume = 0.5;
-
-      // Attempt to play after brief delay
-      setTimeout(() => {
-        startup.play().catch((e) => {
-          console.warn('Startup sound blocked. Waiting for interaction...');
-          // Fallback in case autoplay is blocked
-          const resumeAudio = () => {
-            startup.play();
-            document.removeEventListener('click', resumeAudio);
-            document.removeEventListener('keydown', resumeAudio);
-          };
-          document.addEventListener('click', resumeAudio);
-          document.addEventListener('keydown', resumeAudio);
-        });
-      }, 500);
+    window.addEventListener('DOMContentLoaded', () => {
+      const startup = new Audio('https://raw.githubusercontent.com/distrobased/stickyhoster/main/assets/music/musicsoft-startup-sound-269291.mp3');
+      startup.volume = 0.6;
+      startup.play().catch(() => {
+        console.log('Startup sound blocked by browser autoplay policy.');
+      });
     });
   </script>
 </body>
