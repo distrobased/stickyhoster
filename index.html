@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>LinuxWorld | Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #fdfcf7;
-    --fg: #2b2b2b;
-    --accent: #b8b08d; /* Sky Blue */
-    --accent-hover: #b8b08d; /* Blush Pink */
-  }
-</style>
+  <style>
+    :root {
+      --bg: #fefcff;
+      --fg: #1a1a1a;
+      --accent: #87ceeb; /* Sky Blue */
+      --accent-hover: #ffb6c1; /* Blush Pink */
+      --section-bg: #ffffffee;
+      --card-bg: #f9f9fb;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -23,7 +25,7 @@
       background: var(--bg);
       color: var(--fg);
       opacity: 0;
-      transition: opacity 1.5s ease-in-out;
+      transition: opacity 1.5s ease-in;
     }
 
     body.loaded {
@@ -173,21 +175,19 @@
 
   <footer>📍 Made in Love in Denmark ❤️</footer>
 
-  <!-- ✅ Startup Sound -->
-  <audio id="startup-sound" src="assets/music/startup/startup"></audio>
+  <!-- Updated startup sound path -->
+  <audio id="startup-sound" src="assets/music/startup/musicsoft-startup-sound-269291.mp3"></audio>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.add('loaded');
 
       const startupSound = document.getElementById('startup-sound');
-
       const playStartup = () => {
         startupSound.volume = 0.6;
         startupSound.play().catch(err => {
-          console.warn('Autoplay blocked by browser:', err);
+          console.warn('Autoplay blocked:', err);
         });
-
         document.removeEventListener('click', playStartup);
         document.removeEventListener('keydown', playStartup);
       };
