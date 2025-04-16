@@ -122,8 +122,10 @@
       }
 
       if (username === validUser && password === validPassword) {
-        localStorage.removeItem(WRONG_ATTEMPT_KEY); // Reset ban
-        window.location.href = "admin.html";
+        // Set the session to allow access to the admin panel
+        sessionStorage.setItem("isLoggedIn", "true");
+        localStorage.removeItem(WRONG_ATTEMPT_KEY); // Reset any lockout
+        window.location.href = "admin.html"; // Redirect to admin panel
       } else {
         document.getElementById("error-msg").textContent = "Invalid credentials.";
 
