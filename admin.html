@@ -10,61 +10,119 @@
       font-family: Arial, sans-serif;
       background: #fefcff;
       color: #1a1a1a;
+    }
+
+    header {
+      background: #87ceeb;
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
       padding: 20px;
     }
 
-    h1 {
+    .section {
+      background: #ffffffee;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    h2 {
       color: #87ceeb;
+      margin-bottom: 10px;
     }
 
     textarea {
       width: 100%;
-      height: 300px;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 12px;
-      border: 1px solid #ccc;
+      height: 200px;
       font-family: monospace;
       font-size: 1rem;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      background: #f9f9fb;
     }
 
     button {
-      background-color: #87ceeb;
+      margin-top: 10px;
+      background: #ffb6c1;
       color: white;
       border: none;
       padding: 10px 20px;
-      margin-top: 10px;
-      border-radius: 8px;
-      cursor: pointer;
       font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
     }
 
     button:hover {
-      background-color: #ffb6c1;
+      background: #87ceeb;
     }
 
-    .note {
-      font-size: 0.9rem;
-      margin-top: 10px;
+    .locked {
+      color: red;
+      text-align: center;
+      padding: 40px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h1>✏️ Admin Content Editor</h1>
-  <p>Edit the welcome section of <code>index.html</code> below:</p>
-  <textarea id="editor"></textarea>
-  <br />
-  <button onclick="saveContent()">💾 Save Changes</button>
-  <div class="note">Note: Your edits are saved to <code>localStorage</code> and appear on the homepage immediately.</div>
+  <header>🔧 LinuxWorld Admin Panel</header>
+
+  <main id="admin-content">
+    <!-- Admin editable sections -->
+    <div class="section">
+      <h2>Edit Welcome Section</h2>
+      <textarea id="section-welcome">
+<!-- Example: Welcome to LinuxWorld -->
+Explore a beautiful, open world of Linux with curated guides, distros, memes, tips, and customization help for creators and casual users alike.
+      </textarea>
+      <button onclick="saveSection('section-welcome')">Save</button>
+    </div>
+
+    <div class="section">
+      <h2>Edit Featured Pages Section</h2>
+      <textarea id="section-featured">
+<!-- Example: Featured Links HTML -->
+<ul>
+  <li><a href="linux-isos.html">💽 Linux ISOs</a></li>
+  <li><a href="software-alternatives.html">🧩 App Alternatives</a></li>
+  <li><a href="customization.html">🎨 Customization</a></li>
+</ul>
+      </textarea>
+      <button onclick="saveSection('section-featured')">Save</button>
+    </div>
+  </main>
+
+  <div id="lock-screen" class="locked" style="display:none;">
+    🔒 Access Denied. You are not logged in.
+  </div>
 
   <script>
-    const textarea = document.getElementById("editor");
-    const defaultContent = `<h2>Welcome to LinuxWorld</h2><p>Explore a beautiful, open world of Linux with curated guides, distros, memes, tips, and customization help for creators and casual users alike.</p>`;
-    textarea.value = localStorage.getItem("mainContent") || defaultContent;
+    // Function to check if the user is logged in
+    const validSession = sessionStorage.getItem("isLoggedIn");
+    
+    // If the session doesn't have "isLoggedIn" set, redirect to login page
+    if (!validSession) {
+      document.getElementById("admin-content").style.display = "none";
+      document.getElementById("lock-screen").style.display = "block";
+      setTimeout(function() {
+        window.location.href = "login.html"; // Redirect to login page after 5 seconds
+      }, 5000); // 5 seconds delay for better user experience
+    }
 
-    function saveContent() {
-      localStorage.setItem("mainContent", textarea.value);
-      alert("Content saved! Refresh index.html to see changes.");
+    function saveSection(id) {
+      const data = document.getElementById(id).value;
+      alert("Saved! (Pretend it wrote this to the homepage)");
+      console.log("Saving", id, "→", data);
     }
   </script>
 </body>
