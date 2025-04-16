@@ -7,13 +7,11 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       background: #fefcff;
-      color: #1a1a1a;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
     }
 
@@ -21,71 +19,124 @@
       background: #ffffffee;
       padding: 30px;
       border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-      width: 300px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
       text-align: center;
     }
 
+    h2 {
+      margin-bottom: 20px;
+      color: #87ceeb;
+    }
+
     input {
-      width: 100%;
+      width: 90%;
       padding: 10px;
       margin: 10px 0;
       border-radius: 8px;
       border: 1px solid #ccc;
+      font-size: 1rem;
     }
 
     button {
-      background-color: #87ceeb;
-      border: none;
+      padding: 10px 20px;
+      background: #87ceeb;
       color: white;
-      padding: 10px;
+      border: none;
       border-radius: 8px;
-      width: 100%;
       font-weight: bold;
       cursor: pointer;
     }
 
     button:hover {
-      background-color: #ffb6c1;
+      background: #ffb6c1;
     }
 
     .error {
       color: red;
       margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .blocked {
+      text-align: center;
+      color: #1a1a1a;
+    }
+
+    .blocked h1 {
+      font-size: 2rem;
+      color: #ff4d4d;
+    }
+
+    .blocked img {
+      width: 100px;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <div class="login-box">
-    <h2>🔐 Admin Login</h2>
-    <input type="text" id="username" placeholder="Username (Admin)">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
-    <div class="error" id="errorMsg"></div>
+  <div class="login-box" id="login-box">
+    <h2>Admin Login</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <br />
+    <button onclick="checkLogin()">Login</button>
+    <div class="error" id="error-msg"></div>
+  </div>
+
+  <div class="blocked" id="blocked-msg" style="display: none;">
+    <h1>Sorry You Can't Enter Right-now.</h1>
+    <p>⛔ Haha nice one trying to breach LinuxWorld.. Idiot.</p>
+    <p>We have your IP saved in our database. Enjoy the IP ban!</p>
+    <img src="assets/tux.png" alt="Tux the Penguin">
   </div>
 
   <script>
-    async function sha256(message) {
-      const msgBuffer = new TextEncoder().encode(message);
-      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-      const hashArray = Array.from(new Uint8Array(hashBuffer));
-      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    const BAN_DURATION_HOURS = 12;
+    const WRONG_ATTEMPT_KEY = "linuxworld_wrong_attempt_time";
+
+    function isBanned() {
+      const banTime = localStorage.getItem(WRONG_ATTEMPT_KEY);
+      if (!banTime) return false;
+      const now = Date.now();
+      const diff = now - parseInt(banTime);
+      return diff < BAN_DURATION_HOURS * 60 * 60 * 1000;
     }
 
-    async function login() {
-      const username = document.getElementById("username").value.trim();
+    function showBlocked() {
+      document.getElementById("login-box").style.display = "none";
+      document.getElementById("blocked-msg").style.display = "block";
+    }
+
+    function checkLogin() {
+      const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
 
-      const hash = await sha256(password);
+      const validUser = "Admin";
+      const validPassword = atob("RGFudGRtMTIzNC0xMjM="); // Dantdm1234-123
 
-      const correctUsername = "Admin";
-      const correctHash = "13a2b4a6312a4970d4ecba33e7720a183a5cbd00ed3008821dcf6d1ea0b1aa95"; // 
+      if (isBanned()) {
+        showBlocked();
+        return;
+      }
 
-      if (username === correctUsername && hash === correctHash) {
+      if (username === validUser && password === validPassword) {
+        localStorage.removeItem(WRONG_ATTEMPT_KEY); // Reset ban
         window.location.href = "admin.html";
       } else {
-        document.getElementById("errorMsg").textContent = "Invalid credentials!";
+        document.getElementById("error-msg").textContent = "Invalid credentials.";
+
+        // Fake ban on failed login
+        localStorage.setItem(WRONG_ATTEMPT_KEY, Date.now().toString());
+        showBlocked();
+        // Can't do webhook safely here!
       }
+    }
+
+    // Check on load
+    if (isBanned()) {
+      showBlocked();
     }
   </script>
 </body>
