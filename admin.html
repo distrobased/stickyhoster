@@ -3,235 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Panel - LinuxWorld</title>
+  <title>LinuxWorld Admin</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #fefcff;
-      --fg: #1a1a1a;
-      --accent: #87ceeb; /* Sky Blue */
-      --accent-hover: #ffb6c1; /* Blush Pink */
-      --section-bg: #ffffffee;
-      --card-bg: #f9f9fb;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
+    /* Your existing CSS here, for example: */
     body {
-      margin: 0;
       font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      opacity: 0;
-      transition: opacity 1.5s ease-in;
+      background-color: #fefcff;
+      color: #1a1a1a;
     }
-
-    body.loaded {
-      opacity: 1;
-    }
-
-    header {
-      background-color: var(--accent);
-      padding: 20px;
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 700;
-      color: #fff;
-      position: relative;
-    }
-
-    .penguin {
-      font-size: 2.5rem;
-      position: absolute;
-      right: 20px;
-      animation: bounce 1s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      background-color: var(--accent-hover);
-      padding: 12px 20px;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    main {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 30px;
-    }
-
-    .section {
-      background: var(--section-bg);
-      border-radius: 16px;
-      padding: 30px;
-      margin-bottom: 40px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: var(--accent);
-    }
-
-    .tags {
-      margin-top: 10px;
-      font-size: 0.9rem;
-    }
-
-    .tag {
-      display: inline-block;
-      background: var(--accent-hover);
-      color: white;
-      padding: 4px 10px;
-      border-radius: 12px;
-      margin: 4px;
-      font-weight: 600;
-    }
-
-    footer {
-      text-align: center;
-      padding: 16px;
-      background: var(--accent-hover);
-      font-weight: bold;
-      color: #fff;
-    }
+    /* More CSS styling here */
   </style>
 </head>
-<body class="loaded">
+<body>
   <header>
-    LinuxWorld Admin Panel 🐧
-    <div class="penguin">🐧</div>
+    <h1>Admin Panel</h1>
   </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="linux-isos.html">Linux ISOs</a>
-    <a href="software-alternatives.html">App Alternatives</a>
-    <a href="customization.html">Customization</a>
-    <a href="faq.html">FAQ & Myths</a>
-    <a href="memes.html">Memes</a>
-  </nav>
-
   <main>
-    <!-- Announcements Section -->
-    <section>
-      <h2>Post an Announcement</h2>
-      <form id="announcementForm">
-        <textarea id="announcementText" placeholder="Enter your announcement here" required></textarea>
-        <button type="submit">Post Announcement</button>
-      </form>
-    </section>
-
-    <section>
-      <h2>Admin Activity Log</h2>
-      <ul id="activityLog"></ul>
-    </section>
-
-    <!-- Admin Login Section -->
-    <section>
-      <h2>Admin Login</h2>
-      <form id="adminLoginForm">
-        <input type="text" id="username" placeholder="Username" required />
-        <input type="password" id="password" placeholder="Password" required />
-        <button type="submit">Login</button>
-      </form>
-      <div id="lockoutMessage" style="display: none;">
-        <p>Sorry, you can't enter right now. Please try again later.</p>
-      </div>
-    </section>
-
+    <!-- Admin content goes here -->
+    <h2>Admin Dashboard</h2>
+    <p>Welcome to the admin panel, where you can manage announcements and user activities.</p>
+    
+    <!-- Add your admin functionality here -->
+    <button onclick="logout()">Log out</button>
   </main>
 
-  <footer>📍 Made in Love in Denmark ❤️</footer>
+  <footer>
+    <p>LinuxWorld Admin - Made with ❤️ in Denmark</p>
+  </footer>
 
   <script>
-    // Admin Activity Log Function
-    function addActivity(action) {
-      const activityLog = JSON.parse(sessionStorage.getItem('adminActivityLog')) || [];
-      const timestamp = new Date().toLocaleString();
-      activityLog.push({ action, timestamp });
-      sessionStorage.setItem('adminActivityLog', JSON.stringify(activityLog));
-      
-      // Display activity log
-      const activityLogList = document.getElementById('activityLog');
-      const logItem = document.createElement('li');
-      logItem.textContent = `${timestamp} - ${action}`;
-      activityLogList.appendChild(logItem);
+    // Check if user is logged in
+    if (sessionStorage.getItem("isLoggedIn") !== "true") {
+      alert("You must log in to access the admin panel.");
+      window.location.href = "login.html"; // Redirect to the login page if not logged in
     }
 
-    // Add Activity Log Example
-    addActivity('Admin panel loaded');
-    
-    // Announcements Logic
-    document.getElementById('announcementForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      const announcementText = document.getElementById('announcementText').value;
-
-      // Save the announcement to sessionStorage for now
-      const announcements = JSON.parse(sessionStorage.getItem('announcements')) || [];
-      announcements.push(announcementText);
-      sessionStorage.setItem('announcements', JSON.stringify(announcements));
-
-      addActivity('Admin posted an announcement');
-      alert('Announcement posted!');
-    });
-
-    // Admin Login Lockout Logic
-    let failedLoginAttempts = JSON.parse(sessionStorage.getItem('failedLoginAttempts')) || 0;
-    const lockoutDuration = 3600; // Lockout time in seconds (1 hour)
-    const lockoutTime = JSON.parse(sessionStorage.getItem('lockoutTime')) || 0;
-
-    if (failedLoginAttempts >= 3 && Date.now() < lockoutTime) {
-      document.getElementById('adminLoginForm').style.display = 'none';
-      document.getElementById('lockoutMessage').style.display = 'block';
+    // Admin logout function
+    function logout() {
+      sessionStorage.removeItem("isLoggedIn"); // Clear login session
+      window.location.href = "login.html"; // Redirect to login page
     }
-
-    document.getElementById('adminLoginForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-
-      if (username === 'Admin' && password === 'Dantdm1234-123') {
-        // Successful login
-        alert('Login successful!');
-        failedLoginAttempts = 0; // Reset failed attempts after successful login
-        addActivity('Admin logged in');
-      } else {
-        // Failed login
-        failedLoginAttempts++;
-        sessionStorage.setItem('failedLoginAttempts', failedLoginAttempts);
-        if (failedLoginAttempts >= 3) {
-          sessionStorage.setItem('lockoutTime', Date.now() + lockoutDuration * 1000);
-        }
-        alert('Invalid credentials. Try again.');
-        addActivity('Admin failed login attempt');
-      }
-    });
   </script>
 </body>
 </html>
-
