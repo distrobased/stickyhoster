@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LinuxWorld Feedback</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fefcff;
+      --fg: #1a1a1a;
+      --accent: #87ceeb; /* Sky Blue */
+      --accent-hover: #ffb6c1; /* Blush Pink */
+      --section-bg: #ffffffee;
+      --card-bg: #f9f9fb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      opacity: 0;
+      transition: opacity 1.5s ease-in;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    header {
+      background-color: var(--accent);
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px;
+    }
+
+    .section {
+      background: var(--section-bg);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px;
+      background: var(--accent-hover);
+      font-weight: bold;
+      color: #fff;
+    }
+
+    textarea, select, input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background: var(--accent-hover);
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--accent);
+    }
+
+    .feedback-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .feedback-item {
+      background: var(--card-bg);
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .resolved {
+      background: #d3ffd3; /* light green */
+    }
+
+    .actions {
+      margin-top: 10px;
+    }
+
+    .actions button {
+      margin-right: 10px;
+    }
+
+    .rating {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 5px;
+    }
+
+    .rating span {
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+
+    .feedback-search {
+      margin-bottom: 20px;
+    }
+    
+    .file-upload {
+      margin-bottom: 15px;
+    }
+
+    .file-upload input {
+      display: inline-block;
+    }
+
+  </style>
+</head>
+<body class="loaded">
+  <header>
+    LinuxWorld Feedback 🐧
+  </header>
+
+  <main>
+    <!-- Feedback Submission Section -->
+    <section class="section">
+      <h2>Submit Your Feedback</h2>
+      <form id="feedbackForm">
+        <label for="category">Feedback Category</label>
+        <select id="category" required>
+          <option value="Bug Report">Bug Report</option>
+          <option value="Feature Request">Feature Request</option>
+          <option value="General Feedback">General Feedback</option>
+        </select>
+
+        <label for="feedbackText">Your Feedback</label>
+        <textarea id="feedbackText" rows="5" required placeholder="Enter your feedback here..."></textarea>
+
+        <label for="rating">Rate Your Experience</label>
+        <div class="rating">
+          <span onclick="setRating(1)">⭐</span>
+          <span onclick="setRating(2)">⭐⭐</span>
+          <span onclick="setRating(3)">⭐⭐⭐</span>
+          <span onclick="setRating(4)">⭐⭐⭐⭐</span>
+          <span onclick="setRating(5)">⭐⭐⭐⭐⭐</span>
+        </div>
+
+        <input type="hidden" id="ratingValue" value="0">
+
+        <div class="file-upload">
+          <label for="file">Upload a File (Optional)</label>
+          <input type="file" id="file">
+        </div>
+
+        <button type="submit">Submit Feedback</button>
+      </form>
+    </section>
+
+    <!-- Search Feedback Section -->
+    <section class="section">
+      <div class="feedback-search">
+        <input type="text" id="search" placeholder="Search feedback..." onkeyup="searchFeedback()">
+      </div>
+    </section>
+
+    <!-- View Submitted Feedback Section -->
+    <section class="section">
+      <h2>Submitted Feedback</h2>
+      <ul id="feedbackList" class="feedback-list">
+        <!-- Feedback entries will be displayed here -->
+      </ul>
+    </section>
+
+    <!-- Pagination Section -->
+    <section class="section">
+      <div id="pagination"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    LinuxWorld - Made with ❤️ in Denmark
+  </footer>
+
+  <script>
+    let currentPage = 1;
+    const feedbackPerPage = 5;
+
+    function getFeedback() {
+      return JSON.parse(sessionStorage.getItem('feedback')) || [];
+    }
+
+    function saveFeedback(feedback) {
+      const allFeedback = getFeedback();
+      allFeedback.push(feedback);
+      sessionStorage.setItem('feedback', JSON.stringify(allFeedback));
+    }
+
+    function displayFeedback() {
+      const allFeedback = getFeedback();
+      const startIndex = (currentPage - 1) * feedbackPerPage;
+      const currentFeedback = allFeedback.slice(startIndex, startIndex + feedbackPerPage);
+      
+      const feedbackList = document.getElementById('feedbackList');
+      feedbackList.innerHTML = '';
+
+      currentFeedback.forEach((feedback, index) => {
+        const li = document.createElement('li');
+        li.classList.add('feedback-item');
+        if (feedback.resolved) {
+          li.classList.add('resolved');
+        }
+
+        li.innerHTML = `
+          <strong>${feedback.category}</strong>
+          <p>${feedback.text}</p>
+          <div>Rating: ${'⭐'.repeat(feedback.rating)}</div>
+          ${feedback.file ? `<div>File: <a href="${feedback.file}" target="_blank">View File</a></div>` : ''}
+          <div class="actions">
+            <button onclick="markResolved(${startIndex + index})">${feedback.resolved ? 'Resolved' : 'Mark as Resolved'}</button>
+          </div>
+        `;
+        feedbackList.appendChild(li);
+      });
+
+      displayPagination(allFeedback.length);
+    }
+
+    function markResolved(index) {
+      const allFeedback = getFeedback();
+      allFeedback[index].resolved = true;
+      sessionStorage.setItem('feedback', JSON.stringify(allFeedback));
+      displayFeedback();
+    }
+
+    function displayPagination(totalFeedbackCount) {
+      const totalPages = Math.ceil(totalFeedbackCount / feedbackPerPage);
+      const paginationDiv = document.getElementById('pagination');
+      paginationDiv.innerHTML = '';
+
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.onclick = function() {
+          currentPage = i;
+          displayFeedback();
+        };
+        paginationDiv.appendChild(button);
+      }
+    }
+
+    function searchFeedback() {
+      const query = document.getElementById('search').value.toLowerCase();
+      const allFeedback = getFeedback();
+      const filteredFeedback = allFeedback.filter(feedback => 
+        feedback.text.toLowerCase().includes(query) || 
+        feedback.category.toLowerCase().includes(query)
+      );
+      displayFeedbackList(filteredFeedback);
+    }
+
+    function displayFeedbackList(filteredFeedback) {
+      const feedbackList = document.getElementById('feedbackList');
+      feedbackList.innerHTML = '';
+      filteredFeedback.forEach(feedback => {
+        const li = document.createElement('li');
+        li.classList.add('feedback-item');
+        if (feedback.resolved) {
+          li.classList.add('resolved');
+        }
+
+        li.innerHTML = `
+          <strong>${feedback.category}</strong>
+          <p>${feedback.text}</p>
+          <div>Rating: ${'⭐'.repeat(feedback.rating)}</div>
+          ${feedback.file ? `<div>File: <a href="${feedback.file}" target="_blank">View File</a></div>` : ''}
+          <div class="actions">
+            <button onclick="markResolved(${feedback.id})">${feedback.resolved ? 'Resolved' : 'Mark as Resolved'}</button>
+          </div>
+        `;
+        feedbackList.appendChild(li);
+      });
+    }
+
+    function setRating(rating) {
+      document.getElementById('ratingValue').value = rating;
+    }
+
+    feedbackForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const category = document.getElementById('category').value;
+      const text = document.getElementById('feedbackText').value.trim();
+      const rating = document.getElementById('ratingValue').value;
+      const file = document.getElementById('file').files[0] ? URL.createObjectURL(document.getElementById('file').files[0]) : null;
+
+      if (text) {
+        const feedback = {
+          category: category,
+          text: text,
+          rating: rating,
+          file: file,
+          resolved: false,
+        };
+        saveFeedback(feedback);
+        displayFeedback();
+      }
+    });
+
+    displayFeedback();
+  </script>
+</body>
+</html>
