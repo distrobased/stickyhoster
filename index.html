@@ -9,10 +9,14 @@
     :root {
       --bg: #fefcff;
       --fg: #1a1a1a;
-      --accent: #87ceeb;
-      --accent-hover: #ffb6c1;
+      --accent: #87ceeb; /* Sky Blue */
+      --accent-hover: #ffb6c1; /* Blush Pink */
       --section-bg: #ffffffee;
       --card-bg: #f9f9fb;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -90,25 +94,6 @@
       color: var(--accent);
     }
 
-    ul.links {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    ul.links li {
-      margin: 10px 0;
-    }
-
-    ul.links li a {
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    ul.links li a:hover {
-      color: var(--accent-hover);
-    }
-
     .tags {
       margin-top: 10px;
       font-size: 0.9rem;
@@ -133,7 +118,7 @@
     }
   </style>
 </head>
-<body>
+<body class="loaded">
   <header>
     LinuxWorld 🐧
     <div class="penguin">🐧</div>
@@ -148,14 +133,22 @@
     <a href="customization.html">Customization</a>
     <a href="faq.html">FAQ & Myths</a>
     <a href="memes.html">Memes</a>
-    <a href="login.html">Admin</a>
   </nav>
 
   <main>
-    <!-- Editable Section from Admin Panel -->
-    <section class="section" id="admin-content"></section>
+    <!-- Announcements Section -->
+    <section>
+      <h2>Latest Announcements</h2>
+      <div id="announcementList">
+        <!-- Announcements will be displayed here -->
+      </div>
+    </section>
 
-    <!-- Featured Pages -->
+    <section>
+      <h2>Welcome to LinuxWorld</h2>
+      <p>Explore a beautiful, open world of Linux with curated guides, distros, memes, tips, and customization help for creators and casual users alike.</p>
+    </section>
+
     <section class="section">
       <h2>Featured Pages</h2>
       <ul class="links">
@@ -169,35 +162,55 @@
     </section>
   </main>
 
-  <footer>📍 Made with Love in Denmark ❤️</footer>
-
-  <audio id="startup-sound" src="assets/music/startup/musicsoft-startup-sound-269291.mp3"></audio>
+  <footer>📍 Made in Love in Denmark ❤️</footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      document.body.classList.add('loaded');
+    // Announcements Logic
+    const announcements = JSON.parse(sessionStorage.getItem('announcements')) || [];
+    const announcementList = document.getElementById('announcementList');
+    if (announcements.length > 0) {
+      announcements.forEach(announcement => {
+        const announcementDiv = document.createElement('div');
+        announcementDiv.classList.add('announcement');
+        announcementDiv.textContent = announcement;
+        announcementList.appendChild(announcementDiv);
+      });
+    }
 
-      // Load startup sound
-      const startupSound = document.getElementById('startup-sound');
-      const playStartup = () => {
-        startupSound.volume = 0.6;
-        startupSound.play().catch(err => {
-          console.warn('Autoplay blocked:', err);
-        });
-        document.removeEventListener('click', playStartup);
-        document.removeEventListener('keydown', playStartup);
-      };
-      document.addEventListener('click', playStartup);
-      document.addEventListener('keydown', playStartup);
+    // Admin Activity Log Logic
+    function addActivity(action) {
+      const activityLog = JSON.parse(sessionStorage.getItem('adminActivityLog')) || [];
+      const timestamp = new Date().toLocaleString();
+      activityLog.push({ action, timestamp });
+      sessionStorage.setItem('adminActivityLog', JSON.stringify(activityLog));
+    }
 
-      // Load admin editable content
-      const defaultContent = `
-        <h2>Welcome to LinuxWorld</h2>
-        <p>Explore a beautiful, open world of Linux with curated guides, distros, memes, tips, and customization help for creators and casual users alike.</p>
-      `;
-      const savedContent = localStorage.getItem("mainContent") || defaultContent;
-      document.getElementById("admin-content").innerHTML = savedContent;
-    });
+    // Admin Lockout Logic
+    let failedLoginAttempts = JSON.parse(sessionStorage.getItem('failedLoginAttempts')) || 0;
+    const lockoutDuration = 3600; // Lockout time in seconds (1 hour)
+    const lockoutTime = JSON.parse(sessionStorage.getItem('lockoutTime')) || 0;
+
+    if (failedLoginAttempts >= 3 && Date.now() < lockoutTime) {
+      alert('You have been locked out for too many failed login attempts. Please try again later.');
+      // Redirect to the lockout page (optional)
+      window.location.href = "lockout.html";
+    }
+
+    // Simulate failed login attempts to test lockout
+    function simulateFailedLogin() {
+      failedLoginAttempts++;
+      sessionStorage.setItem('failedLoginAttempts', failedLoginAttempts);
+      if (failedLoginAttempts >= 3) {
+        sessionStorage.setItem('lockoutTime', Date.now() + lockoutDuration * 1000);
+        alert('Too many failed login attempts. You are locked out for 1 hour.');
+        // Optionally log this action in admin activity log
+        addActivity('Failed login attempt (lockout triggered)');
+      }
+    }
+
+    // Simulate a failed login
+    // simulateFailedLogin(); // Uncomment to test lockout functionality
+
   </script>
 </body>
 </html>
