@@ -135,6 +135,9 @@
   </div>
 
   <script>
+    // Simulated admin check
+    const adminUserId = 'admin123'; // Admin user ID (this can be dynamically set)
+
     // Add Announcement
     function addAnnouncement() {
       const title = document.getElementById("announcement-title").value;
@@ -177,7 +180,7 @@
       });
     }
 
-    // Load Connected Users (Simulated Data for Now)
+    // Load Connected Users (Simulated Real Device Data)
     function loadConnectedUsers() {
       const users = JSON.parse(localStorage.getItem("connectedUsers")) || [];
 
@@ -186,6 +189,10 @@
 
       users.forEach(function(user) {
         const li = document.createElement("li");
+
+        // Skip admin user
+        if (user.id === adminUserId) return;
+
         li.innerHTML = `${user.username} <button class="kick-btn" onclick="kickUser('${user.id}')">Kick</button>`;
         userList.appendChild(li);
       });
@@ -194,6 +201,12 @@
     // Kick User
     function kickUser(userId) {
       const users = JSON.parse(localStorage.getItem("connectedUsers")) || [];
+
+      // Skip kicking the admin user
+      if (userId === adminUserId) {
+        alert("You cannot kick yourself (admin).");
+        return;
+      }
 
       // Find the user and remove them
       const updatedUsers = users.filter(function(user) {
@@ -208,7 +221,7 @@
       window.location.href = "lockout.html";
     }
 
-    // Simulate User Data and Set up Example
+    // Simulate Real Device (Tracking with IP or Device ID)
     function simulateUsers() {
       const users = [
         { id: "user123", username: "Alice" },
@@ -216,7 +229,7 @@
         { id: "user789", username: "Charlie" }
       ];
 
-      // Save to localStorage
+      // Save to localStorage (This can be done server-side in a real-world scenario)
       localStorage.setItem("connectedUsers", JSON.stringify(users));
     }
 
@@ -228,10 +241,6 @@
       loadAnnouncements();
       loadConnectedUsers();
     };
-  </script>
-</body>
-</html>
-
   </script>
 </body>
 </html>
