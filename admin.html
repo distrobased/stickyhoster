@@ -6,45 +6,225 @@
   <title>LinuxWorld Admin</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    /* Your existing CSS here, for example: */
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #fefcff;
-      color: #1a1a1a;
+    :root {
+      --bg: #fefcff;
+      --fg: #1a1a1a;
+      --accent: #87ceeb; /* Sky Blue */
+      --accent-hover: #ffb6c1; /* Blush Pink */
+      --section-bg: #ffffffee;
+      --card-bg: #f9f9fb;
     }
-    /* More CSS styling here */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      opacity: 0;
+      transition: opacity 1.5s ease-in;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    header {
+      background-color: var(--accent);
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px;
+    }
+
+    .section {
+      background: var(--section-bg);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px;
+      background: var(--accent-hover);
+      font-weight: bold;
+      color: #fff;
+    }
+
+    ul {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    ul li {
+      margin: 10px 0;
+    }
+
+    ul li button {
+      background: var(--accent-hover);
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    ul li button:hover {
+      background: var(--accent);
+    }
   </style>
 </head>
-<body>
+<body class="loaded">
   <header>
-    <h1>Admin Panel</h1>
+    LinuxWorld Admin 🐧
   </header>
 
   <main>
-    <!-- Admin content goes here -->
-    <h2>Admin Dashboard</h2>
-    <p>Welcome to the admin panel, where you can manage announcements and user activities.</p>
-    
-    <!-- Add your admin functionality here -->
+    <!-- Announcement Management Section -->
+    <section class="section">
+      <h2>Manage Announcements</h2>
+      <form id="announcementForm">
+        <textarea id="announcementText" rows="4" style="width: 100%;" placeholder="Enter announcement text..."></textarea>
+        <button type="submit">Add Announcement</button>
+      </form>
+      <h3>Current Announcements</h3>
+      <ul id="announcementList">
+        <!-- Announcements will be listed here -->
+      </ul>
+    </section>
+
+    <!-- User Management Section -->
+    <section class="section">
+      <h2>Active Users</h2>
+      <p>Currently active users on the platform:</p>
+      <ul id="activeUserList">
+        <!-- Active users will be displayed here -->
+      </ul>
+      <h3>Kick a User</h3>
+      <select id="userSelect">
+        <!-- User select list populated here -->
+      </select>
+      <button onclick="kickUser()">Kick User</button>
+    </section>
+
+    <!-- Feedback Dashboard -->
+    <section class="section">
+      <h2>User Feedback</h2>
+      <ul id="feedbackList">
+        <!-- Feedback entries will be listed here -->
+      </ul>
+    </section>
+
+    <!-- Logout -->
     <button onclick="logout()">Log out</button>
   </main>
 
   <footer>
-    <p>LinuxWorld Admin - Made with ❤️ in Denmark</p>
+    LinuxWorld Admin - Made with ❤️ in Denmark
   </footer>
 
   <script>
-    // Check if user is logged in
+    // Check if the user is logged in
     if (sessionStorage.getItem("isLoggedIn") !== "true") {
-      alert("You must log in to access the admin panel.");
-      window.location.href = "login.html"; // Redirect to the login page if not logged in
+      window.location.href = "login.html"; // Redirect to login page if not logged in
     }
 
-    // Admin logout function
-    function logout() {
-      sessionStorage.removeItem("isLoggedIn"); // Clear login session
-      window.location.href = "login.html"; // Redirect to login page
+    // Function to add a new announcement
+    const announcementForm = document.getElementById('announcementForm');
+    const announcementText = document.getElementById('announcementText');
+    const announcementList = document.getElementById('announcementList');
+
+    announcementForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const newAnnouncement = announcementText.value.trim();
+      if (newAnnouncement) {
+        let announcements = JSON.parse(sessionStorage.getItem('announcements')) || [];
+        announcements.push(newAnnouncement);
+        sessionStorage.setItem('announcements', JSON.stringify(announcements));
+        displayAnnouncements();
+        announcementText.value = ''; // Clear the text area
+      }
+    });
+
+    // Display all announcements
+    function displayAnnouncements() {
+      const announcements = JSON.parse(sessionStorage.getItem('announcements')) || [];
+      announcementList.innerHTML = '';
+      announcements.forEach(announcement => {
+        const li = document.createElement('li');
+        li.textContent = announcement;
+        announcementList.appendChild(li);
+      });
     }
+
+    // Function to simulate a user being kicked
+    function kickUser() {
+      const selectedUser = document.getElementById('userSelect').value;
+      if (selectedUser) {
+        alert(`User ${selectedUser} has been kicked.`);
+        addActivity(`User ${selectedUser} was kicked.`);
+      }
+    }
+
+    // Admin Activity Log Management
+    function addActivity(action) {
+      const activityLog = JSON.parse(sessionStorage.getItem('adminActivityLog')) || [];
+      const timestamp = new Date().toLocaleString();
+      activityLog.push({ action, timestamp });
+      sessionStorage.setItem('adminActivityLog', JSON.stringify(activityLog));
+    }
+
+    // Display activity log
+    function displayActivityLog() {
+      const activityLog = JSON.parse(sessionStorage.getItem('adminActivityLog')) || [];
+      const activityLogList = document.getElementById('activityLogList');
+      activityLogList.innerHTML = '';
+      activityLog.forEach(log => {
+        const li = document.createElement('li');
+        li.textContent = `${log.timestamp}: ${log.action}`;
+        activityLogList.appendChild(li);
+      });
+    }
+
+    // User Feedback
+    function displayFeedback() {
+      const feedback = JSON.parse(sessionStorage.getItem('userFeedback')) || [];
+      const feedbackList = document.getElementById('feedbackList');
+      feedbackList.innerHTML = '';
+      feedback.forEach(feedbackItem => {
+        const li = document.createElement('li');
+        li.textContent = `${feedbackItem.timestamp}: ${feedbackItem.feedback}`;
+        feedbackList.appendChild(li);
+      });
+    }
+
+    // Logout function
+    function logout() {
+      sessionStorage.removeItem('isLoggedIn');
+      window.location.href = "login.html";
+    }
+
+    // Initialize everything
+    displayAnnouncements();
+    displayActivityLog();
+    displayFeedback();
   </script>
 </body>
 </html>
