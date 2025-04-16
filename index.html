@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LinuxWorld | Home</title>
+  <title>LinuxWorld</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -42,36 +42,16 @@
       position: relative;
     }
 
-    .penguin {
-      font-size: 2.5rem;
+    .login-link {
       position: absolute;
+      top: 20px;
       right: 20px;
-      animation: bounce 1s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      background-color: var(--accent-hover);
-      padding: 12px 20px;
-    }
-
-    nav a {
-      color: #fff;
+      font-size: 1.2rem;
+      color: white;
       text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
+      background-color: var(--accent-hover);
+      padding: 10px;
+      border-radius: 5px;
     }
 
     main {
@@ -94,21 +74,6 @@
       color: var(--accent);
     }
 
-    .tags {
-      margin-top: 10px;
-      font-size: 0.9rem;
-    }
-
-    .tag {
-      display: inline-block;
-      background: var(--accent-hover);
-      color: white;
-      padding: 4px 10px;
-      border-radius: 12px;
-      margin: 4px;
-      font-weight: 600;
-    }
-
     footer {
       text-align: center;
       padding: 16px;
@@ -116,101 +81,247 @@
       font-weight: bold;
       color: #fff;
     }
+
+    textarea, select, input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background: var(--accent-hover);
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--accent);
+    }
+
+    .feedback-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .feedback-item {
+      background: var(--card-bg);
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .resolved {
+      background: #d3ffd3; /* light green */
+    }
+
+    .actions {
+      margin-top: 10px;
+    }
+
+    .actions button {
+      margin-right: 10px;
+    }
+
+    .rating {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 5px;
+    }
+
+    .rating span {
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+
+    .feedback-search {
+      margin-bottom: 20px;
+    }
+
+    .file-upload {
+      margin-bottom: 15px;
+    }
+
+    .file-upload input {
+      display: inline-block;
+    }
   </style>
 </head>
 <body class="loaded">
   <header>
     LinuxWorld 🐧
-    <div class="penguin">🐧</div>
+    <a href="login.html" class="login-link">Login</a>
   </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="linux-isos.html">Linux ISOs</a>
-    <a href="software-alternatives.html">App Alternatives</a>
-    <a href="customization.html">Customization</a>
-    <a href="faq.html">FAQ & Myths</a>
-    <a href="memes.html">Memes</a>
-  </nav>
-
   <main>
+    <!-- Link to other pages -->
+    <section class="section">
+      <h2>Explore LinuxWorld</h2>
+      <p>Welcome to LinuxWorld! Explore the world of Linux through guides, tools, memes, distros, and more.</p>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="linux-isos.html">Linux ISOs</a></li>
+        <li><a href="software-alternatives.html">Software Alternatives</a></li>
+        <li><a href="customization.html">Customization</a></li>
+        <li><a href="faq.html">FAQ & Myths</a></li>
+        <li><a href="memes.html">Memes</a></li>
+        <li><a href="404.html">Easter Egg</a></li>
+      </ul>
+    </section>
+
     <!-- Announcements Section -->
-    <section>
+    <section class="section" id="announcements">
       <h2>Latest Announcements</h2>
       <div id="announcementList">
         <!-- Announcements will be displayed here -->
+        <p>No announcements yet.</p>
       </div>
     </section>
 
-    <section>
-      <h2>Welcome to LinuxWorld</h2>
-      <p>Explore a beautiful, open world of Linux with curated guides, distros, memes, tips, and customization help for creators and casual users alike.</p>
+    <!-- Feedback Section -->
+    <section class="section">
+      <h2>Submit Your Feedback</h2>
+      <form id="feedbackForm">
+        <label for="category">Feedback Category</label>
+        <select id="category" required>
+          <option value="Bug Report">Bug Report</option>
+          <option value="Feature Request">Feature Request</option>
+          <option value="General Feedback">General Feedback</option>
+        </select>
+
+        <label for="feedbackText">Your Feedback</label>
+        <textarea id="feedbackText" rows="5" required placeholder="Enter your feedback here..."></textarea>
+
+        <label for="rating">Rate Your Experience</label>
+        <div class="rating">
+          <span onclick="setRating(1)">⭐</span>
+          <span onclick="setRating(2)">⭐⭐</span>
+          <span onclick="setRating(3)">⭐⭐⭐</span>
+          <span onclick="setRating(4)">⭐⭐⭐⭐</span>
+          <span onclick="setRating(5)">⭐⭐⭐⭐⭐</span>
+        </div>
+
+        <input type="hidden" id="ratingValue" value="0">
+
+        <div class="file-upload">
+          <label for="file">Upload a File (Optional)</label>
+          <input type="file" id="file">
+        </div>
+
+        <button type="submit">Submit Feedback</button>
+      </form>
     </section>
 
+    <!-- View Submitted Feedback Section -->
     <section class="section">
-      <h2>Featured Pages</h2>
-      <ul class="links">
-        <li><a href="linux-isos.html">💽 Linux ISOs</a> <span class="tags"><span class="tag">Downloads</span> <span class="tag">Beginner</span></span></li>
-        <li><a href="software-alternatives.html">🧩 App Alternatives</a> <span class="tags"><span class="tag">Productivity</span> <span class="tag">Open Source</span></span></li>
-        <li><a href="customization.html">🎨 Customization</a> <span class="tags"><span class="tag">Themes</span> <span class="tag">Tweaks</span></span></li>
-        <li><a href="faq.html">❓ FAQ / Myths</a> <span class="tags"><span class="tag">Help</span> <span class="tag">Newbies</span></span></li>
-        <li><a href="memes.html">🤣 Memes</a> <span class="tags"><span class="tag">Fun</span> <span class="tag">Community</span></span></li>
-        <li><a href="404.html">🚫 404 Easter Egg</a> <span class="tags"><span class="tag">Error</span> <span class="tag">Humor</span></span></li>
+      <h2>Submitted Feedback</h2>
+      <ul id="feedbackList" class="feedback-list">
+        <!-- Feedback entries will be displayed here -->
       </ul>
     </section>
+
+    <!-- Admin Activity Logs Section -->
+    <section class="section">
+      <h2>Admin Activity Logs</h2>
+      <div id="activityLogs">
+        <!-- Admin activity logs will be displayed here -->
+        <p>No activities yet.</p>
+      </div>
+    </section>
+
   </main>
 
-  <footer>📍 Made in Love in Denmark ❤️</footer>
+  <footer>
+    LinuxWorld - Made with ❤️ in Denmark
+  </footer>
 
   <script>
-    // Announcements Logic
-    const announcements = JSON.parse(sessionStorage.getItem('announcements')) || [];
-    const announcementList = document.getElementById('announcementList');
-    if (announcements.length > 0) {
-      announcements.forEach(announcement => {
-        const announcementDiv = document.createElement('div');
-        announcementDiv.classList.add('announcement');
-        announcementDiv.textContent = announcement;
-        announcementList.appendChild(announcementDiv);
+    let currentPage = 1;
+    const feedbackPerPage = 5;
+
+    // Announcements Handling
+    function addAnnouncement(message) {
+      const announcementList = document.getElementById('announcementList');
+      const newAnnouncement = document.createElement('p');
+      newAnnouncement.textContent = message;
+      announcementList.appendChild(newAnnouncement);
+    }
+
+    addAnnouncement('LinuxWorld has just launched! Check out our new features and submit your feedback.');
+
+    // Feedback Handling
+    function getFeedback() {
+      return JSON.parse(sessionStorage.getItem('feedback')) || [];
+    }
+
+    function saveFeedback(feedback) {
+      const allFeedback = getFeedback();
+      allFeedback.push(feedback);
+      sessionStorage.setItem('feedback', JSON.stringify(allFeedback));
+    }
+
+    function displayFeedback() {
+      const allFeedback = getFeedback();
+      const startIndex = (currentPage - 1) * feedbackPerPage;
+      const currentFeedback = allFeedback.slice(startIndex, startIndex + feedbackPerPage);
+      
+      const feedbackList = document.getElementById('feedbackList');
+      feedbackList.innerHTML = '';
+
+      currentFeedback.forEach((feedback, index) => {
+        const li = document.createElement('li');
+        li.classList.add('feedback-item');
+        if (feedback.resolved) {
+          li.classList.add('resolved');
+        }
+
+        li.innerHTML = `
+          <strong>${feedback.category}</strong>
+          <p>${feedback.text}</p>
+          <div>Rating: ${'⭐'.repeat(feedback.rating)}</div>
+          ${feedback.file ? `<div>File: <a href="${feedback.file}" target="_blank">View File</a></div>` : ''}
+          <div class="actions">
+            <button onclick="markResolved(${startIndex + index})">${feedback.resolved ? 'Resolved' : 'Mark as Resolved'}</button>
+          </div>
+        `;
+        feedbackList.appendChild(li);
       });
+
+      displayPagination(allFeedback.length);
     }
 
-    // Admin Activity Log Logic
-    function addActivity(action) {
-      const activityLog = JSON.parse(sessionStorage.getItem('adminActivityLog')) || [];
-      const timestamp = new Date().toLocaleString();
-      activityLog.push({ action, timestamp });
-      sessionStorage.setItem('adminActivityLog', JSON.stringify(activityLog));
+    function markResolved(index) {
+      const allFeedback = getFeedback();
+      allFeedback[index].resolved = true;
+      sessionStorage.setItem('feedback', JSON.stringify(allFeedback));
+      displayFeedback();
     }
 
-    // Admin Lockout Logic
-    let failedLoginAttempts = JSON.parse(sessionStorage.getItem('failedLoginAttempts')) || 0;
-    const lockoutDuration = 3600; // Lockout time in seconds (1 hour)
-    const lockoutTime = JSON.parse(sessionStorage.getItem('lockoutTime')) || 0;
+    function displayPagination(totalFeedbackCount) {
+      const totalPages = Math.ceil(totalFeedbackCount / feedbackPerPage);
+      const paginationDiv = document.getElementById('pagination');
+      paginationDiv.innerHTML = '';
 
-    if (failedLoginAttempts >= 3 && Date.now() < lockoutTime) {
-      alert('You have been locked out for too many failed login attempts. Please try again later.');
-      // Redirect to the lockout page (optional)
-      window.location.href = "lockout.html";
-    }
-
-    // Simulate failed login attempts to test lockout
-    function simulateFailedLogin() {
-      failedLoginAttempts++;
-      sessionStorage.setItem('failedLoginAttempts', failedLoginAttempts);
-      if (failedLoginAttempts >= 3) {
-        sessionStorage.setItem('lockoutTime', Date.now() + lockoutDuration * 1000);
-        alert('Too many failed login attempts. You are locked out for 1 hour.');
-        // Optionally log this action in admin activity log
-        addActivity('Failed login attempt (lockout triggered)');
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        pageButton.onclick = () => {
+          currentPage = i;
+          displayFeedback();
+        };
+        paginationDiv.appendChild(pageButton);
       }
     }
 
-    // Simulate a failed login
-    // simulateFailedLogin(); // Uncomment to test lockout functionality
-
+    // Initialize
+    displayFeedback();
   </script>
 </body>
 </html>
