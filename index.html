@@ -9,14 +9,10 @@
     :root {
       --bg: #fefcff;
       --fg: #1a1a1a;
-      --accent: #87ceeb; /* Sky Blue */
-      --accent-hover: #ffb6c1; /* Blush Pink */
+      --accent: #87ceeb;
+      --accent-hover: #ffb6c1;
       --section-bg: #ffffffee;
       --card-bg: #f9f9fb;
-    }
-
-    * {
-      box-sizing: border-box;
     }
 
     body {
@@ -152,14 +148,14 @@
     <a href="customization.html">Customization</a>
     <a href="faq.html">FAQ & Myths</a>
     <a href="memes.html">Memes</a>
+    <a href="login.html">Admin</a>
   </nav>
 
   <main>
-    <section class="section">
-      <h2>Welcome to LinuxWorld</h2>
-      <p>Explore a beautiful, open world of Linux with curated guides, distros, memes, tips, and customization help for creators and casual users alike.</p>
-    </section>
+    <!-- Editable Section from Admin Panel -->
+    <section class="section" id="admin-content"></section>
 
+    <!-- Featured Pages -->
     <section class="section">
       <h2>Featured Pages</h2>
       <ul class="links">
@@ -173,15 +169,15 @@
     </section>
   </main>
 
-  <footer>📍 Made in Love in Denmark ❤️</footer>
+  <footer>📍 Made with Love in Denmark ❤️</footer>
 
-  <!-- Updated startup sound path -->
   <audio id="startup-sound" src="assets/music/startup/musicsoft-startup-sound-269291.mp3"></audio>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.add('loaded');
 
+      // Load startup sound
       const startupSound = document.getElementById('startup-sound');
       const playStartup = () => {
         startupSound.volume = 0.6;
@@ -191,9 +187,16 @@
         document.removeEventListener('click', playStartup);
         document.removeEventListener('keydown', playStartup);
       };
-
       document.addEventListener('click', playStartup);
       document.addEventListener('keydown', playStartup);
+
+      // Load admin editable content
+      const defaultContent = `
+        <h2>Welcome to LinuxWorld</h2>
+        <p>Explore a beautiful, open world of Linux with curated guides, distros, memes, tips, and customization help for creators and casual users alike.</p>
+      `;
+      const savedContent = localStorage.getItem("mainContent") || defaultContent;
+      document.getElementById("admin-content").innerHTML = savedContent;
     });
   </script>
 </body>
