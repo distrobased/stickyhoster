@@ -3,244 +3,235 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Panel | LinuxWorld</title>
+  <title>Admin Panel - LinuxWorld</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #fefcff;
+      --fg: #1a1a1a;
+      --accent: #87ceeb; /* Sky Blue */
+      --accent-hover: #ffb6c1; /* Blush Pink */
+      --section-bg: #ffffffee;
+      --card-bg: #f9f9fb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fefcff;
-      color: #1a1a1a;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      opacity: 0;
+      transition: opacity 1.5s ease-in;
+    }
+
+    body.loaded {
+      opacity: 1;
     }
 
     header {
-      background: #87ceeb;
+      background-color: var(--accent);
       padding: 20px;
       text-align: center;
       font-size: 2rem;
       font-weight: 700;
-      color: white;
+      color: #fff;
+      position: relative;
+    }
+
+    .penguin {
+      font-size: 2.5rem;
+      position: absolute;
+      right: 20px;
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      background-color: var(--accent-hover);
+      padding: 12px 20px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     main {
       max-width: 1000px;
       margin: 40px auto;
-      padding: 20px;
+      padding: 30px;
     }
 
     .section {
-      background: #ffffffee;
+      background: var(--section-bg);
       border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 30px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     }
 
     h2 {
-      color: #87ceeb;
-      margin-bottom: 10px;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--accent);
     }
 
-    textarea, input {
-      width: 100%;
-      padding: 10px;
-      font-size: 1rem;
-      margin-bottom: 10px;
-      border-radius: 12px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      background: #ffb6c1;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-weight: bold;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #87ceeb;
-    }
-
-    .user-list {
-      margin-top: 20px;
-    }
-
-    .user-list ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-
-    .user-list li {
-      background: #f9f9fb;
-      padding: 10px;
-      margin: 5px 0;
-      border-radius: 8px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .locked {
-      color: red;
-      text-align: center;
-      padding: 40px;
-      font-weight: bold;
-    }
-
-    .kick-btn {
-      background: #ff4d4d;
-      color: white;
-      border: none;
-      padding: 6px 12px;
+    .tags {
+      margin-top: 10px;
       font-size: 0.9rem;
-      border-radius: 8px;
-      cursor: pointer;
     }
 
-    .kick-btn:hover {
-      background: #e60000;
+    .tag {
+      display: inline-block;
+      background: var(--accent-hover);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 12px;
+      margin: 4px;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px;
+      background: var(--accent-hover);
+      font-weight: bold;
+      color: #fff;
     }
   </style>
 </head>
-<body>
-  <header>🔧 LinuxWorld Admin Panel</header>
+<body class="loaded">
+  <header>
+    LinuxWorld Admin Panel 🐧
+    <div class="penguin">🐧</div>
+  </header>
 
-  <main id="admin-content">
-    <!-- Add Announcement Section -->
-    <div class="section">
-      <h2>Add Announcement</h2>
-      <input type="text" id="announcement-title" placeholder="Announcement Title">
-      <textarea id="announcement-message" placeholder="Announcement Message"></textarea>
-      <button onclick="addAnnouncement()">Add Announcement</button>
-    </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="linux-isos.html">Linux ISOs</a>
+    <a href="software-alternatives.html">App Alternatives</a>
+    <a href="customization.html">Customization</a>
+    <a href="faq.html">FAQ & Myths</a>
+    <a href="memes.html">Memes</a>
+  </nav>
 
-    <!-- Display Announcements Section -->
-    <div class="section">
-      <h2>Announcements</h2>
-      <div id="announcement-list"></div>
-    </div>
+  <main>
+    <!-- Announcements Section -->
+    <section>
+      <h2>Post an Announcement</h2>
+      <form id="announcementForm">
+        <textarea id="announcementText" placeholder="Enter your announcement here" required></textarea>
+        <button type="submit">Post Announcement</button>
+      </form>
+    </section>
 
-    <!-- Connected Users Section -->
-    <div class="section">
-      <h2>Connected Users</h2>
-      <div class="user-list" id="user-list">
-        <!-- User list will be populated here -->
+    <section>
+      <h2>Admin Activity Log</h2>
+      <ul id="activityLog"></ul>
+    </section>
+
+    <!-- Admin Login Section -->
+    <section>
+      <h2>Admin Login</h2>
+      <form id="adminLoginForm">
+        <input type="text" id="username" placeholder="Username" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+      <div id="lockoutMessage" style="display: none;">
+        <p>Sorry, you can't enter right now. Please try again later.</p>
       </div>
-    </div>
+    </section>
+
   </main>
 
-  <div id="lock-screen" class="locked" style="display:none;">
-    🔒 Access Denied. You are not logged in.
-  </div>
+  <footer>📍 Made in Love in Denmark ❤️</footer>
 
   <script>
-    // Simulated admin check
-    const adminUserId = 'admin123'; // Admin user ID (this can be dynamically set)
+    // Admin Activity Log Function
+    function addActivity(action) {
+      const activityLog = JSON.parse(sessionStorage.getItem('adminActivityLog')) || [];
+      const timestamp = new Date().toLocaleString();
+      activityLog.push({ action, timestamp });
+      sessionStorage.setItem('adminActivityLog', JSON.stringify(activityLog));
+      
+      // Display activity log
+      const activityLogList = document.getElementById('activityLog');
+      const logItem = document.createElement('li');
+      logItem.textContent = `${timestamp} - ${action}`;
+      activityLogList.appendChild(logItem);
+    }
 
-    // Add Announcement
-    function addAnnouncement() {
-      const title = document.getElementById("announcement-title").value;
-      const message = document.getElementById("announcement-message").value;
+    // Add Activity Log Example
+    addActivity('Admin panel loaded');
+    
+    // Announcements Logic
+    document.getElementById('announcementForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const announcementText = document.getElementById('announcementText').value;
 
-      if (!title || !message) {
-        alert("Please provide both title and message.");
-        return;
+      // Save the announcement to sessionStorage for now
+      const announcements = JSON.parse(sessionStorage.getItem('announcements')) || [];
+      announcements.push(announcementText);
+      sessionStorage.setItem('announcements', JSON.stringify(announcements));
+
+      addActivity('Admin posted an announcement');
+      alert('Announcement posted!');
+    });
+
+    // Admin Login Lockout Logic
+    let failedLoginAttempts = JSON.parse(sessionStorage.getItem('failedLoginAttempts')) || 0;
+    const lockoutDuration = 3600; // Lockout time in seconds (1 hour)
+    const lockoutTime = JSON.parse(sessionStorage.getItem('lockoutTime')) || 0;
+
+    if (failedLoginAttempts >= 3 && Date.now() < lockoutTime) {
+      document.getElementById('adminLoginForm').style.display = 'none';
+      document.getElementById('lockoutMessage').style.display = 'block';
+    }
+
+    document.getElementById('adminLoginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (username === 'Admin' && password === 'Dantdm1234-123') {
+        // Successful login
+        alert('Login successful!');
+        failedLoginAttempts = 0; // Reset failed attempts after successful login
+        addActivity('Admin logged in');
+      } else {
+        // Failed login
+        failedLoginAttempts++;
+        sessionStorage.setItem('failedLoginAttempts', failedLoginAttempts);
+        if (failedLoginAttempts >= 3) {
+          sessionStorage.setItem('lockoutTime', Date.now() + lockoutDuration * 1000);
+        }
+        alert('Invalid credentials. Try again.');
+        addActivity('Admin failed login attempt');
       }
-
-      const newAnnouncement = {
-        title: title,
-        message: message,
-      };
-
-      const announcements = JSON.parse(localStorage.getItem("announcements")) || [];
-      announcements.push(newAnnouncement);
-
-      // Save announcements in localStorage
-      localStorage.setItem("announcements", JSON.stringify(announcements));
-
-      // Clear the input fields
-      document.getElementById("announcement-title").value = "";
-      document.getElementById("announcement-message").value = "";
-
-      loadAnnouncements(); // Reload announcements after adding
-    }
-
-    // Load Announcements
-    function loadAnnouncements() {
-      const announcements = JSON.parse(localStorage.getItem("announcements")) || [];
-      const announcementList = document.getElementById("announcement-list");
-
-      announcementList.innerHTML = ""; // Clear the previous list
-
-      announcements.forEach(function(announcement) {
-        const div = document.createElement("div");
-        div.innerHTML = `<strong>${announcement.title}</strong><p>${announcement.message}</p>`;
-        announcementList.appendChild(div);
-      });
-    }
-
-    // Load Connected Users (Simulated Real Device Data)
-    function loadConnectedUsers() {
-      const users = JSON.parse(localStorage.getItem("connectedUsers")) || [];
-
-      const userList = document.getElementById("user-list");
-      userList.innerHTML = ""; // Clear the previous list
-
-      users.forEach(function(user) {
-        const li = document.createElement("li");
-
-        // Skip admin user
-        if (user.id === adminUserId) return;
-
-        li.innerHTML = `${user.username} <button class="kick-btn" onclick="kickUser('${user.id}')">Kick</button>`;
-        userList.appendChild(li);
-      });
-    }
-
-    // Kick User
-    function kickUser(userId) {
-      const users = JSON.parse(localStorage.getItem("connectedUsers")) || [];
-
-      // Skip kicking the admin user
-      if (userId === adminUserId) {
-        alert("You cannot kick yourself (admin).");
-        return;
-      }
-
-      // Find the user and remove them
-      const updatedUsers = users.filter(function(user) {
-        return user.id !== userId;
-      });
-
-      // Save updated users list
-      localStorage.setItem("connectedUsers", JSON.stringify(updatedUsers));
-
-      // Redirect kicked user to lockout page
-      alert(`User ${userId} has been kicked out!`);
-      window.location.href = "lockout.html";
-    }
-
-    // Simulate Real Device (Tracking with IP or Device ID)
-    function simulateUsers() {
-      const users = [
-        { id: "user123", username: "Alice" },
-        { id: "user456", username: "Bob" },
-        { id: "user789", username: "Charlie" }
-      ];
-
-      // Save to localStorage (This can be done server-side in a real-world scenario)
-      localStorage.setItem("connectedUsers", JSON.stringify(users));
-    }
-
-    // Run the simulations for connected users
-    simulateUsers();
-
-    // Load announcements and users on page load
-    window.onload = function() {
-      loadAnnouncements();
-      loadConnectedUsers();
-    };
+    });
   </script>
 </body>
 </html>
+
