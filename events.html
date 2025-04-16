@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LinuxWorld | Events</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fefcff;
+      --fg: #1a1a1a;
+      --accent: #87ceeb; /* Sky Blue */
+      --accent-hover: #ffb6c1; /* Blush Pink */
+      --section-bg: #ffffffee;
+      --card-bg: #f9f9fb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+    }
+
+    header {
+      background-color: var(--accent);
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      position: relative;
+    }
+
+    .penguin {
+      font-size: 2.5rem;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      background-color: var(--accent-hover);
+      padding: 12px 20px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px;
+    }
+
+    .section {
+      background: var(--section-bg);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+
+    .event {
+      margin-bottom: 25px;
+    }
+
+    .event h3 {
+      margin: 0 0 8px;
+      color: var(--fg);
+    }
+
+    .event p {
+      margin: 4px 0;
+    }
+
+    .event a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .event a:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px;
+      background: var(--accent-hover);
+      font-weight: bold;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    LinuxWorld 🐧
+    <div class="penguin">🐧</div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="linux-isos.html">Linux ISOs</a>
+    <a href="software-alternatives.html">App Alternatives</a>
+    <a href="customization.html">Customization</a>
+    <a href="faq.html">FAQ & Myths</a>
+    <a href="memes.html">Memes</a>
+    <a href="events.html">Events</a>
+  </nav>
+
+  <main>
+    <section class="section">
+      <h2>🗓 Upcoming Linux & Open Source Events – 2025</h2>
+      <p>Stay connected with the community. Here's where the world of Linux is gathering this year:</p>
+
+      <div class="event">
+        <h3>🔌 Open Networking & Edge Summit 2025</h3>
+        <p><strong>Date:</strong> March 31, 2025</p>
+        <p><strong>Location:</strong> London, England</p>
+        <p><a href="https://www.linuxfoundation.org/press/open-networking-edge-summit-2025-heads-to-london-alongside-kubecon-cloudnativecon-europe-march-31-april-1-2025" target="_blank">More Info</a></p>
+      </div>
+
+      <div class="event">
+        <h3>☁️ KubeCon + CloudNativeCon Europe 2025</h3>
+        <p><strong>Date:</strong> April 1–4, 2025</p>
+        <p><strong>Location:</strong> London, England</p>
+        <p><a href="https://www.linuxfoundation.org/press/open-networking-edge-summit-2025-heads-to-london-alongside-kubecon-cloudnativecon-europe-march-31-april-1-2025" target="_blank">More Info</a></p>
+      </div>
+
+      <div class="event">
+        <h3>🐧 DebConf25 – Debian Conference</h3>
+        <p><strong>Date:</strong> July 14–21, 2025</p>
+        <p><strong>Location:</strong> Brest, France</p>
+        <p><a href="https://en.wikipedia.org/wiki/Debian_Conference" target="_blank">More Info</a></p>
+      </div>
+
+      <div class="event">
+        <h3>🌐 Open Source Summit Europe 2025</h3>
+        <p><strong>Date:</strong> August 25–27, 2025</p>
+        <p><strong>Location:</strong> Amsterdam, Netherlands</p>
+        <p><a href="https://www.linuxfoundation.org/press/the-linux-foundation-unveils-2025-event-schedule" target="_blank">More Info</a></p>
+      </div>
+
+      <div class="event">
+        <h3>🧠 AI_dev: GenAI & ML Summit Japan</h3>
+        <p><strong>Date:</strong> December 8–10, 2025</p>
+        <p><strong>Location:</strong> Tokyo, Japan</p>
+        <p><a href="https://www.linuxfoundation.org/press/the-linux-foundation-unveils-2025-event-schedule" target="_blank">More Info</a></p>
+      </div>
+
+      <p><strong>See more at:</strong> <a href="https://events.linuxfoundation.org/" target="_blank">Linux Foundation Events Page</a></p>
+    </section>
+  </main>
+
+  <footer>📍 Made with ❤️ in the World of Linux</footer>
+</body>
+</html>
