@@ -1,65 +1,92 @@
-<style>
-  :root {
-    --bg: #fefcff;
-    --fg: #1a1a1a;
-    --accent: #87ceeb;
-    --accent-hover: #ffb6c1;
-    --section-bg: #ffffffee;
-    --card-bg: #f9f9fb;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Login | LinuxWorld</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #fefcff;
+      color: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--fg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
+    .login-box {
+      background: #ffffffee;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
 
-  .login-box {
-    background: var(--card-bg);
-    padding: 30px 40px;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 300px;
-  }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
 
-  h2 {
-    margin-bottom: 20px;
-    color: var(--fg);
-  }
+    button {
+      background-color: #87ceeb;
+      border: none;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-  input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    background: var(--section-bg);
-    color: var(--fg);
-  }
+    button:hover {
+      background-color: #ffb6c1;
+    }
 
-  button {
-    background-color: var(--accent);
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-  }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>🔐 Admin Login</h2>
+    <input type="text" id="username" placeholder="Username (Admin)">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <div class="error" id="errorMsg"></div>
+  </div>
 
-  button:hover {
-    background-color: var(--accent-hover);
-  }
+  <script>
+    async function sha256(message) {
+      const msgBuffer = new TextEncoder().encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
 
-  .error {
-    color: red;
-    margin-top: 10px;
-  }
-</style>
+    async function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+
+      const hash = await sha256(password);
+
+      const correctUsername = "Admin";
+      const correctHash = "13a2b4a6312a4970d4ecba33e7720a183a5cbd00ed3008821dcf6d1ea0b1aa95"; // Dantdm1234-123
+
+      if (username === correctUsername && hash === correctHash) {
+        window.location.href = "admin.html";
+      } else {
+        document.getElementById("errorMsg").textContent = "Invalid credentials!";
+      }
+    }
+  </script>
+</body>
+</html>
