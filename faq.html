@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Customization | LinuxWorld</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ & Myths | LinuxWorld</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #fefcff;
@@ -12,6 +12,7 @@
       --accent: #87ceeb;
       --accent-hover: #ffb6c1;
       --section-bg: #ffffffee;
+      --card-bg: #f9f9fb;
     }
 
     body {
@@ -19,101 +20,73 @@
       background: var(--bg);
       color: var(--fg);
       margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
     }
 
     header {
-      background-color: var(--accent);
-      padding: 20px;
-      text-align: center;
-      font-size: 2.5rem;
-      color: #fff;
-    }
-
-    nav {
-      background-color: var(--accent-hover);
-      text-align: center;
-      padding: 12px;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 14px;
-      font-weight: 600;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-    }
-
-    section {
-      background: var(--section-bg);
-      border-radius: 16px;
-      padding: 30px;
-      margin-bottom: 40px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
-
-    h2 {
+      font-size: 2rem;
       color: var(--accent);
+      font-weight: bold;
       margin-bottom: 20px;
     }
 
-    ul {
-      padding-left: 20px;
-      line-height: 1.6;
+    .section {
+      background: var(--section-bg);
+      border-radius: 16px;
+      padding: 20px;
+      width: 100%;
+      max-width: 900px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+
+    .question {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 10px 0;
+    }
+
+    .answer {
+      font-size: 1rem;
+      margin: 10px 0 20px 0;
     }
 
     footer {
-      text-align: center;
-      background: var(--accent-hover);
-      padding: 16px;
-      color: #fff;
-      font-weight: bold;
+      font-size: 0.9rem;
+      color: var(--fg);
     }
   </style>
 </head>
 <body>
-  <header>Linux Customization</header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="linux-isos.html">Linux ISOs</a>
-    <a href="software-alternatives.html">Alternatives</a>
-    <a href="customization.html">Customization</a>
-    <a href="faq.html">FAQ</a>
-  </nav>
+  <header>
+    FAQ & Myths
+  </header>
 
   <main>
-    <section>
-      <h2>Make Linux Yours</h2>
-      <p>Linux lets you make your system look and work the way you want. Here's where to start:</p>
-      <ul>
-        <li>🖼️ Use <strong>GNOME Tweaks</strong> or <strong>KDE Settings</strong> to change themes and fonts</li>
-        <li>🎨 Install <strong>icon packs</strong> like Papirus or Tela</li>
-        <li>🧱 Change your shell with <strong>Oh My Zsh</strong> or <strong>Fish</strong> + themes</li>
-        <li>🧩 Explore dynamic tiling window managers like <strong>i3</strong> or <strong>Hyprland</strong></li>
-        <li>📦 Use <strong>Conky</strong> to display real-time info right on your desktop</li>
-      </ul>
-    </section>
+    <section class="section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="question">What is Linux?</div>
+      <div class="answer">Linux is an open-source operating system that can be used as an alternative to Windows or macOS. It is highly customizable and secure.</div>
 
-    <section>
-      <h2>Wallpaper & Themes Resources</h2>
-      <ul>
-        <li><a href="https://www.gnome-look.org/" target="_blank">GNOME Look</a></li>
-        <li><a href="https://www.pling.com/" target="_blank">Pling Store</a></li>
-        <li><a href="https://www.reddit.com/r/unixporn/" target="_blank">Reddit r/unixporn</a></li>
-      </ul>
+      <div class="question">Is Linux only for programmers?</div>
+      <div class="answer">No, Linux can be used by anyone, regardless of technical expertise. Many user-friendly distributions, like Ubuntu, make Linux accessible to beginners.</div>
+
+      <div class="question">Can I run Windows programs on Linux?</div>
+      <div class="answer">Yes, you can use software like Wine or run virtual machines to run Windows programs on Linux.</div>
     </section>
   </main>
 
-  <footer>📍 Made in love in Denmark ❤️</footer>
+  <footer>
+    <p>&copy; 2025 LinuxWorld. Made with ❤️ in Denmark.</p>
+  </footer>
 </body>
 </html>
