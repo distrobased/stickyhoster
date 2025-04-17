@@ -2,19 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LinuxWorld | Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
+    /* Global Variables */
     :root {
-      --bg: #f5f7fa;
-      --primary: #2e8bff;
-      --accent: #6c5ce7;
-      --text: #1e1e1e;
-      --section-bg: #ffffff;
-      --shadow: rgba(0, 0, 0, 0.06);
+      --bg-light: #f5f7fa;
+      --bg-dark: #1e1e1e;
+      --fg-light: #2e2e2e;
+      --accent-blue: #2e8bff;
+      --accent-purple: #6c5ce7;
+      --text-light: #f5f7fa;
+      --text-dark: #1e1e1e;
+      --soft-gray: #e2e8f0;
     }
 
+    /* Global Styles */
     * {
       margin: 0;
       padding: 0;
@@ -23,173 +27,207 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
+      background-color: var(--bg-light);
+      color: var(--fg-light);
+      overflow-x: hidden;
+      transition: background-color 0.3s, color 0.3s;
     }
 
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    h1, h2, h3 {
+      color: var(--accent-blue);
+    }
+
+    /* Header */
     header {
-      background: var(--primary);
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-      font-size: 1.8rem;
-      font-weight: 700;
+      padding: 20px;
+      background-color: var(--accent-blue);
+      color: var(--text-light);
+      text-align: center;
+      position: relative;
+      font-size: 2rem;
     }
 
     .penguin {
-      font-size: 2rem;
-      animation: spin 6s linear infinite;
+      font-size: 3rem;
+      position: absolute;
+      right: 20px;
+      animation: bounce 1s infinite;
     }
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
+    /* Navigation */
     nav {
-      background: var(--accent);
-      padding: 12px 40px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: var(--accent-purple);
     }
 
     nav a {
-      color: white;
+      color: var(--text-light);
       text-decoration: none;
       font-weight: 600;
-      transition: 0.3s ease;
+      transition: color 0.3s;
     }
 
     nav a:hover {
-      text-decoration: underline;
-      opacity: 0.9;
+      color: var(--accent-blue);
     }
 
+    /* Main Content */
     main {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 40px auto;
-      padding: 0 30px;
+      padding: 40px;
     }
 
     .section {
-      background: var(--section-bg);
-      border-radius: 14px;
-      padding: 30px;
-      margin-bottom: 30px;
-      box-shadow: 0 4px 16px var(--shadow);
+      background-color: var(--text-light);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+      transition: transform 0.3s ease-in-out;
     }
 
-    .section h2 {
-      color: var(--primary);
-      margin-bottom: 16px;
-      font-size: 1.6rem;
+    .section:hover {
+      transform: scale(1.02);
     }
 
-    .links {
-      list-style: none;
+    /* Cards for Links */
+    .card {
+      background-color: var(--soft-gray);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
     }
 
-    .links li {
-      margin-bottom: 12px;
+    .card:hover {
+      transform: scale(1.05);
     }
 
-    .links a {
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: none;
+    .card h3 {
+      font-size: 1.4rem;
+      color: var(--accent-blue);
     }
 
-    .links a:hover {
-      color: var(--primary);
+    .card p {
+      font-size: 1rem;
+      color: var(--fg-light);
     }
 
-    .tags {
-      margin-left: 10px;
-      font-size: 0.9rem;
-    }
-
-    .tag {
-      background-color: var(--primary);
-      color: white;
-      padding: 3px 10px;
-      border-radius: 12px;
-      margin-right: 6px;
-    }
-
+    /* Footer */
     footer {
-      background: var(--accent);
-      color: white;
       text-align: center;
-      padding: 16px;
-      font-weight: 500;
+      padding: 20px;
+      background-color: var(--accent-purple);
+      color: var(--text-light);
     }
 
-    .login-link {
-      position: absolute;
-      top: 20px;
-      right: 40px;
-      background-color: white;
-      color: var(--primary);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 2px 8px var(--shadow);
+    /* Scroll Reveal Effect */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
     }
 
-    .login-link:hover {
-      background-color: var(--primary);
-      color: white;
+    .scroll-reveal.show {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
+
+  <!-- Header with Penguin -->
   <header>
-    LinuxWorld
+    LinuxWorld 🐧
     <div class="penguin">🐧</div>
   </header>
 
-  <a class="login-link" href="login.html">Admin Login</a>
-
+  <!-- Navigation Bar -->
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-    <a href="linux-isos.html">Linux ISOs</a>
-    <a href="software-alternatives.html">App Alternatives</a>
-    <a href="customization.html">Customization</a>
-    <a href="faq.html">FAQ & Myths</a>
-    <a href="memes.html">Memes</a>
-    <a href="feedback.html">Feedback</a>
     <a href="events.html">Events</a>
+    <a href="login.html">Login</a>
   </nav>
 
+  <!-- Main Content -->
   <main>
-    <section class="section">
-      <h2>🌟 Welcome to LinuxWorld</h2>
-      <p>Explore a refined world of Linux tips, memes, software replacements, and open-source beauty.</p>
+    <!-- Section: Welcome -->
+    <section class="section scroll-reveal">
+      <h2>Welcome to LinuxWorld</h2>
+      <p>Explore a beautiful, open world of Linux with curated guides, distros, memes, tips, and customization help for creators and casual users alike.</p>
     </section>
 
-    <section class="section">
-      <h2>📌 Featured Sections</h2>
-      <ul class="links">
-        <li><a href="linux-isos.html">💽 Linux ISOs</a> <span class="tags"><span class="tag">Download</span><span class="tag">Live USB</span></span></li>
-        <li><a href="software-alternatives.html">🧩 App Alternatives</a> <span class="tags"><span class="tag">Open Source</span><span class="tag">Free</span></span></li>
-        <li><a href="customization.html">🎨 Customization</a> <span class="tags"><span class="tag">Themes</span><span class="tag">Tweaks</span></span></li>
-        <li><a href="faq.html">❓ FAQ & Myths</a> <span class="tags"><span class="tag">Newbies</span><span class="tag">Truths</span></span></li>
-        <li><a href="memes.html">🤣 Memes</a> <span class="tags"><span class="tag">Fun</span><span class="tag">Tux</span></span></li>
-        <li><a href="feedback.html">💬 Feedback</a> <span class="tags"><span class="tag">Support</span><span class="tag">Ideas</span></span></li>
-        <li><a href="events.html">🗓 Linux Events</a> <span class="tags"><span class="tag">Meetups</span><span class="tag">Live</span></span></li>
-      </ul>
+    <!-- Section: Featured Links -->
+    <section class="section scroll-reveal">
+      <h2>Featured Pages</h2>
+      <div class="card">
+        <h3>💽 Linux ISOs</h3>
+        <p>Find the best Linux distributions for your hardware.</p>
+      </div>
+      <div class="card">
+        <h3>🧩 App Alternatives</h3>
+        <p>Discover open-source alternatives to popular software.</p>
+      </div>
+      <div class="card">
+        <h3>🎨 Customization</h3>
+        <p>Learn how to personalize your Linux setup.</p>
+      </div>
     </section>
   </main>
 
-  <footer>
-    Built with 💙 by LinuxWorld Contributors & Community.
-  </footer>
+  <!-- Footer -->
+  <footer>📍 Made with ❤️ in Denmark</footer>
+
+  <!-- Scroll Reveal JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.scroll-reveal');
+      const revealOnScroll = () => {
+        sections.forEach(section => {
+          if (section.getBoundingClientRect().top < window.innerHeight) {
+            section.classList.add('show');
+          }
+        });
+      };
+      window.addEventListener('scroll', revealOnScroll);
+      revealOnScroll(); // Trigger on load
+    });
+  </script>
+
+  <!-- Dark Mode Toggle -->
+  <script>
+    const darkModeToggle = document.createElement('button');
+    darkModeToggle.innerHTML = '🌙 Toggle Dark Mode';
+    darkModeToggle.style.position = 'fixed';
+    darkModeToggle.style.top = '20px';
+    darkModeToggle.style.right = '20px';
+    darkModeToggle.style.padding = '10px';
+    darkModeToggle.style.background = 'var(--accent-purple)';
+    darkModeToggle.style.color = 'var(--text-light)';
+    darkModeToggle.style.border = 'none';
+    darkModeToggle.style.cursor = 'pointer';
+    document.body.appendChild(darkModeToggle);
+
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
+
 </body>
 </html>
+
