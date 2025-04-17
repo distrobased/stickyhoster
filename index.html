@@ -1,233 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LinuxWorld | Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    /* Global Variables */
-    :root {
-      --bg-light: #f5f7fa;
-      --bg-dark: #1e1e1e;
-      --fg-light: #2e2e2e;
-      --accent-blue: #2e8bff;
-      --accent-purple: #6c5ce7;
-      --text-light: #f5f7fa;
-      --text-dark: #1e1e1e;
-      --soft-gray: #e2e8f0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinuxWorld | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fefcff;
+            --fg: #1a1a1a;
+            --accent: #87ceeb;
+            --accent-hover: #ffb6c1;
+            --section-bg: #ffffffee;
+            --card-bg: #f9f9fb;
+        }
 
-    /* Global Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            transition: opacity 1.5s ease-in;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-light);
-      color: var(--fg-light);
-      overflow-x: hidden;
-      transition: background-color 0.3s, color 0.3s;
-    }
+        header {
+            background-color: var(--accent);
+            padding: 20px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            position: relative;
+        }
 
-    body.dark-mode {
-      background-color: var(--bg-dark);
-      color: var(--text-light);
-    }
+        .penguin {
+            font-size: 2.5rem;
+            position: absolute;
+            right: 20px;
+            animation: bounce 1s infinite;
+        }
 
-    h1, h2, h3 {
-      color: var(--accent-blue);
-    }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
 
-    /* Header */
-    header {
-      padding: 20px;
-      background-color: var(--accent-blue);
-      color: var(--text-light);
-      text-align: center;
-      position: relative;
-      font-size: 2rem;
-    }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: var(--accent-hover);
+            padding: 12px 20px;
+        }
 
-    .penguin {
-      font-size: 3rem;
-      position: absolute;
-      right: 20px;
-      animation: bounce 1s infinite;
-    }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+        nav a:hover {
+            text-decoration: underline;
+        }
 
-    /* Navigation */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      padding: 15px 20px;
-      background-color: var(--accent-purple);
-    }
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 30px;
+            background: var(--card-bg);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+        }
 
-    nav a {
-      color: var(--text-light);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
+        .section {
+            background: var(--section-bg);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
 
-    nav a:hover {
-      color: var(--accent-blue);
-    }
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
 
-    /* Main Content */
-    main {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 40px;
-    }
-
-    .section {
-      background-color: var(--text-light);
-      border-radius: 15px;
-      padding: 25px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      margin-bottom: 40px;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .section:hover {
-      transform: scale(1.02);
-    }
-
-    /* Cards for Links */
-    .card {
-      background-color: var(--soft-gray);
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-    }
-
-    .card h3 {
-      font-size: 1.4rem;
-      color: var(--accent-blue);
-    }
-
-    .card p {
-      font-size: 1rem;
-      color: var(--fg-light);
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: var(--accent-purple);
-      color: var(--text-light);
-    }
-
-    /* Scroll Reveal Effect */
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-    }
-
-    .scroll-reveal.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+        footer {
+            text-align: center;
+            padding: 16px;
+            background: var(--accent-hover);
+            font-weight: bold;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        LinuxWorld 🐧
+        <div class="penguin">🐧</div>
+    </header>
 
-  <!-- Header with Penguin -->
-  <header>
-    LinuxWorld 🐧
-    <div class="penguin">🐧</div>
-  </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="linux-isos.html">Linux ISOs</a>
+        <a href="software-alternatives.html">App Alternatives</a>
+        <a href="customization.html">Customization</a>
+        <a href="faq.html">FAQ & Myths</a>
+        <a href="memes.html">Memes</a>
+        <a href="login.html" style="position: absolute; top: 20px; right: 20px;">Login</a>
+    </nav>
 
-  <!-- Navigation Bar -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="events.html">Events</a>
-    <a href="login.html">Login</a>
-  </nav>
+    <main>
+        <section class="section">
+            <h2>Welcome to LinuxWorld</h2>
+            <p>Explore a beautiful, open world of Linux with curated guides, distros, memes, tips, and customization help for creators and casual users alike.</p>
+        </section>
 
-  <!-- Main Content -->
-  <main>
-    <!-- Section: Welcome -->
-    <section class="section scroll-reveal">
-      <h2>Welcome to LinuxWorld</h2>
-      <p>Explore a beautiful, open world of Linux with curated guides, distros, memes, tips, and customization help for creators and casual users alike.</p>
-    </section>
+        <section class="section">
+            <h2>Featured Pages</h2>
+            <ul class="links">
+                <li><a href="linux-isos.html">💽 Linux ISOs</a></li>
+                <li><a href="software-alternatives.html">🧩 App Alternatives</a></li>
+                <li><a href="customization.html">🎨 Customization</a></li>
+                <li><a href="faq.html">❓ FAQ / Myths</a></li>
+                <li><a href="memes.html">🤣 Memes</a></li>
+                <li><a href="404.html">🚫 404 Easter Egg</a></li>
+            </ul>
+        </section>
 
-    <!-- Section: Featured Links -->
-    <section class="section scroll-reveal">
-      <h2>Featured Pages</h2>
-      <div class="card">
-        <h3>💽 Linux ISOs</h3>
-        <p>Find the best Linux distributions for your hardware.</p>
-      </div>
-      <div class="card">
-        <h3>🧩 App Alternatives</h3>
-        <p>Discover open-source alternatives to popular software.</p>
-      </div>
-      <div class="card">
-        <h3>🎨 Customization</h3>
-        <p>Learn how to personalize your Linux setup.</p>
-      </div>
-    </section>
-  </main>
+        <section class="section">
+            <h2>Upcoming Events</h2>
+            <p>Check out upcoming Linux distro meetups and events in your area!</p>
+            <a href="https://www.linux.com/events/" target="_blank" style="color: var(--accent); text-decoration: underline;">Linux Events</a>
+        </section>
+    </main>
 
-  <!-- Footer -->
-  <footer>📍 Made with ❤️ in Denmark</footer>
+    <footer>📍 Made with Love in Denmark ❤️</footer>
 
-  <!-- Scroll Reveal JS -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('.scroll-reveal');
-      const revealOnScroll = () => {
-        sections.forEach(section => {
-          if (section.getBoundingClientRect().top < window.innerHeight) {
-            section.classList.add('show');
-          }
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded');
         });
-      };
-      window.addEventListener('scroll', revealOnScroll);
-      revealOnScroll(); // Trigger on load
-    });
-  </script>
-
-  <!-- Dark Mode Toggle -->
-  <script>
-    const darkModeToggle = document.createElement('button');
-    darkModeToggle.innerHTML = '🌙 Toggle Dark Mode';
-    darkModeToggle.style.position = 'fixed';
-    darkModeToggle.style.top = '20px';
-    darkModeToggle.style.right = '20px';
-    darkModeToggle.style.padding = '10px';
-    darkModeToggle.style.background = 'var(--accent-purple)';
-    darkModeToggle.style.color = 'var(--text-light)';
-    darkModeToggle.style.border = 'none';
-    darkModeToggle.style.cursor = 'pointer';
-    document.body.appendChild(darkModeToggle);
-
-    darkModeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-    });
-  </script>
-
+    </script>
 </body>
 </html>
-
