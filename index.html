@@ -7,142 +7,153 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #fefcff;
-      --fg: #1a1a1a;
-      --accent: #87ceeb; /* Sky Blue */
-      --accent-hover: #ffb6c1; /* Blush Pink */
-      --section-bg: #ffffffee;
-      --card-bg: #f9f9fb;
+      --bg: #f5f7fa;
+      --primary: #2e8bff;
+      --accent: #6c5ce7;
+      --text: #1e1e1e;
+      --section-bg: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.06);
     }
 
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      margin: 0;
       font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      opacity: 0;
-      transition: opacity 1.5s ease-in;
-    }
-
-    body.loaded {
-      opacity: 1;
+      background-color: var(--bg);
+      color: var(--text);
     }
 
     header {
-      background-color: var(--accent);
-      padding: 20px;
-      text-align: center;
-      font-size: 2rem;
+      background: var(--primary);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      font-size: 1.8rem;
       font-weight: 700;
-      color: #fff;
-      position: relative;
     }
 
     .penguin {
-      font-size: 2.5rem;
-      position: absolute;
-      right: 20px;
-      animation: bounce 1s infinite;
+      font-size: 2rem;
+      animation: spin 6s linear infinite;
     }
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     nav {
+      background: var(--accent);
+      padding: 12px 40px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 16px;
-      background-color: var(--accent-hover);
-      padding: 12px 20px;
     }
 
     nav a {
-      color: #fff;
+      color: white;
       text-decoration: none;
       font-weight: 600;
-      transition: 0.3s;
+      transition: 0.3s ease;
     }
 
     nav a:hover {
       text-decoration: underline;
+      opacity: 0.9;
     }
 
     main {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 40px auto;
-      padding: 30px;
+      padding: 0 30px;
     }
 
     .section {
       background: var(--section-bg);
-      border-radius: 16px;
+      border-radius: 14px;
       padding: 30px;
-      margin-bottom: 40px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+      box-shadow: 0 4px 16px var(--shadow);
     }
 
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: var(--accent);
+    .section h2 {
+      color: var(--primary);
+      margin-bottom: 16px;
+      font-size: 1.6rem;
     }
 
-    ul.links {
+    .links {
       list-style: none;
-      padding-left: 0;
     }
 
-    ul.links li {
-      margin: 10px 0;
+    .links li {
+      margin-bottom: 12px;
     }
 
-    ul.links li a {
+    .links a {
       color: var(--accent);
       font-weight: 600;
       text-decoration: none;
     }
 
-    ul.links li a:hover {
-      color: var(--accent-hover);
+    .links a:hover {
+      color: var(--primary);
+    }
+
+    .tags {
+      margin-left: 10px;
+      font-size: 0.9rem;
+    }
+
+    .tag {
+      background-color: var(--primary);
+      color: white;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-right: 6px;
     }
 
     footer {
+      background: var(--accent);
+      color: white;
       text-align: center;
       padding: 16px;
-      background: var(--accent-hover);
-      font-weight: bold;
-      color: #fff;
+      font-weight: 500;
     }
 
     .login-link {
       position: absolute;
       top: 20px;
-      right: 20px;
-      background-color: var(--accent);
-      padding: 8px 16px;
+      right: 40px;
+      background-color: white;
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
       text-decoration: none;
-      color: white;
-      font-weight: bold;
-      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 2px 8px var(--shadow);
     }
 
     .login-link:hover {
-      background-color: var(--accent-hover);
+      background-color: var(--primary);
+      color: white;
     }
   </style>
 </head>
 <body>
   <header>
-    LinuxWorld 🐧
+    LinuxWorld
     <div class="penguin">🐧</div>
   </header>
+
+  <a class="login-link" href="login.html">Admin Login</a>
 
   <nav>
     <a href="index.html">Home</a>
@@ -153,54 +164,32 @@
     <a href="customization.html">Customization</a>
     <a href="faq.html">FAQ & Myths</a>
     <a href="memes.html">Memes</a>
-    <a href="404.html">404 Easter Egg</a>
-    <!-- Other pages from your project (except admin) -->
     <a href="feedback.html">Feedback</a>
+    <a href="events.html">Events</a>
   </nav>
-
-  <!-- Login Link -->
-  <a href="login.html" class="login-link">Login</a>
 
   <main>
     <section class="section">
-      <h2>Welcome to LinuxWorld</h2>
-      <p>Explore a beautiful, open world of Linux with curated guides, distros, memes, tips, and customization help for creators and casual users alike.</p>
+      <h2>🌟 Welcome to LinuxWorld</h2>
+      <p>Explore a refined world of Linux tips, memes, software replacements, and open-source beauty.</p>
     </section>
 
     <section class="section">
-      <h2>Featured Pages</h2>
+      <h2>📌 Featured Sections</h2>
       <ul class="links">
-        <li><a href="linux-isos.html">💽 Linux ISOs</a></li>
-        <li><a href="software-alternatives.html">🧩 App Alternatives</a></li>
-        <li><a href="customization.html">🎨 Customization</a></li>
-        <li><a href="faq.html">❓ FAQ / Myths</a></li>
-        <li><a href="memes.html">🤣 Memes</a></li>
-        <li><a href="404.html">🚫 404 Easter Egg</a></li>
-        <li><a href="feedback.html">💬 Feedback</a></li>
+        <li><a href="linux-isos.html">💽 Linux ISOs</a> <span class="tags"><span class="tag">Download</span><span class="tag">Live USB</span></span></li>
+        <li><a href="software-alternatives.html">🧩 App Alternatives</a> <span class="tags"><span class="tag">Open Source</span><span class="tag">Free</span></span></li>
+        <li><a href="customization.html">🎨 Customization</a> <span class="tags"><span class="tag">Themes</span><span class="tag">Tweaks</span></span></li>
+        <li><a href="faq.html">❓ FAQ & Myths</a> <span class="tags"><span class="tag">Newbies</span><span class="tag">Truths</span></span></li>
+        <li><a href="memes.html">🤣 Memes</a> <span class="tags"><span class="tag">Fun</span><span class="tag">Tux</span></span></li>
+        <li><a href="feedback.html">💬 Feedback</a> <span class="tags"><span class="tag">Support</span><span class="tag">Ideas</span></span></li>
+        <li><a href="events.html">🗓 Linux Events</a> <span class="tags"><span class="tag">Meetups</span><span class="tag">Live</span></span></li>
       </ul>
     </section>
   </main>
 
-  <footer>📍 Made in Love in Denmark ❤️</footer>
-
-  <audio id="startup-sound" src="assets/music/startup/musicsoft-startup-sound-269291.mp3"></audio>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      document.body.classList.add('loaded');
-      const startupSound = document.getElementById('startup-sound');
-      const playStartup = () => {
-        startupSound.volume = 0.6;
-        startupSound.play().catch(err => {
-          console.warn('Autoplay blocked:', err);
-        });
-        document.removeEventListener('click', playStartup);
-        document.removeEventListener('keydown', playStartup);
-      };
-
-      document.addEventListener('click', playStartup);
-      document.addEventListener('keydown', playStartup);
-    });
-  </script>
+  <footer>
+    Built with 💙 by LinuxWorld Contributors & Community.
+  </footer>
 </body>
 </html>
