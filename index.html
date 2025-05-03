@@ -2,142 +2,152 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LinuxWorld | Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ethan's Dream Portal</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500&display=swap');
+
     * {
-      box-sizing: border-box;
-    }
-    body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f0f0f0;
-      color: #333;
-      transition: opacity 1.5s ease-in;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: url('https://cur.cursors-4u.net/cursors/cur-11/cur1025.cur'), auto;
     }
-    body.loaded {
-      opacity: 1;
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: 'Comfortaa', cursive;
+      background: #000;
+      color: #d7f4ff;
     }
-    header {
-      background-color: #007acc;
-      padding: 20px;
-      text-align: center;
-      font-size: 2rem;
-      color: white;
-      position: relative;
+
+    #background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
-    .penguin {
-      font-size: 2.5rem;
+
+    .content {
       position: absolute;
-      right: 20px;
-      animation: bounce 1s infinite;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      background-color: #f1f1f1;
-      padding: 10px;
-    }
-    nav a {
-      color: #333;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      color: #007acc;
-    }
-    main {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 30px;
-    }
-    .section {
-      background: white;
-      border-radius: 16px;
-      padding: 30px;
-      margin-bottom: 40px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    }
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: #007acc;
-    }
-    .links {
-      list-style: none;
-      padding-left: 0;
-    }
-    .links li {
-      margin: 10px 0;
-    }
-    .links li a {
-      color: #007acc;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .links li a:hover {
-      color: #ff6b81;
-    }
-    footer {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
-      padding: 16px;
-      background: #007acc;
-      color: white;
+      max-width: 90%;
+      padding: 20px;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    h1 {
+      font-size: 3.5em;
+      color: #a8dfff;
+      text-shadow: 0 0 20px #00ffffaa, 0 0 50px #005577;
+      margin-bottom: 20px;
+    }
+
+    .bio p {
+      font-size: 1.3em;
+      margin: 12px 0;
+      text-shadow: 0 0 10px #00557788;
+    }
+
+    .emoji {
+      font-size: 1.2em;
+      vertical-align: middle;
+    }
+
+    .disc {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 30px auto;
+      box-shadow: 0 0 30px #00ffff88;
+      animation: spin 6s linear infinite;
+    }
+
+    .disc img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    audio {
+      display: none;
+    }
+
+    .glowbox {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(0, 50, 80, 0.4);
+      border-radius: 20px;
+      box-shadow: 0 0 25px #00bbff55;
+      display: inline-block;
+    }
+
+    .glowbox p {
+      margin: 0;
+      font-size: 1.2em;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translate(-50%, -60%); }
+      100% { opacity: 1; transform: translate(-50%, -50%); }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div>LinuxWorld 🐧</div>
-    <div class="penguin">🐧</div>
-  </header>
+  <div id="background"></div>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="linux-isos.html">Linux ISOs</a>
-    <a href="software-alternatives.html">App Alternatives</a>
-    <a href="customization.html">Customization</a>
-    <a href="faq.html">FAQ & Myths</a>
-    <a href="memes.html">Memes</a>
-    <a href="events.html">Events</a>
-  </nav>
+  <div class="content">
+    <h1>Hey, I'm Ethan</h1>
+    <div class="bio">
+      <p>A proud Danish <strong>Linux geek</strong> <span class="emoji">🐧</span> who lives and breathes command lines.</p>
+      <p>Occupation: Gay <span class="emoji">🏳️‍🌈</span> — I embrace who I am, and I love it.</p>
+      <p>I adore <strong>cats</strong> <span class="emoji">🐱</span>, love throwing <strong>darts</strong> <span class="emoji">🎯</span>, and I chase big dreams like I chase storms.</p>
+      <p>I'm inspired by storm chasers like <strong>Reed Timmer</strong> <span class="emoji">🌪️</span> — one day, I want to follow the skies just like him.</p>
+    </div>
 
-  <main>
-    <section class="section">
-      <h2>Welcome to LinuxWorld</h2>
-      <p>Explore a beautiful, open world of Linux with curated guides, distros, memes, tips, and customization help for creators and casual users alike.</p>
-    </section>
+    <div class="disc">
+      <img src="https://f4.bcbits.com/img/a1743997382_10.jpg" alt="Album Cover">
+    </div>
 
-    <section class="section">
-      <h2>Featured Pages</h2>
-      <ul class="links">
-        <li><a href="linux-isos.html">💽 Linux ISOs</a> <span class="tags"><span class="tag">Downloads</span> <span class="tag">Beginner</span></span></li>
-        <li><a href="software-alternatives.html">🧩 App Alternatives</a> <span class="tags"><span class="tag">Productivity</span> <span class="tag">Open Source</span></span></li>
-        <li><a href="customization.html">🎨 Customization</a> <span class="tags"><span class="tag">Themes</span> <span class="tag">Tweaks</span></span></li>
-        <li><a href="faq.html">❓ FAQ / Myths</a> <span class="tags"><span class="tag">Help</span> <span class="tag">Newbies</span></span></li>
-        <li><a href="memes.html">🤣 Memes</a> <span class="tags"><span class="tag">Fun</span> <span class="tag">Community</span></span></li>
-        <li><a href="404.html">🚫 404 Easter Egg</a> <span class="tags"><span class="tag">Error</span> <span class="tag">Humor</span></span></li>
-      </ul>
-    </section>
-  </main>
+    <div class="glowbox">
+      <p>Currently vibing to: <strong>Loose Cannon - Puzzle</strong> <span class="emoji">🎶</span></p>
+    </div>
 
-  <footer>
-    <p>📍 Made with love in Denmark ❤️</p>
-    <p><a href="events.html">Upcoming Linux Meetups</a></p>
-  </footer>
+    <audio autoplay loop>
+      <source src="https://files.catbox.moe/kakp68.mp3" type="audio/mp3">
+    </audio>
+  </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/tengbao/vanta/dist/vanta.clouds.min.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      document.body.classList.add('loaded');
+    const hour = new Date().getHours();
+    const isNight = hour < 6 || hour >= 18;
+
+    VANTA.CLOUDS({
+      el: "#background",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      skyColor: isNight ? 0x0a0a1a : 0x88bbff,
+      cloudColor: isNight ? 0x333344 : 0xffffff,
+      cloudShadowColor: isNight ? 0x000011 : 0x222255,
+      sunColor: isNight ? 0x222244 : 0xffffff,
+      sunGlareColor: isNight ? 0x111122 : 0xffeecc,
+      sunlightColor: isNight ? 0x222233 : 0xffcccc
     });
   </script>
 </body>
