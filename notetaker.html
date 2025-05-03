@@ -22,7 +22,7 @@
 
     body {
       margin: 0;
-      background: url('https://i.pinimg.com/originals/6d/c8/a0/6dc8a093eb1c350a42e50e6247eb35f6.jpg') no-repeat center center fixed;
+      background: url('https://i.pinimg.com/736x/fd/d0/e4/fdd0e45a32d291ffdd1209072b015581.jpg') no-repeat center center fixed;
       background-size: cover;
       color: var(--text-color);
       display: flex;
@@ -51,6 +51,27 @@
       text-align: center;
       display: inline-block;
       font-weight: bold;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      margin-top: 20px;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .tab:hover {
+      background-color: var(--hover-color);
     }
 
     /* Login Form */
@@ -136,28 +157,68 @@
       text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
     }
 
+    /* Music Player */
+    .music-player {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 350px;
+    }
+
+    .music-player iframe {
+      width: 100%;
+      height: 100px;
+      border: none;
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- Fletcher Shears with Text -->
+  <!-- Fletcher Shears Text -->
   <div class="fletcher-text">Cutie Patootie</div>
 
   <div class="logo">Aquafox - School Hideout</div>
 
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab" onclick="openTab('notes')">Notes</div>
+    <div class="tab" onclick="openTab('linux')">Linux</div>
+    <div class="tab" onclick="openTab('music')">Music</div>
+  </div>
+
   <!-- Login Form -->
-  <div class="login-container">
+  <div class="login-container" id="loginForm">
     <h2>Login</h2>
     <input type="password" id="passwordInput" placeholder="Enter Password">
     <button onclick="checkPassword()">Login</button>
   </div>
 
   <!-- Note Taking Section -->
-  <div class="note-container" style="display:none;" id="noteSection">
+  <div class="note-container" id="notes" style="display:none;">
     <h3>Write Your Notes Here</h3>
     <textarea id="noteText" placeholder="Start typing your notes..."></textarea>
     <button onclick="saveNote()">Save Note</button>
     <button onclick="downloadNote()">Download Note</button>
+  </div>
+
+  <!-- Linux Section -->
+  <div class="note-container" id="linux" style="display:none;">
+    <h3>Linux Distros</h3>
+    <p>Ubuntu, Fedora, Debian, Arch, Mint, OpenSUSE, and more...</p>
+  </div>
+
+  <!-- Music Section -->
+  <div class="music-player" id="music" style="display:none;">
+    <h3>Music</h3>
+    <iframe src="https://playlistsound.com/artist/62564/puzzle" allow="autoplay"></iframe>
   </div>
 
   <script>
@@ -166,10 +227,21 @@
       var password = document.getElementById('passwordInput').value;
       if (password === "boredinmylife") {
         document.querySelector('.login-container').style.display = 'none';
-        document.getElementById('noteSection').style.display = 'block';
+        document.querySelector('.tabs').style.display = 'block';
       } else {
         alert('Incorrect password. Try again!');
       }
+    }
+
+    // Switch between tabs
+    function openTab(tabName) {
+      // Hide all sections
+      document.getElementById('notes').style.display = 'none';
+      document.getElementById('linux').style.display = 'none';
+      document.getElementById('music').style.display = 'none';
+
+      // Show selected section
+      document.getElementById(tabName).style.display = 'block';
     }
 
     // Save note to local storage automatically
