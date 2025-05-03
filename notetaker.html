@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --aqua: #00c6c6;
+      --dark-bg: #0f1a1a;
+      --card-bg: #1b2b2b;
+      --text: #e0ffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: var(--dark-bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-size: cover;
+      background-position: center;
+    }
+
+    #login, #portal, #panic {
+      width: 95%;
+      max-width: 1000px;
+    }
+
+    #login textarea {
+      width: 100%;
+      height: 200px;
+      background: #1e1e1e;
+      color: #ccc;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      resize: none;
+    }
+
+    #portal, #panic {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .logo {
+      background: #1b2b2b;
+      color: #88ffff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 18px;
+      margin-bottom: 20px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .search-box input[type="text"] {
+      width: 100%;
+      max-width: 500px;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+
+    .tab {
+      background: #1f2f2f;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .tab.active {
+      background: var(--aqua);
+      color: #000;
+      font-weight: bold;
+    }
+
+    .section {
+      display: none;
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 800px;
+      text-align: left;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section h3 {
+      margin-top: 15px;
+    }
+
+    .section a {
+      display: inline-block;
+      margin: 4px 8px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .section a:hover {
+      text-decoration: underline;
+    }
+
+    .customize select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .system-info {
+      margin-top: 20px;
+      background: #122222;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    .system-info span {
+      display: block;
+      margin: 5px 0;
+    }
+
+    #panic {
+      background: white;
+      color: black;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+    }
+
+    #panic iframe {
+      border: none;
+      width: 90%;
+      height: 80%;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="login">
+    <textarea id="noteArea" placeholder="Write your notes here..."></textarea>
+  </div>
+
+  <div id="portal">
+    <div class="logo">Notes - Personal</div>
+
+    <form class="search-box" action="https://www.google.com/search" method="GET" target="_blank">
+      <input type="text" name="q" placeholder="Search the web...">
+    </form>
+
+    <div class="tabs">
+      <div class="tab active" onclick="showSection('distros')">Distros</div>
+      <div class="tab" onclick="showSection('kernels')">Kernels</div>
+      <div class="tab" onclick="showSection('tools')">Tools</div>
+      <div class="tab" onclick="showSection('news')">News</div>
+      <div class="tab" onclick="showSection('resources')">Resources</div>
+      <div class="tab" onclick="showSection('customize')">Customize</div>
+    </div>
+
+    <div class="section active" id="distros">
+      <h3>Popular</h3>
+      <a href="https://ubuntu.com">Ubuntu</a>
+      <a href="https://debian.org">Debian</a>
+      <a href="https://archlinux.org">Arch</a>
+      <a href="https://manjaro.org">Manjaro</a>
+      <a href="https://pop.system76.com">Pop!_OS</a>
+      <a href="https://linuxmint.com">Mint</a>
+      <a href="https://zorin.com/os/">Zorin</a>
+      <a href="https://elementary.io">elementary</a>
+      <a href="https://getfedora.org">Fedora</a>
+      <h3>Lightweight</h3>
+      <a href="https://lubuntu.me">Lubuntu</a>
+      <a href="https://xubuntu.org">Xubuntu</a>
+      <a href="https://puppylinux.com">Puppy</a>
+      <a href="https://antixlinux.com">antiX</a>
+      <a href="https://www.tinycorelinux.net">TinyCore</a>
+      <a href="https://archbang.org">ArchBang</a>
+      <a href="https://crunchbangplusplus.org">CrunchBang++</a>
+      <h3>Advanced</h3>
+      <a href="https://nixos.org">NixOS</a>
+      <a href="https://gentoo.org">Gentoo</a>
+      <a href="https://voidlinux.org">Void</a>
+      <a href="https://slackware.com">Slackware</a>
+      <a href="https://bedrocklinux.org">Bedrock</a>
+      <a href="https://guix.gnu.org">Guix</a>
+    </div>
+
+    <div class="section" id="kernels">
+      <a href="https://kernel.org">Mainline Kernel</a>
+      <a href="https://github.com/torvalds/linux">Linux GitHub</a>
+      <a href="https://elixir.bootlin.com/linux/latest/source">Source Tree</a>
+      <a href="https://linuxfromscratch.org">LFS Project</a>
+    </div>
+
+    <div class="section" id="tools">
+      <a href="https://github.com/topics/linux">GitHub Linux</a>
+      <a href="https://flathub.org">Flathub</a>
+      <a href="https://snapcraft.io">Snapcraft</a>
+      <a href="https://aur.archlinux.org">AUR</a>
+      <a href="https://appimage.org">AppImage</a>
+    </div>
+
+    <div class="section" id="news">
+      <a href="https://www.omgubuntu.co.uk">OMG! Ubuntu</a>
+      <a href="https://lwn.net">Linux Weekly News</a>
+      <a href="https://phoronix.com">Phoronix</a>
+      <a href="https://itsfoss.com">It's FOSS</a>
+    </div>
+
+    <div class="section" id="resources">
+      <a href="https://wiki.archlinux.org">Arch Wiki</a>
+      <a href="https://unix.stackexchange.com">Unix SE</a>
+      <a href="https://linuxjourney.com">Linux Journey</a>
+      <a href="https://linuxcommand.org">Linux Command</a>
+    </div>
+
+    <div class="section customize" id="customize">
+      <label>Choose background:</label>
+      <select onchange="document.body.style.backgroundImage = this.value ? `url(${this.value})` : ''">
+        <option value="">Default</option>
+        <option value="https://wallpapercave.com/wp/wp2561426.jpg">Neon</option>
+        <option value="https://assets.ubuntu.com/v1/f4324d3f-background-orange.jpg">Ubuntu Orange</option>
+        <option value="https://images.unsplash.com/photo-1518779578993-ec3579fee39f">Minimal Glass</option>
+      </select>
+
+      <div class="system-info" id="sys">
+        <span id="cpu">CPU Usage: --</span>
+        <span id="ram">RAM Usage: --</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="panic">
+    <iframe src="https://www.google.com"></iframe>
+  </div>
+
+  <script>
+    const noteArea = document.getElementById('noteArea');
+    const login = document.getElementById('login');
+    const portal = document.getElementById('portal');
+    const panic = document.getElementById('panic');
+
+    noteArea.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && noteArea.value.trim() === 'boredinmylife') {
+        login.style.display = 'none';
+        portal.style.display = 'flex';
+      }
+    });
+
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    function updateFakeStats() {
+      const cpu = Math.floor(Math.random() * 50) + 10;
+      const ram = Math.floor(Math.random() * 70) + 25;
+      document.getElementById('cpu').textContent = `CPU Usage: ${cpu}%`;
+      document.getElementById('ram').textContent = `RAM Usage: ${ram}%`;
+    }
+
+    setInterval(updateFakeStats, 2000);
+
+    document.addEventListener('keydown', e => {
+      if (e.ctrlKey && e.altKey && e.key === 'p') {
+        portal.style.display = 'none';
+        panic.style.display = 'flex';
+      }
+    });
+  </script>
+</body>
+</html>
