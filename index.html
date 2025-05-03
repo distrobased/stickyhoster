@@ -17,7 +17,7 @@
     html, body {
       height: 100%;
       width: 100%;
-      overflow-x: hidden;
+      overflow: hidden;
       font-family: 'Comfortaa', cursive;
       background: #000;
       color: #d7f4ff;
@@ -32,13 +32,14 @@
 
     .content {
       position: absolute;
-      top: 50%;
+      top: 20%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       text-align: center;
       max-width: 90%;
       padding: 20px;
       animation: fadeIn 3s ease-in-out;
+      z-index: 1;
     }
 
     h1 {
@@ -46,6 +47,7 @@
       color: #a8dfff;
       text-shadow: 0 0 20px #00ffffaa, 0 0 50px #005577;
       margin-bottom: 20px;
+      z-index: 2;
     }
 
     .bio p {
@@ -93,17 +95,6 @@
       font-size: 1.2em;
     }
 
-    .pride-flag {
-      margin-top: 20px;
-      animation: wave 3s infinite ease-in-out;
-    }
-
-    .pride-flag img {
-      width: 150px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px #ff69b4aa, 0 0 50px #ff1493aa;
-    }
-
     @keyframes spin {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
@@ -112,11 +103,6 @@
     @keyframes fadeIn {
       0% { opacity: 0; transform: translate(-50%, -60%); }
       100% { opacity: 1; transform: translate(-50%, -50%); }
-    }
-
-    @keyframes wave {
-      0%, 100% { transform: rotate(-1deg) translateY(0); }
-      50% { transform: rotate(1deg) translateY(2px); }
     }
   </style>
 </head>
@@ -132,10 +118,6 @@
       <p>I'm inspired by storm chasers like <strong>Reed Timmer</strong> <span class="emoji">🌪️</span> — one day, I want to follow the skies just like him.</p>
     </div>
 
-    <div class="pride-flag">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Gay_Pride_Flag.svg/2560px-Gay_Pride_Flag.svg.png" alt="Pride Flag">
-    </div>
-
     <div class="disc">
       <img src="https://f4.bcbits.com/img/a1743997382_10.jpg" alt="Album Cover">
     </div>
@@ -144,12 +126,10 @@
       <p>Currently vibing to: <strong>Loose Cannon - Puzzle</strong> <span class="emoji">🎶</span></p>
     </div>
 
-    <audio autoplay loop>
+    <audio id="music" autoplay loop>
       <source src="https://files.catbox.moe/kakp68.mp3" type="audio/mp3">
     </audio>
   </div>
-
-  <canvas id="sparkleCanvas"></canvas>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/tengbao/vanta/dist/vanta.clouds.min.js"></script>
@@ -172,44 +152,11 @@
       sunlightColor: isNight ? 0x222233 : 0xffcccc
     });
 
-    // Sparkle Trail
-    const canvas = document.getElementById("sparkleCanvas");
-    const ctx = canvas.getContext("2d");
-    canvas.style.position = 'fixed';
-    canvas.style.pointerEvents = 'none';
-    canvas.style.top = 0;
-    canvas.style.left = 0;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let particles = [];
-
-    document.addEventListener("mousemove", e => {
-      for (let i = 0; i < 5; i++) {
-        particles.push({
-          x: e.clientX,
-          y: e.clientY,
-          size: Math.random() * 2 + 1,
-          life: 100,
-          color: `hsl(${Math.random() * 360}, 100%, 75%)`
-        });
-      }
-    });
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles = particles.filter(p => p.life > 0);
-      particles.forEach(p => {
-        p.life -= 2;
-        p.y -= 0.5;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.fill();
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
+    // Ensure audio plays after the page loads
+    window.onload = function() {
+      var audio = document.getElementById('music');
+      audio.play();
+    };
   </script>
 </body>
 </html>
