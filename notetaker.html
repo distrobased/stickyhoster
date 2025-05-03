@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Notes</title>
+  <title>Aquafox - Secret Page</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -25,31 +25,39 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      background-size: cover;
-      background-position: center;
+      transition: background-color 0.5s ease;
     }
 
-    #login, #portal, #panic {
+    #login, #portal {
       width: 95%;
       max-width: 1000px;
-    }
-
-    #login textarea {
-      width: 100%;
-      height: 200px;
-      background: #f1f1f1;
-      color: #333;
-      border: none;
-      padding: 12px;
-      font-size: 16px;
-      resize: none;
-    }
-
-    #portal, #panic {
-      display: none;
-      flex-direction: column;
-      align-items: center;
       text-align: center;
+    }
+
+    #login {
+      margin-top: 50px;
+    }
+
+    #login input[type="password"] {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #00c6c6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #008f8f;
     }
 
     .logo {
@@ -61,16 +69,8 @@
       margin-bottom: 20px;
       width: 100%;
       text-align: left;
-    }
-
-    .search-box input[type="text"] {
-      width: 100%;
-      max-width: 500px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-      margin-bottom: 20px;
+      display: inline-block;
+      margin-bottom: 30px;
     }
 
     .tabs {
@@ -144,121 +144,129 @@
       margin: 5px 0;
     }
 
-    #panic {
-      background: white;
-      color: black;
-      height: 100vh;
-      width: 100vw;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      font-size: 24px;
-    }
-
-    #panic iframe {
-      border: none;
-      width: 90%;
-      height: 80%;
+    .spotify-player {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 8px;
+      background: #00c6c6;
+      color: white;
     }
   </style>
 </head>
 <body>
 
-  <div id="login">
-    <textarea id="noteArea" placeholder="Write your notes here..."></textarea>
+<div id="login">
+  <h2>Please Enter Password</h2>
+  <input type="password" id="password" placeholder="Enter password">
+  <button onclick="checkPassword()">Submit</button>
+</div>
+
+<div id="portal" style="display: none;">
+  <div class="logo">Aquafox Portal</div>
+
+  <form class="search-box" action="https://duckduckgo.com/" method="GET" target="_blank">
+    <input type="text" name="q" placeholder="Search the web...">
+  </form>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showSection('distros')">Distros</div>
+    <div class="tab" onclick="showSection('kernels')">Kernels</div>
+    <div class="tab" onclick="showSection('tools')">Tools</div>
+    <div class="tab" onclick="showSection('news')">News</div>
+    <div class="tab" onclick="showSection('resources')">Resources</div>
+    <div class="tab" onclick="showSection('customize')">Customize</div>
   </div>
 
-  <div id="portal">
-    <div class="logo">Notes - Personal</div>
-
-    <form class="search-box" action="https://duckduckgo.com/" method="GET" target="_blank">
-      <input type="text" name="q" placeholder="Search the web...">
-    </form>
-
-    <div class="tabs">
-      <div class="tab active" onclick="showSection('distros')">Distros</div>
-      <div class="tab" onclick="showSection('kernels')">Kernels</div>
-      <div class="tab" onclick="showSection('tools')">Tools</div>
-      <div class="tab" onclick="showSection('news')">News</div>
-      <div class="tab" onclick="showSection('resources')">Resources</div>
-      <div class="tab" onclick="showSection('customize')">Customize</div>
-    </div>
-
-    <div class="section active" id="distros">
-      <h3>Popular</h3>
-      <a href="https://ubuntu.com">Ubuntu</a>
-      <a href="https://debian.org">Debian</a>
-      <a href="https://archlinux.org">Arch</a>
-      <a href="https://manjaro.org">Manjaro</a>
-      <a href="https://pop.system76.com">Pop!_OS</a>
-      <a href="https://linuxmint.com">Mint</a>
-      <a href="https://zorin.com/os/">Zorin</a>
-      <a href="https://elementary.io">elementary</a>
-      <a href="https://getfedora.org">Fedora</a>
-      <h3>Lightweight</h3>
-      <a href="https://lubuntu.me">Lubuntu</a>
-      <a href="https://xubuntu.org">Xubuntu</a>
-      <a href="https://puppylinux.com">Puppy</a>
-      <a href="https://antixlinux.com">antiX</a>
-      <a href="https://www.tinycorelinux.net">TinyCore</a>
-      <a href="https://archbang.org">ArchBang</a>
-      <a href="https://crunchbangplusplus.org">CrunchBang++</a>
-      <h3>Advanced</h3>
-      <a href="https://nixos.org">NixOS</a>
-      <a href="https://gentoo.org">Gentoo</a>
-      <a href="https://voidlinux.org">Void</a>
-      <a href="https://slackware.com">Slackware</a>
-      <a href="https://bedrocklinux.org">Bedrock</a>
-      <a href="https://guix.gnu.org">Guix</a>
-    </div>
-
-    <div class="section" id="kernels">
-      <a href="https://kernel.org">Mainline Kernel</a>
-      <a href="https://github.com/torvalds/linux">Linux GitHub</a>
-      <a href="https://elixir.bootlin.com/linux/latest/source">Source Tree</a>
-      <a href="https://linuxfromscratch.org">LFS Project</a>
-    </div>
-
-    <div class="section" id="tools">
-      <a href="https://github.com/topics/linux">GitHub Linux</a>
-      <a href="https://flathub.org">Flathub</a>
-      <a href="https://snapcraft.io">Snapcraft</a>
-      <a href="https://aur.archlinux.org">AUR</a>
-      <a href="https://appimage.org">AppImage</a>
-    </div>
-
-    <div class="section" id="news">
-      <a href="https://www.omgubuntu.co.uk">OMG! Ubuntu</a>
-      <a href="https://lwn.net">Linux Weekly News</a>
-      <a href="https://phoronix.com">Phoronix</a>
-      <a href="https://itsfoss.com">It's FOSS</a>
-    </div>
-
-    <div class="section" id="resources">
-      <a href="https://wiki.archlinux.org">Arch Wiki</a>
-      <a href="https://unix.stackexchange.com">Unix SE</a>
-      <a href="https://linuxjourney.com">Linux Journey</a>
-      <a href="https://linuxcommand.org">Linux Command</a>
-    </div>
-
-    <div class="section customize" id="customize">
-      <label>Choose background:</label>
-      <select onchange="document.body.style.backgroundImage = this.value ? `url(${this.value})` : ''">
-        <option value="">Default</option>
-        <option value="https://wallpapercave.com/wp/wp2561426.jpg">Neon</option>
-        <option value="https://assets.ubuntu.com/v1/f4324d3f-background-orange.jpg">Ubuntu Orange</option>
-        <option value="https://images.unsplash.com/photo-1518779578993-ec3579fee39f">Minimal Glass</option>
-      </select>
-
-      <div class="system-info" id="sys">
-        <span id="cpu">CPU Usage: --</span>
-        <span id="ram">RAM Usage: --</span>
-      </div>
-    </div>
+  <div class="section active" id="distros">
+    <h3>Popular</h3>
+    <a href="https://proxy.com/https://ubuntu.com" target="_blank">Ubuntu</a>
+    <a href="https://proxy.com/https://debian.org" target="_blank">Debian</a>
+    <a href="https://proxy.com/https://archlinux.org" target="_blank">Arch</a>
+    <a href="https://proxy.com/https://manjaro.org" target="_blank">Manjaro</a>
+    <a href="https://proxy.com/https://pop.system76.com" target="_blank">Pop!_OS</a>
+    <a href="https://proxy.com/https://linuxmint.com" target="_blank">Mint</a>
+    <a href="https://proxy.com/https://zorin.com/os/" target="_blank">Zorin</a>
+    <a href="https://proxy.com/https://elementary.io" target="_blank">elementary</a>
+    <a href="https://proxy.com/https://getfedora.org" target="_blank">Fedora</a>
   </div>
 
-  <
-::contentReference[oaicite:0]{index=0}
- 
+  <div class="section" id="kernels">
+    <a href="https://proxy.com/https://kernel.org" target="_blank">Mainline Kernel</a>
+    <a href="https://proxy.com/https://github.com/torvalds/linux" target="_blank">Linux GitHub</a>
+    <a href="https://proxy.com/https://elixir.bootlin.com/linux/latest/source" target="_blank">Source Tree</a>
+    <a href="https://proxy.com/https://linuxfromscratch.org" target="_blank">LFS Project</a>
+  </div>
+
+  <div class="section" id="tools">
+    <a href="https://proxy.com/https://github.com/topics/linux" target="_blank">GitHub Linux</a>
+    <a href="https://proxy.com/https://flathub.org" target="_blank">Flathub</a>
+    <a href="https://proxy.com/https://snapcraft.io" target="_blank">Snapcraft</a>
+    <a href="https://proxy.com/https://aur.archlinux.org" target="_blank">AUR</a>
+    <a href="https://proxy.com/https://appimage.org" target="_blank">AppImage</a>
+  </div>
+
+  <div class="section" id="news">
+    <a href="https://proxy.com/https://www.omgubuntu.co.uk" target="_blank">OMG! Ubuntu</a>
+    <a href="https://proxy.com/https://lwn.net" target="_blank">Linux Weekly News</a>
+    <a href="https://proxy.com/https://phoronix.com" target="_blank">Phoronix</a>
+    <a href="https://proxy.com/https://itsfoss.com" target="_blank">It's FOSS</a>
+  </div>
+
+  <div class="section" id="resources">
+    <a href="https://proxy.com/https://wiki.archlinux.org" target="_blank">Arch Wiki</a>
+    <a href="https://proxy.com/https://unix.stackexchange.com" target="_blank">Unix SE</a>
+    <a href="https://proxy.com/https://linuxjourney.com" target="_blank">Linux Journey</a>
+    <a href="https://proxy.com/https://linuxcommand.org" target="_blank">Linux Command</a>
+  </div>
+
+  <div class="section customize" id="customize">
+    <label>Choose background:</label>
+    <select onchange="document.body.style.backgroundImage = this.value ? `url(${this.value})` : ''">
+      <option value="">Default</option>
+      <option value="https://wallpapercave.com/wp/wp2561426.jpg">Neon</option>
+      <option value="https://assets.ubuntu.com/v1/f4324d3f-background-orange.jpg">Ubuntu Orange</option>
+      <option value="https://images.unsplash.com/photo-1518779578993-ec3579fee39f">Minimal Glass</option>
+    </select>
+
+    <div class="spotify-player">
+      <h3>Listen to Music</h3>
+      <iframe src="https://open.spotify.com/embed/track/0hL93fZG3J9O0c9XDo9M6Y" width="100%" height="80" frameborder="0" allow="encrypted-media"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  function checkPassword() {
+    var password = document.getElementById("password").value;
+    if (password === "boredinmylife") {
+      document.getElementById("login").style.display = "none";
+      document.getElementById("portal").style.display = "block";
+    } else {
+      alert("Incorrect password. Please try again.");
+    }
+  }
+
+  function showSection(section) {
+    var sections = document.querySelectorAll('.section');
+    sections.forEach(function (sec) {
+      sec.classList.remove('active');
+    });
+    document.getElementById(section).classList.add('active');
+  }
+
+  let isOffline = false;
+  document.addEventListener('keydown', function (event) {
+    if (event.ctrlKey && event.altKey && event.key === 'p') {
+      if (!isOffline) {
+        document.body.style.display = "none";
+        isOffline = true;
+      } else {
+        document.body.style.display = "flex";
+        isOffline = false;
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
