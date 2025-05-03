@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aquafox - School Hideout</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -143,7 +144,39 @@
       text-align: center;
     }
 
-    /* Hidden panic button styling */
+    #music-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 900px;
+      margin-top: 20px;
+    }
+
+    #cd {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ff4081, #ff1744);
+      animation: spin 10s infinite linear;
+      margin-right: 20px;
+    }
+
+    #audio-player {
+      display: inline-block;
+      width: 60%;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
     #panicButton {
       position: fixed;
       top: 20px;
@@ -185,28 +218,6 @@
       background-color: #007c8d;
     }
 
-    /* Custom Context Menu */
-    #customContextMenu {
-      position: absolute;
-      display: none;
-      background-color: var(--card-bg);
-      border: 1px solid #ddd;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      border-radius: 8px;
-      padding: 10px;
-      list-style: none;
-      min-width: 150px;
-    }
-
-    #customContextMenu li {
-      padding: 10px;
-      cursor: pointer;
-    }
-
-    #customContextMenu li:hover {
-      background-color: var(--primary-color);
-      color: white;
-    }
   </style>
 </head>
 <body>
@@ -218,10 +229,15 @@
   <!-- Panic Button -->
   <button id="panicButton" onclick="togglePanic()">Panic Mode</button>
 
-  <!-- Music Player Section -->
-  <div class="spotify-player">
-    <h3>Listen to Music (Spotify)</h3>
-    <iframe src="https://open.spotify.com/embed/track/4i1dyRrmIQPOTpaZy3Wwvf?utm_source=generator" width="300" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+  <!-- Music Section with Spinning CD -->
+  <div id="music-container">
+    <div id="cd"></div>
+    <div id="audio-player">
+      <audio controls autoplay>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
   </div>
 
   <!-- Search Box -->
@@ -252,35 +268,7 @@
     <iframe class="iframe-container" src="https://debian.org" title="Debian"></iframe>
     <iframe class="iframe-container" src="https://archlinux.org" title="Arch"></iframe>
     <iframe class="iframe-container" src="https://manjaro.org" title="Manjaro"></iframe>
-    <iframe class="iframe-container" src="https://pop.system76.com" title="Pop!_OS"></iframe>
-    <iframe class="iframe-container" src="https://linuxmint.com" title="Linux Mint"></iframe>
-    <iframe class="iframe-container" src="https://zorin.com/os/" title="Zorin"></iframe>
   </div>
-
-  <div class="section" id="kernels">
-    <iframe class="iframe-container" src="https://kernel.org" title="Mainline Kernel"></iframe>
-    <iframe class="iframe-container" src="https://github.com/torvalds/linux" title="Linux GitHub"></iframe>
-    <iframe class="iframe-container" src="https://elixir.bootlin.com/linux/latest/source" title="Source Tree"></iframe>
-  </div>
-
-  <div class="section" id="tools">
-    <iframe class="iframe-container" src="https://github.com/topics/linux" title="GitHub Linux"></iframe>
-    <iframe class="iframe-container" src="https://flathub.org" title="Flathub"></iframe>
-    <iframe class="iframe-container" src="https://snapcraft.io" title="Snapcraft"></iframe>
-    <iframe class="iframe-container" src="https://aur.archlinux.org" title="AUR"></iframe>
-  </div>
-
-  <div class="section" id="resources">
-    <iframe class="iframe-container" src="https://wiki.archlinux.org" title="Arch Wiki"></iframe>
-    <iframe class="iframe-container" src="https://unix.stackexchange.com" title="Unix SE"></iframe>
-    <iframe class="iframe-container" src="https://linuxjourney.com" title="Linux Journey"></iframe>
-  </div>
-
-  <ul id="customContextMenu">
-    <li onclick="alert('Downloading File...')">Download File</li>
-    <li onclick="alert('Opening File Explorer...')">Open File Explorer</li>
-    <li onclick="alert('Launching Music Player...')">Play Music</li>
-  </ul>
 
   <script>
     // Show and hide sections based on tab clicks
@@ -296,6 +284,18 @@
         tab.classList.remove('active');
       });
       document.querySelector('.tab[onclick="showSection(\'' + section + '\')"]').classList.add('active');
+    }
+
+    // Search function to handle queries using StartPage
+    function search() {
+      var query = document.getElementById('searchQuery').value;
+      window.open('https://www.startpage.com/sp/search?q=' + query, '_blank');
+    }
+
+    // Panic mode toggle
+    function togglePanic() {
+      var body = document.body;
+      body.style.visibility = body.style.visibility === 'hidden' ? 'visible' : 'hidden';
     }
 
     // Save note to local storage automatically
@@ -319,31 +319,6 @@
       link.download = 'note.txt';
       link.click();
     }
-
-    // Search function to handle queries
-    function search() {
-      var query = document.getElementById('searchQuery').value;
-      window.open('https://startpage.com/sp/search?q=' + query, '_blank');
-    }
-
-    // Panic mode toggle
-    function togglePanic() {
-      var body = document.body;
-      body.style.visibility = body.style.visibility === 'hidden' ? 'visible' : 'hidden';
-    }
-
-    // Handle right-click context menu
-    document.addEventListener('contextmenu', function (e) {
-      e.preventDefault();
-      var menu = document.getElementById('customContextMenu');
-      menu.style.display = 'block';
-      menu.style.left = e.pageX + 'px';
-      menu.style.top = e.pageY + 'px';
-    });
-
-    document.addEventListener('click', function () {
-      document.getElementById('customContextMenu').style.display = 'none';
-    });
   </script>
 </body>
 </html>
