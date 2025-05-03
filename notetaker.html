@@ -6,10 +6,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --aqua: #00c6c6;
-      --dark-bg: #0f1a1a;
-      --card-bg: #1b2b2b;
-      --text: #e0ffff;
+      --primary-color: #00c6c6;
+      --background-color: #e0f7fa;
+      --card-bg: #ffffff;
+      --text-color: #004d40;
     }
 
     * {
@@ -19,8 +19,8 @@
 
     body {
       margin: 0;
-      background: var(--dark-bg);
-      color: var(--text);
+      background: var(--background-color);
+      color: var(--text-color);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -37,8 +37,8 @@
     #login textarea {
       width: 100%;
       height: 200px;
-      background: #1e1e1e;
-      color: #ccc;
+      background: #f1f1f1;
+      color: #333;
       border: none;
       padding: 12px;
       font-size: 16px;
@@ -53,8 +53,8 @@
     }
 
     .logo {
-      background: #1b2b2b;
-      color: #88ffff;
+      background: #ffffff;
+      color: #00acc1;
       padding: 12px 20px;
       border-radius: 8px;
       font-size: 18px;
@@ -67,7 +67,7 @@
       width: 100%;
       max-width: 500px;
       padding: 10px;
-      border: none;
+      border: 1px solid #ccc;
       border-radius: 8px;
       font-size: 16px;
       margin-bottom: 20px;
@@ -82,7 +82,7 @@
     }
 
     .tab {
-      background: #1f2f2f;
+      background: #b2ebf2;
       padding: 10px 20px;
       border-radius: 8px;
       cursor: pointer;
@@ -90,8 +90,8 @@
     }
 
     .tab.active {
-      background: var(--aqua);
-      color: #000;
+      background: var(--primary-color);
+      color: #ffffff;
       font-weight: bold;
     }
 
@@ -116,7 +116,7 @@
     .section a {
       display: inline-block;
       margin: 4px 8px;
-      color: var(--text);
+      color: var(--text-color);
       text-decoration: none;
     }
 
@@ -134,7 +134,7 @@
 
     .system-info {
       margin-top: 20px;
-      background: #122222;
+      background: #e0f2f1;
       padding: 15px;
       border-radius: 8px;
     }
@@ -173,7 +173,7 @@
   <div id="portal">
     <div class="logo">Notes - Personal</div>
 
-    <form class="search-box" action="https://www.google.com/search" method="GET" target="_blank">
+    <form class="search-box" action="https://duckduckgo.com/" method="GET" target="_blank">
       <input type="text" name="q" placeholder="Search the web...">
     </form>
 
@@ -259,45 +259,6 @@
     </div>
   </div>
 
-  <div id="panic">
-    <iframe src="https://www.google.com"></iframe>
-  </div>
-
-  <script>
-    const noteArea = document.getElementById('noteArea');
-    const login = document.getElementById('login');
-    const portal = document.getElementById('portal');
-    const panic = document.getElementById('panic');
-
-    noteArea.addEventListener('keydown', e => {
-      if (e.key === 'Enter' && noteArea.value.trim() === 'boredinmylife') {
-        login.style.display = 'none';
-        portal.style.display = 'flex';
-      }
-    });
-
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      event.target.classList.add('active');
-    }
-
-    function updateFakeStats() {
-      const cpu = Math.floor(Math.random() * 50) + 10;
-      const ram = Math.floor(Math.random() * 70) + 25;
-      document.getElementById('cpu').textContent = `CPU Usage: ${cpu}%`;
-      document.getElementById('ram').textContent = `RAM Usage: ${ram}%`;
-    }
-
-    setInterval(updateFakeStats, 2000);
-
-    document.addEventListener('keydown', e => {
-      if (e.ctrlKey && e.altKey && e.key === 'p') {
-        portal.style.display = 'none';
-        panic.style.display = 'flex';
-      }
-    });
-  </script>
-</body>
-</html>
+  <
+::contentReference[oaicite:0]{index=0}
+ 
