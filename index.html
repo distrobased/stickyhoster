@@ -6,67 +6,66 @@
   <title>Ethan's Dream Portal</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500&display=swap');
-
-    * {
+    
+    /* Global Styles */
+    body, html {
       margin: 0;
       padding: 0;
+      height: 100%;
+      font-family: 'Comfortaa', cursive;
+      background: #82c0ff; /* Dreamy Blue Background */
+      color: #ffffff; /* White text */
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    * {
       box-sizing: border-box;
       cursor: url('https://cur.cursors-4u.net/cursors/cur-11/cur1025.cur'), auto;
     }
 
-    html, body {
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-      font-family: 'Comfortaa', cursive;
-      background: #000;
-      color: #d7f4ff;
+    h1, p {
+      transition: all 0.3s ease;
     }
 
-    #background {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
+    /* Center Content */
     .content {
       position: absolute;
-      top: 20%;
+      top: 10%;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
-      max-width: 90%;
-      padding: 20px;
-      animation: fadeIn 3s ease-in-out;
+      color: #ffffff;
       z-index: 1;
+      animation: fadeIn 3s ease-out;
     }
 
     h1 {
-      font-size: 3.5em;
-      color: #a8dfff;
+      font-size: 4em;
+      color: #0099cc;
       text-shadow: 0 0 20px #00ffffaa, 0 0 50px #005577;
       margin-bottom: 20px;
-      z-index: 2;
+      animation: textGlow 2s infinite alternate;
     }
 
     .bio p {
-      font-size: 1.3em;
-      margin: 12px 0;
+      font-size: 1.5em;
+      margin: 20px 0;
+      color: #a9cfe6;
       text-shadow: 0 0 10px #00557788;
     }
 
     .emoji {
-      font-size: 1.2em;
+      font-size: 1.4em;
       vertical-align: middle;
     }
 
     .disc {
-      width: 200px;
-      height: 200px;
+      width: 250px;
+      height: 250px;
       border-radius: 50%;
       overflow: hidden;
-      margin: 30px auto;
+      margin: 40px auto;
       box-shadow: 0 0 30px #00ffff88;
       animation: spin 6s linear infinite;
     }
@@ -82,33 +81,83 @@
     }
 
     .glowbox {
-      margin-top: 30px;
-      padding: 20px;
-      background: rgba(0, 50, 80, 0.4);
+      margin-top: 40px;
+      padding: 25px;
+      background: rgba(0, 50, 80, 0.6);
       border-radius: 20px;
-      box-shadow: 0 0 25px #00bbff55;
+      box-shadow: 0 0 30px #00bcd4;
       display: inline-block;
     }
 
     .glowbox p {
       margin: 0;
-      font-size: 1.2em;
+      font-size: 1.3em;
+      color: #b3e0e6;
     }
 
+    /* Animations */
     @keyframes spin {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
 
     @keyframes fadeIn {
-      0% { opacity: 0; transform: translate(-50%, -60%); }
-      100% { opacity: 1; transform: translate(-50%, -50%); }
+      0% { opacity: 0; transform: translateY(-60%); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes textGlow {
+      0% { text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #0099cc; }
+      100% { text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff66ff; }
+    }
+
+    /* Scroll Effect */
+    .scroll-effect {
+      animation: scrollMove 5s infinite alternate;
+      font-size: 1.2em;
+      color: #fff;
+      padding: 20px;
+      background-color: rgba(0, 0, 50, 0.7);
+      margin-top: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #00ffcc;
+    }
+
+    @keyframes scrollMove {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(20px); }
+    }
+
+    /* Button Styles */
+    .button {
+      padding: 15px 30px;
+      background-color: #0099cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2em;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    .footer {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.2em;
+      color: #ffffff;
+      animation: textGlow 1.5s infinite alternate;
     }
   </style>
 </head>
 <body>
-  <div id="background"></div>
-
   <div class="content">
     <h1>Hey, I'm Ethan</h1>
     <div class="bio">
@@ -129,33 +178,29 @@
     <audio id="music" autoplay loop>
       <source src="https://files.catbox.moe/kakp68.mp3" type="audio/mp3">
     </audio>
+
+    <div class="scroll-effect">
+      <p>Scroll down to experience more of my world.</p>
+    </div>
+
+    <button class="button" onclick="window.location.href='#'">Explore More</button>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/tengbao/vanta/dist/vanta.clouds.min.js"></script>
+  <div class="footer">
+    <p>Created with ❤️ by Ethan</p>
+  </div>
+
   <script>
-    const hour = new Date().getHours();
-    const isNight = hour < 6 || hour >= 18;
-
-    VANTA.CLOUDS({
-      el: "#background",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      skyColor: isNight ? 0x0a0a1a : 0x88bbff,
-      cloudColor: isNight ? 0x333344 : 0xffffff,
-      cloudShadowColor: isNight ? 0x000011 : 0x222255,
-      sunColor: isNight ? 0x222244 : 0xffffff,
-      sunGlareColor: isNight ? 0x111122 : 0xffeecc,
-      sunlightColor: isNight ? 0x222233 : 0xffcccc
-    });
-
-    // Ensure audio plays after the page loads
+    // Music play function after page load
     window.onload = function() {
-      var audio = document.getElementById('music');
+      const audio = document.getElementById('music');
       audio.play();
+    };
+
+    // Change the background color when scrolling
+    window.onscroll = function() {
+      let scrollPosition = window.scrollY;
+      document.body.style.backgroundColor = scrollPosition > 100 ? '#66b3ff' : '#82c0ff';
     };
   </script>
 </body>
